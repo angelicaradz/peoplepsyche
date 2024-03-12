@@ -1,0 +1,60 @@
+button.sidebar-btn {
+    border: none;
+    background: none;
+}
+
+div.sidebar-nav {
+    background-color: chocolate;
+    padding: 5px 10px;
+}
+
+@media(min-width:992px){
+    div.sidebar-nav {
+        padding: 10px;
+        height: 100vh;
+    }
+    div.sidebar-nav .sidebar-hdr {
+        margin: 5px 0 15px 10px;
+    }
+    div.offcanvas-body .sidebar-itemlist{
+        padding: 20px 0 20px 0;
+    }
+    div.offcanvas-body .sidebar-itemlist ul li a{
+        padding: 0px 20px 0px 20px;
+    }
+    div.main-content {
+        padding: 20px;
+        overflow-y: scroll;
+    }
+}
+
+div.sidebar-itemlist ul li a{
+    text-decoration: none;
+    color: white;
+}
+
+div.sidebar-itemlist ul{
+    padding: 0;
+}
+div.sidebar-itemlist{
+    width: 100%;
+}
+
+div.sidebar-itemlist ul li{
+    padding: 10px;
+    cursor: pointer;
+}
+
+div.sidebar-itemlist ul li.active{
+    background-color: white;
+    font-weight: 800;
+    box-shadow: 0px 3px 10px black;
+}
+
+div.sidebar-itemlist ul li.active a{
+    color: chocolate;
+}
+
+div.main-content {
+    padding: 20px;
+}

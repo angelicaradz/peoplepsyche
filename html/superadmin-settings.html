@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width-device-width, initial-scale=1">
+        <link rel="stylesheet" href="../css/style-dashboard.css">
+        <title>SuperAdmin Settings Dashboard | PeoplePsyche</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    </head>
+
+    <body>
+        <div class="container-fluid p-0">
+            <div class="row g-0 text-center">
+                <div class="sidebar-nav col-md-12 col-lg-3">
+                    <div class="sidebar-hdr d-flex flex-row justify-content-start align-items-center">
+                        <button class="sidebar-btn btn d-lg-none fs-4" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasResponsive" aria-controls="offcanvasResponsive"><i class="fa-solid fa-bars text-white"></i></button>
+                        <h3 class="hdr-title text-white" style="text-shadow: 3px 3px 3px black;">PeoplePsyche</h3>
+                    </div>
+                    <div class="sidebar-items-nav row overflow-hidden">
+                        <div class="sidebar-offcanv offcanvas-lg offcanvas-start" style="background-color: chocolate;" data-bs-scroll="true" tabindex="-1" id="offcanvasResponsive" aria-labelledby="offcanvasResponsiveLabel">
+                            <div class="offcanvas-header">
+                                <h3 class="offcanvas-title text-white" style="text-shadow: 3px 3px 3px black;" id="offcanvasResponsiveLabel">PeoplePsyche</h3>
+                                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#offcanvasResponsive" aria-label="Close"></button>
+                            </div>
+                            <div class="offcanvas-body">
+                                <div class="sidebar-itemlist justify-content-center align-items-center">
+                                    <ul style="list-style: none;">
+                                        <li class="">
+                                            <a href="superadmin-dashboard.html">Dashboard</a>
+                                        </li>
+                                        <li class="">
+                                            <a href="superadmin-users.html">Users</a>
+                                        </li>
+                                        <li class="">
+                                            <a href="superadmin-profile.html">Profile</a>
+                                        </li>
+                                        <li class="active">
+                                            <a href="#">Settings</a>
+                                        </li>
+                                        <li class="">
+                                            <a href="superadmin-login.html">Logout</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-content col-md-12 col-lg-9">
+                    <div class="d-flex flex-lg-row mt-4">
+                        <h1>SuperAdmin Settings</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script>
+            $(".sidebar-nav .sidebar-items-nav .offcanvas-body .sidebar-itemlist ul li").on('click', function(){
+                $(".sidebar-nav .sidebar-items-nav .offcanvas-body .sidebar-itemlist ul li.active").removeClass('active');
+                $(this).addClass('active');
+            });
+        </script>
+    </body>
+</html>

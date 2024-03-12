@@ -1,0 +1,80 @@
+body {
+    background-image: url('../images/background.jpg');
+    background-position: center;
+    background-size: cover;
+    backdrop-filter: blur(15px);
+}
+
+.header{
+    text-align: center;
+}
+
+.header p {
+    text-shadow: 0 0 10px darkgray;
+    
+}
+
+.d-grid .register-btn {
+    background-color: chocolate;
+    border-color: chocolate;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    color: white;
+}
+
+.d-grid .login-btn {
+    background: transparent;
+    border-color: chocolate;
+    color: chocolate;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.d-grid .register-btn:hover{
+    background-color: rgba(168, 84, 24);
+    box-shadow: none;
+    border-color: rgba(168, 84, 24);
+    color: whitesmoke;
+}
+
+.d-grid .login-btn:hover {
+    background-color: whitesmoke;
+    border-color: rgba(168, 84, 24);
+    box-shadow: none;
+    color: rgba(168, 84, 24);
+}
+
+.input-group .btn{
+    background-color: chocolate;
+    border: none;
+    color: white;
+}
+
+.input-group .btn:hover{
+    background-color: rgba(168, 84, 24);
+    border: none;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    color: whitesmoke;
+}
+
+/* Assessment Page */
+
+button.assess-btn {
+    background-color: chocolate;
+    color: white;
+}
+
+button.assess-btn:hover {
+    background-color: rgba(168, 84, 24);
+    color: whitesmoke;
+}
+
+a.cancel-assess-btn {
+    background: none;
+    border-color: chocolate;
+    color: chocolate;
+}
+
+a.cancel-assess-btn:hover {
+    background-color: whitesmoke;
+    border-color: rgba(168, 84, 24);
+    color: rgba(168, 84, 24);
+}

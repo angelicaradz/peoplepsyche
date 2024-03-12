@@ -1,0 +1,93 @@
+body {
+    background: url('../images/background.jpg') rgba(0, 0, 0, 0.3);
+    background-blend-mode: multiply;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+body nav .sidebar .btn {
+    color: white;
+    text-decoration: none;
+    border-color: chocolate;
+    text-align: center;
+    background-color: chocolate;
+}
+
+body nav .sidebar .btn:hover{
+    background: transparent;
+    border-color: chocolate;
+    color: chocolate;
+}
+
+.hdr-title {
+    text-align: center;
+}
+
+@media(max-width: 768px){
+    .hdr-title {
+        text-align: center;
+        font-size: 1.2rem;
+    }
+}
+
+@media(max-width: 992px){
+    .sb-align {
+        justify-content: center;
+        align-items: center;
+        margin-inline-end: 90px;
+    }
+}
+
+.hdr-title .typewriter h1 {
+    overflow: hidden;
+    border-right: .05em solid chocolate;
+    padding-bottom: 10px;
+    white-space: nowrap;
+    margin: 0 auto;
+    animation: typing 2s steps(30, end), blink-caret .5s step-end infinite;
+}
+
+@keyframes typing {
+    from {width: 0}
+    to {width: 100%}
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: chocolate; }
+}
+
+.custom-text {
+    color: chocolate;
+}
+
+.box-area {
+    width: 930px;
+}
+
+.right-box {
+    padding: 40px 30px 40px 40px;
+}
+
+main .login-box {
+    margin-top: 30px;
+}
+
+::placeholder{
+    font-size: 16px;
+}
+
+@media only screen and (max-width: 768px) {
+    .box-area{
+        margin: 0 10px;
+
+    }
+    .left-box{
+        height: 80px;
+        overflow: hidden;
+    }
+    .right-box{
+        padding: 10px;
+    }
+}
