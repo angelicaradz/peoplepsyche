@@ -1,20 +1,6 @@
-// document.getElementById('godsGiftTest').addEventListener('submit', function(event) {
-//     event.preventDefault(); //prevent form submission
-
-//     //Collect user responses
-//     let responses = {};
-
-//     responses.x1 = document.getElementById('exampleChoiceX1').value;
-//     responses.y1 = document.getElementById('exampleChoiceY1').value;
-
-
-// })
-
-// let result = document.getElementById("result").innerHTML = "This is the result.";
-
-// echo(result);
-
-
+/* 
+*   MAIN FUNCTION
+*/
 document.getElementById('godsGiftTest').addEventListener('submit', function(event) {
     // Prevent default form submission behavior
     event.preventDefault();
@@ -22,15 +8,40 @@ document.getElementById('godsGiftTest').addEventListener('submit', function(even
     // Hide the form
     document.getElementById('godsGiftTest').style.display = 'none';
 
-    //perform the calculation here
-    let result = calculateResults();
+    /*
+    *   COLLECTING ANSWERS FROM THE FORM
+    */
+    let testAnswers = [];
+
+    // Iterate through each form element
+    let radioButtons = document.querySelectorAll('input[type="radio"]');
+    console.log(radioButtons);
+
+    radioButtons.forEach(radioButton => {
+        // console.log(radioButton.name);
+        // console.log(radioButton.value);
+        // console.log(radioButton.checked);
+
+        let question = radioButton.name;
+        let answer = radioButton.value;
+
+        // Add the value of the checked radio button to the answers array
+        if(radioButton.checked){
+            testAnswers.push({ name: question, value: answer });
+        }
+    });
+    // console.log(testAnswers);
+
+    let result = calculateResults(testAnswers);
   
     // Show the result element
     document.getElementById('result').style.display = 'block';
 });
 
-//calculation process here
-function calculateResults(){
+/*
+*   CALCULATE THE RESULTS HERE
+*/
+function calculateResults(testAnswers){
 
     // FACTOR DICTIONARY
     const factors = {
@@ -808,41 +819,6 @@ function calculateResults(){
         }
     };
 
-    // GATHERING THE ANSWERS FROM THE FORM
-    let testAnswers = [];
-
-    // Iterate through each form element
-    // Attach event listener to all radio buttons
-    let radioButtons = document.querySelectorAll('input[type="radio"]');
-    console.log(radioButtons);
-
-    radioButtons.forEach(radioButton => {
-        console.log(radioButton.name);
-        
-        radioButton.addEventListener('click', function() {
-            let question = this.name; // Get the name of the radio button group
-            let answer = this.value; // Get the value of the clicked radio button
-            console.log(`Question: ${question}, Answer: ${answer}`);
-            
-            // Iterate through all radio buttons with the same name
-            radioButtons.forEach(radio => {
-                console.log(`Name: ${radio.name}, Value: ${radio.value}`);
-                // Check if the radio button belongs to the same group
-                if (radio.name === question) {
-                    // If it's not the clicked radio button and it's checked, uncheck it
-                    if (radio.value !== answer && radio.checked) {
-                        radio.checked = false;
-                    }
-                }
-            });
-
-            // Add the value of the checked radio button to the answers array
-            testAnswers.push({ name: question, value: answer });
-        
-        });
-    });
-    console.log(testAnswers);
-
     //INTERPRETING THE RESULTS
     let random_num = 0;
     let results = [];
@@ -933,27 +909,27 @@ function calculateResults(){
         }
     });
 
-    console.log(factorA);
-    console.log(factorC);
-    console.log(factorE);
-    console.log(factorF);
-    console.log(factorG);
-    console.log(factorH);
-    console.log(factorI);
-    console.log(factorL);
-    console.log(factorM);
-    console.log(factorN);
-    console.log(factorO);
-    console.log(factorQ1);
-    console.log(factorQ2);
-    console.log(factorQ3);
-    console.log(factorQ4);
+    console.log(`Factor A: ${factorA}`);
+    console.log(`Factor C: ${factorC}`);
+    console.log(`Factor E: ${factorE}`);
+    console.log(`Factor F: ${factorF}`);
+    console.log(`Factor G: ${factorG}`);
+    console.log(`Factor H: ${factorH}`);
+    console.log(`Factor I: ${factorI}`);
+    console.log(`Factor L: ${factorL}`);
+    console.log(`Factor M: ${factorM}`);
+    console.log(`Factor N: ${factorN}`);
+    console.log(`Factor O: ${factorO}`);
+    console.log(`Factor Q1: ${factorQ1}`);
+    console.log(`Factor Q2: ${factorQ2}`);
+    console.log(`Factor Q3: ${factorQ3}`);
+    console.log(`Factor Q4: ${factorQ4}`);
 
     // FACTOR A CALCULATION
     if (factorA >= 16 && factorA <= 22){
         random_num = Math.floor(Math.random() * 7);
         results["A"] = interpretations["A"]["+"][random_num];
-        console.log(`Factor A result: ${results["A"]}+`);
+        console.log(`Factor A result: ${results["A"]}+${random_num}`);
     }
     
     else if (factorA >= 0 && factorA <= 7){
@@ -963,8 +939,7 @@ function calculateResults(){
     }
     
     else {
-        alert("Somethings wrong. Please try again.")
-        console.log(`See error: ${results["A"]}`);
+        console.log(`Score is neutral. Skip`);
     }
     
     // FACTOR C CALCULATION
@@ -981,8 +956,7 @@ function calculateResults(){
     }
     
     else {
-        alert("Somethings wrong. Please try again.")
-        console.log(`See error: ${results["C"]}`);
+        console.log(`Score is neutral. Skip`);
     }
     
     // FACTOR E CALCULATION
@@ -999,8 +973,7 @@ function calculateResults(){
     }
     
     else {
-        alert("Somethings wrong. Please try again.")
-        console.log(`See error: ${results["E"]}`);
+        console.log(`Score is neutral. Skip`);
     }
     
     // FACTOR F CALCULATION
@@ -1017,8 +990,7 @@ function calculateResults(){
     }
     
     else {
-        alert("Somethings wrong. Please try again.")
-        console.log(`See error: ${results["F"]}`);
+        console.log(`Score is neutral. Skip`);
     }
 
     // FACTOR G CALCULATION
@@ -1035,8 +1007,7 @@ function calculateResults(){
     }
     
     else {
-        alert("Somethings wrong. Please try again.")
-        console.log(`See error: ${results["G"]}`);
+        console.log(`Score is neutral. Skip`);
     }
 
     // FACTOR H CALCULATION
@@ -1053,8 +1024,7 @@ function calculateResults(){
     }
     
     else {
-        alert("Somethings wrong. Please try again.")
-        console.log(`See error: ${results["H"]}`);
+        console.log(`Score is neutral. Skip`);
     }
 
     // FACTOR I CALCULATION
@@ -1071,8 +1041,7 @@ function calculateResults(){
     }
     
     else {
-        alert("Somethings wrong. Please try again.")
-        console.log(`See error: ${results["I"]}`);
+        console.log(`Score is neutral. Skip`);
     }
 
     // FACTOR L CALCULATION
@@ -1089,8 +1058,7 @@ function calculateResults(){
     }
     
     else {
-        alert("Somethings wrong. Please try again.")
-        console.log(`See error: ${results["L"]}`);
+        console.log(`Score is neutral. Skip`);
     }
 
     // FACTOR M CALCULATION
@@ -1107,8 +1075,7 @@ function calculateResults(){
     }
     
     else {
-        alert("Somethings wrong. Please try again.")
-        console.log(`See error: ${results["M"]}`);
+        console.log(`Score is neutral. Skip`);
     }
 
     // FACTOR N CALCULATION
@@ -1125,8 +1092,7 @@ function calculateResults(){
     }
     
     else {
-        alert("Somethings wrong. Please try again.")
-        console.log(`See error: ${results["N"]}`);
+        console.log(`Score is neutral. Skip`);
     }
 
     // FACTOR O CALCULATION
@@ -1143,8 +1109,7 @@ function calculateResults(){
     }
     
     else {
-        alert("Somethings wrong. Please try again.")
-        console.log(`See error: ${results["O"]}`);
+        console.log(`Score is neutral. Skip`);
     }
 
     // FACTOR Q1 CALCULATION
@@ -1161,8 +1126,7 @@ function calculateResults(){
     }
     
     else {
-        alert("Somethings wrong. Please try again.")
-        console.log(`See error: ${results["Q1"]}`);
+        console.log(`Score is neutral. Skip`);;
     }
 
     // FACTOR Q2 CALCULATION
@@ -1179,8 +1143,7 @@ function calculateResults(){
     }
     
     else {
-        alert("Somethings wrong. Please try again.")
-        console.log(`See error: ${results["Q2"]}`);
+        console.log(`Score is neutral. Skip`);;
     }
 
     // FACTOR Q3 CALCULATION
@@ -1197,8 +1160,7 @@ function calculateResults(){
     }
     
     else {
-        alert("Somethings wrong. Please try again.")
-        console.log(`See error: ${results["Q3"]}`);
+        console.log(`Score is neutral. Skip`);;
     }
 
     // FACTOR Q4 CALCULATION
@@ -1215,23 +1177,39 @@ function calculateResults(){
     }
     
     else {
-        alert("Somethings wrong. Please try again.")
-        console.log(`See error: ${results["Q4"]}`);
+        console.log(`Score is neutral. Skip`);;
     }
 
-    document.getElementById('factorA').innerHTML = results["A"];
-    document.getElementById('factorC').innerHTML = results["C"];
-    document.getElementById('factorE').innerHTML = results["E"];
-    document.getElementById('factorF').innerHTML = results["F"];
-    document.getElementById('factorG').innerHTML = results["G"];
-    document.getElementById('factorH').innerHTML = results["H"];
-    document.getElementById('factorI').innerHTML = results["I"];
-    document.getElementById('factorL').innerHTML = results["L"];
-    document.getElementById('factorM').innerHTML = results["M"];
-    document.getElementById('factorN').innerHTML = results["N"];
-    document.getElementById('factorO').innerHTML = results["O"];
-    document.getElementById('factorQ1').innerHTML = results["Q1"];
-    document.getElementById('factorQ2').innerHTML = results["Q2"];
-    document.getElementById('factorQ3').innerHTML = results["Q3"];
-    document.getElementById('factorQ4').innerHTML = results["Q4"];
-};
+    //print factor results
+    let resultsList = document.getElementById("resultsList");
+
+    resultsList.style.listStyleType = "none";
+
+    for (let key in results){
+        if(results.hasOwnProperty(key)){
+            let listItem = document.createElement("li");
+            listItem.textContent = results[key];
+
+            //styles
+            listItem.style.marginBottom = "40px";
+
+            resultsList.appendChild(listItem);
+        }
+    }
+
+    // document.getElementById('factorA').innerHTML = results["A"];
+    // document.getElementById('factorC').innerHTML = results["C"];
+    // document.getElementById('factorE').innerHTML = results["E"];
+    // document.getElementById('factorF').innerHTML = results["F"];
+    // document.getElementById('factorG').innerHTML = results["G"];
+    // document.getElementById('factorH').innerHTML = results["H"];
+    // document.getElementById('factorI').innerHTML = results["I"];
+    // document.getElementById('factorL').innerHTML = results["L"];
+    // document.getElementById('factorM').innerHTML = results["M"];
+    // document.getElementById('factorN').innerHTML = results["N"];
+    // document.getElementById('factorO').innerHTML = results["O"];
+    // document.getElementById('factorQ1').innerHTML = results["Q1"];
+    // document.getElementById('factorQ2').innerHTML = results["Q2"];
+    // document.getElementById('factorQ3').innerHTML = results["Q3"];
+    // document.getElementById('factorQ4').innerHTML = results["Q4"];
+}
