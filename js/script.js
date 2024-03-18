@@ -821,7 +821,11 @@ function calculateResults(testAnswers){
 
     //INTERPRETING THE RESULTS
     let random_num = 0;
-    let results = [];
+    // let results = [];
+
+    //STRENGTHS & WEAKNESSES RESULTS
+    let strengths = [];
+    let weaknesses = [];
 
     //SCORING
     testAnswers.forEach(answer => {
@@ -928,14 +932,16 @@ function calculateResults(testAnswers){
     // FACTOR A CALCULATION
     if (factorA >= 16 && factorA <= 22){
         random_num = Math.floor(Math.random() * 7);
-        results["A"] = interpretations["A"]["+"][random_num];
-        console.log(`Factor A result: ${results["A"]}+${random_num}`);
+        // results["A"] = interpretations["A"]["+"][random_num];
+        strengths["A"] = interpretations["A"]["+"][random_num];
+        console.log(`Factor A result: ${strengths["A"]}+${random_num}`);
     }
     
     else if (factorA >= 0 && factorA <= 7){
         random_num = Math.floor(Math.random() * 7);
-        results["A"] = interpretations["A"]["-"][random_num];
-        console.log(`Factor A result: ${results["A"]}-${random_num}`);
+        // results["A"] = interpretations["A"]["-"][random_num];
+        weaknesses["A"] = interpretations["A"]["-"][random_num];
+        console.log(`Factor A result: ${weaknesses["A"]}-${random_num}`);
     }
     
     else {
@@ -945,14 +951,15 @@ function calculateResults(testAnswers){
     // FACTOR C CALCULATION
     if (factorC >= 17 && factorC <= 20){
         random_num = Math.floor(Math.random() * 4);
-        results["C"] = interpretations["C"]["+"][random_num];
-        console.log(`Factor C result: ${results["C"]}+${random_num}`);
+        // results["C"] = interpretations["C"]["+"][random_num];
+        strengths["C"] = interpretations["C"]["-"][random_num];
+        console.log(`Factor C result: ${strengths["C"]}+${random_num}`);
     }
     
     else if (factorC >= 0 && factorC <= 7){
         random_num = Math.floor(Math.random() * 8);
-        results["C"] = interpretations["C"]["-"][random_num];
-        console.log(`Factor C result: ${results["C"]}-${random_num}`);
+        weaknesses["C"] = interpretations["C"]["-"][random_num];
+        console.log(`Factor C result: ${weaknesses["C"]}-${random_num}`);
     }
     
     else {
@@ -962,14 +969,14 @@ function calculateResults(testAnswers){
     // FACTOR E CALCULATION
     if (factorE >= 16 && factorE <= 20){
         random_num = Math.floor(Math.random() * 5);
-        results["E"] = interpretations["E"]["+"][random_num];
-        console.log(`Factor E result: ${results["E"]}+${random_num}`);
+        weaknesses["E"] = interpretations["E"]["+"][random_num];
+        console.log(`Factor E result: ${weaknesses["E"]}+${random_num}`);
     }
     
     else if (factorE >= 0 && factorE <= 9){
         random_num = Math.floor(Math.random() * 9);
-        results["E"] = interpretations["E"]["-"][random_num];
-        console.log(`Factor E result: ${results["E"]}-${random_num}`);
+        strengths["E"] = interpretations["E"]["-"][random_num];
+        console.log(`Factor E result: ${strengths["E"]}-${random_num}`);
     }
     
     else {
@@ -979,14 +986,14 @@ function calculateResults(testAnswers){
     // FACTOR F CALCULATION
     if (factorF >= 15 && factorF <= 20){
         random_num = Math.floor(Math.random() * 5);
-        results["F"] = interpretations["F"]["+"][random_num];
-        console.log(`Factor F result: ${results["F"]}+${random_num}`);
+        strengths["F"] = interpretations["F"]["+"][random_num];
+        console.log(`Factor F result: ${strengths["F"]}+${random_num}`);
     }
     
     else if (factorF >= 0 && factorF <= 5){
         random_num = Math.floor(Math.random() * 6);
-        results["F"] = interpretations["F"]["-"][random_num];
-        console.log(`Factor F result: ${results["F"]}-${random_num}`);
+        strengths["F"] = interpretations["F"]["-"][random_num];
+        console.log(`Factor F result: ${strengths["F"]}-${random_num}`);
     }
     
     else {
@@ -996,14 +1003,14 @@ function calculateResults(testAnswers){
     // FACTOR G CALCULATION
     if (factorG >= 18 && factorG <= 22){
         random_num = Math.floor(Math.random() * 5);
-        results["G"] = interpretations["G"]["+"][random_num];
-        console.log(`Factor G result: ${results["G"]}+${random_num}`);
+        strengths["G"] = interpretations["G"]["+"][random_num];
+        console.log(`Factor G result: ${strengths["G"]}+${random_num}`);
     }
     
     else if (factorG >= 0 && factorG <= 8){
         random_num = Math.floor(Math.random() * 9);
-        results["G"] = interpretations["G"]["-"][random_num];
-        console.log(`Factor G result: ${results["G"]}-${random_num}`);
+        weaknesses["G"] = interpretations["G"]["-"][random_num];
+        console.log(`Factor G result: ${weaknesses["G"]}-${random_num}`);
     }
     
     else {
@@ -1013,14 +1020,14 @@ function calculateResults(testAnswers){
     // FACTOR H CALCULATION
     if (factorH >= 15 && factorH <= 20){
         random_num = Math.floor(Math.random() * 6);
-        results["H"] = interpretations["H"]["+"][random_num];
-        console.log(`Factor H result: ${results["H"]}+${random_num}`);
+        strengths["H"] = interpretations["H"]["+"][random_num];
+        console.log(`Factor H result: ${strengths["H"]}+${random_num}`);
     }
     
     else if (factorH >= 0 && factorH <= 3){
         random_num = Math.floor(Math.random() * 4);
-        results["H"] = interpretations["H"]["-"][random_num];
-        console.log(`Factor H result: ${results["H"]}-${random_num}`);
+        weaknesses["H"] = interpretations["H"]["-"][random_num];
+        console.log(`Factor H result: ${weaknesses["H"]}-${random_num}`);
     }
     
     else {
@@ -1030,14 +1037,14 @@ function calculateResults(testAnswers){
     // FACTOR I CALCULATION
     if (factorI >= 16 && factorI <= 22){
         random_num = Math.floor(Math.random() * 7);
-        results["I"] = interpretations["I"]["+"][random_num];
-        console.log(`Factor I result: ${results["I"]}+${random_num}`);
+        weaknesses["I"] = interpretations["I"]["+"][random_num];
+        console.log(`Factor I result: ${weaknesses["I"]}+${random_num}`);
     }
     
     else if (factorI >= 0 && factorI <= 6){
         random_num = Math.floor(Math.random() * 7);
-        results["I"] = interpretations["I"]["-"][random_num];
-        console.log(`Factor I result: ${results["I"]}-${random_num}`);
+        strengths["I"] = interpretations["I"]["-"][random_num];
+        console.log(`Factor I result: ${strengths["I"]}-${random_num}`);
     }
     
     else {
@@ -1047,14 +1054,14 @@ function calculateResults(testAnswers){
     // FACTOR L CALCULATION
     if (factorL >= 14 && factorL <= 20){
         random_num = Math.floor(Math.random() * 7);
-        results["L"] = interpretations["L"]["+"][random_num];
-        console.log(`Factor L result: ${results["L"]}+${random_num}`);
+        weaknesses["L"] = interpretations["L"]["+"][random_num];
+        console.log(`Factor L result: ${weaknesses["L"]}+${random_num}`);
     }
     
     else if (factorL >= 0 && factorL <= 5){
         random_num = Math.floor(Math.random() * 6);
-        results["L"] = interpretations["L"]["-"][random_num];
-        console.log(`Factor L result: ${results["L"]}-${random_num}`);
+        strengths["L"] = interpretations["L"]["-"][random_num];
+        console.log(`Factor L result: ${strengths["L"]}-${random_num}`);
     }
     
     else {
@@ -1064,14 +1071,14 @@ function calculateResults(testAnswers){
     // FACTOR M CALCULATION
     if (factorM >= 11 && factorM <= 22){
         random_num = Math.floor(Math.random() * 9);
-        results["M"] = interpretations["M"]["+"][random_num];
-        console.log(`Factor M result: ${results["M"]}+${random_num}`);
+        strengths["M"] = interpretations["M"]["+"][random_num];
+        console.log(`Factor M result: ${strengths["M"]}+${random_num}`);
     }
     
     else if (factorM >= 0 && factorM <= 2){
         random_num = Math.floor(Math.random() * 3);
-        results["M"] = interpretations["M"]["-"][random_num];
-        console.log(`Factor M result: ${results["M"]}-${random_num}`);
+        strengths["M"] = interpretations["M"]["-"][random_num];
+        console.log(`Factor M result: ${strengths["M"]}-${random_num}`);
     }
     
     else {
@@ -1081,14 +1088,14 @@ function calculateResults(testAnswers){
     // FACTOR N CALCULATION
     if (factorN >= 15 && factorN <= 20){
         random_num = Math.floor(Math.random() * 6);
-        results["N"] = interpretations["N"]["+"][random_num];
-        console.log(`Factor N result: ${results["N"]}+${random_num}`);
+        weaknesses["N"] = interpretations["N"]["+"][random_num];
+        console.log(`Factor N result: ${weaknesses["N"]}+${random_num}`);
     }
     
     else if (factorN >= 0 && factorN <= 5){
         random_num = Math.floor(Math.random() * 6);
-        results["N"] = interpretations["N"]["-"][random_num];
-        console.log(`Factor N result: ${results["N"]}-${random_num}`);
+        strengths["N"] = interpretations["N"]["-"][random_num];
+        console.log(`Factor N result: ${strengths["N"]}-${random_num}`);
     }
     
     else {
@@ -1098,14 +1105,14 @@ function calculateResults(testAnswers){
     // FACTOR O CALCULATION
     if (factorO >= 16 && factorO <= 20){
         random_num = Math.floor(Math.random() * 5);
-        results["O"] = interpretations["O"]["+"][random_num];
-        console.log(`Factor O result: ${results["O"]}+${random_num}`);
+        weaknesses["O"] = interpretations["O"]["+"][random_num];
+        console.log(`Factor O result: ${weaknesses["O"]}+${random_num}`);
     }
     
     else if (factorO >= 0 && factorO <= 5){
         random_num = Math.floor(Math.random() * 6);
-        results["O"] = interpretations["O"]["-"][random_num];
-        console.log(`Factor O result: ${results["O"]}-${random_num}`);
+        strengths["O"] = interpretations["O"]["-"][random_num];
+        console.log(`Factor O result: ${strengths["O"]}-${random_num}`);
     }
     
     else {
@@ -1115,14 +1122,14 @@ function calculateResults(testAnswers){
     // FACTOR Q1 CALCULATION
     if (factorQ1 >= 20 && factorQ1 <= 28){
         random_num = Math.floor(Math.random() * 9);
-        results["Q1"] = interpretations["Q1"]["+"][random_num];
-        console.log(`Factor Q1 result: ${results["Q1"]}+${random_num}`);
+        strengths["Q1"] = interpretations["Q1"]["+"][random_num];
+        console.log(`Factor Q1 result: ${strengths["Q1"]}+${random_num}`);
     }
     
     else if (factorQ1 >= 0 && factorQ1 <= 11){
         random_num = Math.floor(Math.random() * 9);
-        results["Q1"] = interpretations["Q1"]["-"][random_num];
-        console.log(`Factor Q1 result: ${results["Q1"]}-${random_num}`);
+        strengths["Q1"] = interpretations["Q1"]["-"][random_num];
+        console.log(`Factor Q1 result: ${strengths["Q1"]}-${random_num}`);
     }
     
     else {
@@ -1132,14 +1139,14 @@ function calculateResults(testAnswers){
     // FACTOR Q2 CALCULATION
     if (factorQ2 >= 12 && factorQ2 <= 20){
         random_num = Math.floor(Math.random() * 9);
-        results["Q2"] = interpretations["Q2"]["+"][random_num];
-        console.log(`Factor Q2 result: ${results["Q2"]}+${random_num}`);
+        strengths["Q2"] = interpretations["Q2"]["+"][random_num];
+        console.log(`Factor Q2 result: ${strengths["Q2"]}+${random_num}`);
     }
     
     else if (factorQ2 >= 0 && factorQ2 <= 2){
         random_num = Math.floor(Math.random() * 3);
-        results["Q2"] = interpretations["Q2"]["-"][random_num];
-        console.log(`Factor Q2 result: ${results["Q2"]}-${random_num}`);
+        strengths["Q2"] = interpretations["Q2"]["-"][random_num];
+        console.log(`Factor Q2 result: ${strengths["Q2"]}-${random_num}`);
     }
     
     else {
@@ -1149,14 +1156,14 @@ function calculateResults(testAnswers){
     // FACTOR Q3 CALCULATION
     if (factorQ3 >= 16 && factorQ3 <= 20){
         random_num = Math.floor(Math.random() * 5);
-        results["Q3"] = interpretations["Q3"]["+"][random_num];
-        console.log(`Factor Q3 result: ${results["Q3"]}+${random_num}`);
+        strengths["Q3"] = interpretations["Q3"]["+"][random_num];
+        console.log(`Factor Q3 result: ${strengths["Q3"]}+${random_num}`);
     }
     
     else if (factorQ3 >= 0 && factorQ3 <= 6){
         random_num = Math.floor(Math.random() * 7);
-        results["Q3"] = interpretations["Q3"]["-"][random_num];
-        console.log(`Factor Q3 result: ${results["Q3"]}-${random_num}`);
+        weaknesses["Q3"] = interpretations["Q3"]["-"][random_num];
+        console.log(`Factor Q3 result: ${weaknesses["Q3"]}-${random_num}`);
     }
     
     else {
@@ -1166,14 +1173,14 @@ function calculateResults(testAnswers){
     // FACTOR Q4 CALCULATION
     if (factorQ4 >= 15 && factorQ4 <= 20){
         random_num = Math.floor(Math.random() * 6);
-        results["Q4"] = interpretations["Q4"]["+"][random_num];
-        console.log(`Factor Q4 result: ${results["Q4"]}+${random_num}`);
+        weaknesses["Q4"] = interpretations["Q4"]["+"][random_num];
+        console.log(`Factor Q4 result: ${weaknesses["Q4"]}+${random_num}`);
     }
     
     else if (factorQ4 >= 0 && factorQ4 <= 5){
         random_num = Math.floor(Math.random() * 6);
-        results["Q4"] = interpretations["Q4"]["-"][random_num];
-        console.log(`Factor Q4 result: ${results["Q4"]}-${random_num}`);
+        strengths["Q4"] = interpretations["Q4"]["-"][random_num];
+        console.log(`Factor Q4 result: ${strengths["Q4"]}-${random_num}`);
     }
     
     else {
@@ -1181,19 +1188,53 @@ function calculateResults(testAnswers){
     }
 
     //print factor results
-    let resultsList = document.getElementById("resultsList");
+    // let resultsList = document.getElementById("resultsList");
 
-    resultsList.style.listStyleType = "none";
+    // resultsList.style.listStyleType = "none";
 
-    for (let key in results){
-        if(results.hasOwnProperty(key)){
+    // for (let key in results){
+    //     if(results.hasOwnProperty(key)){
+    //         let listItem = document.createElement("li");
+    //         listItem.textContent = results[key];
+
+    //         //styles
+    //         listItem.style.marginBottom = "40px";
+
+    //         resultsList.appendChild(listItem);
+    //     }
+    // }
+
+    //PRINT STRENGTHS RESULTS
+    let strengthsList = document.getElementById("strengthsList");
+
+    strengthsList.style.listStyleType = "none";
+
+    for (let key in strengths){
+        if(strengths.hasOwnProperty(key)){
             let listItem = document.createElement("li");
-            listItem.textContent = results[key];
+            listItem.textContent = strengths[key];
 
             //styles
             listItem.style.marginBottom = "40px";
 
-            resultsList.appendChild(listItem);
+            strengthsList.appendChild(listItem);
+        }
+    }
+
+    //PRINT WEAKNESS RESULTS
+    let weaknessesList = document.getElementById("weaknessesList");
+
+    weaknessesList.style.listStyleType = "none";
+
+    for (let key in weaknesses){
+        if(weaknesses.hasOwnProperty(key)){
+            let listItem = document.createElement("li");
+            listItem.textContent = weaknesses[key];
+
+            //styles
+            listItem.style.marginBottom = "40px";
+
+            weaknessesList.appendChild(listItem);
         }
     }
 
