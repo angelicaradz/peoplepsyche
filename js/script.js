@@ -46,474 +46,632 @@ function calculateResults(testAnswers){
     // FACTOR DICTIONARY
     const factors = {
         "q1": {
-            "A": "A"
+            "A": "A",
+            "?": "A"
         },
         "q2": {
-            "A": "C"
+            "A": "C",
+            "?": "C"
         },
         "q3": {
-            "C": "E"
+            "C": "E",
+            "?": "E"
         },
         "q4": {
-            "C" : "F"
+            "C" : "F",
+            "?": "F"
         },
         "q5": {
-            "A" : "G"
+            "A" : "G",
+            "?": "G"
         },
         "q6": {
-            "A" : "F"
+            "A" : "F",
+            "?": "F"
         },
         "q7": {
-            "A" : "G"
+            "A" : "G",
+            "?": "G"
         },
         "q8": {
             "A" : "H",
-            "C" : "I"
+            "?": "H",
+            "C" : "I",
+            "?": "I"
         },
         "q10": {
-            "A" : "I"
+            "A" : "I",
+            "?": "I"
         },
         "q11": {
-            "A" : "L"
+            "A" : "L",
+            "?": "L"
         },
         "q12": {
-            "A" : "M"
+            "A" : "M",
+            "?": "M"
         },
         "q13": {
-            "A" : "L"
+            "A" : "L",
+            "?": "L"
         },
         "q14": {
-            "A" : "M"
+            "A" : "M",
+            "?": "M"
         },
         "q15": {
-            "C" : "N"
+            "C" : "N",
+            "?": "N"
         },
         "q17": {
-            "C" : "M"
+            "C" : "M",
+            "?": "M"
         },
         "q18": {
-            "C" : "N"
+            "C" : "N",
+            "?": "N"
         },
         "q19": {
-            "C" : "O"
+            "C" : "O",
+            "?": "O"
         },
         "q20": {
-            "C" : "Q1"
+            "C" : "Q1",
+            "?": "Q1"
         },
         "q21": {
-            "C" : "O"
+            "C" : "O",
+            "?": "O"
         },
         "q22": {
-            "A" : "Q1"
+            "A" : "Q1",
+            "?": "Q1"
         },
         "q24": {
-            "C" : "Q1"
+            "C" : "Q1",
+            "?": "Q1"
         },
         "q25": {
-            "C" : "Q2"
+            "C" : "Q2",
+            "?": "Q2"
         },
         "q26": {
-            "C" : "Q3"
+            "C" : "Q3",
+            "?": "Q3"
         },
         "q27": {
-            "A" : "Q2"
+            "A" : "Q2",
+            "?": "Q2"
         },
         "q28": {
-            "A" : "Q4"
+            "A" : "Q4",
+            "?": "Q4"
         },
         "q29": {
-            "C" : "Q3"
+            "C" : "Q3",
+            "?": "Q3"
         },
         "q30": {
-            "A" : "Q4"
+            "A" : "Q4",
+            "?": "Q4"
         },
         "q31": {
-            "A" : "A"
+            "A" : "A",
+            "?": "A"
         },
         "q32": {
-            "C" : "C"
+            "C" : "C",
+            "?": "C"
         },
         "q33": {
-            "A" : "A"
+            "A" : "A",
+            "?": "A"
         },
         "q35": {
-            "C" : "C"
+            "C" : "C",
+            "?": "C"
         },
         "q36": {
-            "A" : "E"
+            "A" : "E",
+            "?": "E"
         },
         "q37": {
-            "C" : "F"
+            "C" : "F",
+            "?": "F"
         },
         "q38": {
-            "C" : "E"
+            "C" : "E",
+            "?": "E"
         },
         "q39": {
-            "A" : "F"
+            "A" : "F",
+            "?": "F"
         },
         "q40": {
-            "A" : "G"
+            "A" : "G",
+            "?": "G"
         },
         "q41": {
-            "C" : "H"
+            "C" : "H",
+            "?": "H"
         },
         "q42": {
-            "A" : "I"
+            "A" : "I",
+            "?": "I"
         },
         "q43": {
-            "A" : "L"
+            "A" : "L",
+            "?": "L"
         },
         "q44": {
-            "A" : "I"
+            "A" : "I",
+            "?": "I"
         },
         "q45": {
-            "C" : "L"
+            "C" : "L",
+            "?": "L"
         },
         "q46": {
-            "C" : "M"
+            "C" : "M",
+            "?": "M"
         },
         "q47": {
-            "A" : "N"
+            "A" : "N",
+            "?": "N"
         },
         "q49": {
-            "C" : "M"
+            "C" : "M",
+            "?": "M"
         },
         "q50": {
-            "A" : "N"
+            "A" : "N",
+            "?": "N"
         },
         "q51": {
-            "A" : "O"
+            "A" : "O",
+            "?": "O"
         },
         "q52": {
-            "C" : "Q1"
+            "C" : "Q1",
+            "?": "Q1"
         },
         "q53": {
-            "A" : "Q1"
+            "A" : "Q1",
+            "?": "Q1"
         },
         "q54": {
-            "A" : "O"
+            "A" : "O",
+            "?": "O"
         },
         "q55": {
-            "C" : "Q1"
+            "C" : "Q1",
+            "?": "Q1"
         },
         "q56": {
-            "C" : "Q2"
+            "C" : "Q2",
+            "?": "Q2"
         },
         "q57": {
-            "C" : "Q3"
+            "C" : "Q3",
+            "?": "Q3"
         },
         "q59": {
-            "A" : "Q2"
+            "A" : "Q2",
+            "?": "Q2"
         },
         "q60": {
-            "C" : "Q4"
+            "C" : "Q4",
+            "?": "Q4"
         },
         "q61": {
-            "A" : "Q3"
+            "A" : "Q3",
+            "?": "Q3"
         },
         "q62": {
-            "A" : "Q4"
+            "A" : "Q4",
+            "?": "Q4"
         },
         "q63": {
-            "C" : "A"
+            "C" : "A",
+            "?": "A"
         },
         "q64": {
-            "A" : "C"
+            "A" : "C",
+            "?": "C"
         },
         "q65": {
-            "C" : "A"
+            "C" : "A",
+            "?": "A"
         },
         "q66": {
-            "A" : "E"
+            "A" : "E",
+            "?": "E"
         },
         "q67": {
-            "C" : "C"
+            "C" : "C",
+            "?": "C"
         },
         "q68": {
-            "A" : "F"
+            "A" : "F",
+            "?": "F"
         },
         "q69": {
-            "A" : "G"
+            "A" : "G",
+            "?": "G"
         },
         "q70": {
-            "C" : "F"
+            "C" : "F",
+            "?": "F"
         },
         "q71": {
-            "C" : "H"
+            "C" : "H",
+            "?": "H"
         },
         "q72": {
-            "C" : "G"
+            "C" : "G",
+            "?": "G"
         },
         "q73": {
-            "A" : "H"
+            "A" : "H",
+            "?": "H"
         },
         "q74": {
-            "A" : "I"
+            "A" : "I",
+            "?": "I"
         },
         "q76": {
-            "A" : "L"
+            "A" : "L",
+            "?": "L"
         },
         "q77": {
-            "A" : "I"
+            "A" : "I",
+            "?": "I"
         },
         "q78": {
-            "A" : "L"
+            "A" : "L",
+            "?": "L"
         },
         "q79": {
-            "A" : "M"
+            "A" : "M",
+            "?": "M"
         },
         "q80": {
-            "A" : "N"
+            "A" : "N",
+            "?": "N"
         },
         "q81": {
-            "C" : "M"
+            "C" : "M",
+            "?": "M"
         },
         "q82": {
-            "C" : "O"
+            "C" : "O",
+            "?": "O"
         },
         "q83": {
-            "A" : "Q1"
+            "A" : "Q1",
+            "?": "Q1"
         },
         "q84": {
-            "C" : "N"
+            "C" : "N",
+            "?": "N"
         },
         "q86": {
-            "C" : "Q1"
+            "C" : "Q1",
+            "?": "Q1"
         },
         "q87": {
-            "A" : "O"
+            "A" : "O",
+            "?": "O"
         },
         "q88": {
-            "A" : "Q1"
+            "A" : "Q1",
+            "?": "Q1"
         },
         "q89": {
-            "A" : "Q2"
+            "A" : "Q2",
+            "?": "Q2"
         },
         "q90": {
-            "C" : "Q3"
+            "C" : "Q3",
+            "?": "Q3"
         },
         "q91": {
-            "C" : "Q4"
+            "C" : "Q4",
+            "?": "Q4"
         },
         "q92": {
-            "C" : "Q2"
+            "C" : "Q2",
+            "?": "Q2"
         },
         "q93": {
-            "A" : "Q3"
+            "A" : "Q3",
+            "?": "Q3"
         },
         "q94": {
-            "C" : "Q4"
+            "C" : "Q4",
+            "?": "Q4"
         },
         "q96": {
-            "A" : "A"
+            "A" : "A",
+            "?": "A"
         },
         "q97": {
-            "A" : "C"
+            "A" : "C",
+            "?": "C"
         },
         "q98": {
-            "C" : "A"
+            "C" : "A",
+            "?": "A"
         },
         "q99": {
-            "A" : "E"
+            "A" : "E",
+            "?": "E"
         },
         "q100": {
-            "A" : "F"
+            "A" : "F",
+            "?": "F"
         },
         "q102": {
-            "C" : "E"
+            "C" : "E",
+            "?": "E"
         },
         "q103": {
-            "A" : "F"
+            "A" : "F",
+            "?": "F"
         },
         "q104": {
-            "A" : "G"
+            "A" : "G",
+            "?": "G"
         },
         "q105": {
-            "C" : "H"
+            "C" : "H",
+            "?": "H"
         },
         "q106": {
-            "C" : "G"
+            "C" : "G",
+            "?": "G"
         },
         "q107": {
-            "C" : "H"
+            "C" : "H",
+            "?": "H"
         },
         "q108": {
-            "A" : "I"
+            "A" : "I",
+            "?": "I"
         },
         "q109": {
-            "C" : "L"
+            "C" : "L",
+            "?": "L"
         },
         "q110": {
-            "C" : "I"
+            "C" : "I",
+            "?": "I"
         },
         "q111": {
-            "A" : "M"
+            "A" : "M",
+            "?": "M"
         },
         "q112": {
-            "A" : "L"
+            "A" : "L",
+            "?": "L"
         },
         "q113": {
-            "A" : "N"
+            "A" : "N",
+            "?": "N"
         },
         "q114": {
-            "C" : "M"
+            "C" : "M",
+            "?": "M"
         },
         "q116": {
-            "A" : "O"
+            "A" : "O",
+            "?": "O"
         },
         "q117": {
-            "C" : "N"
+            "C" : "N",
+            "?": "N"
         },
         "q118": {
-            "A" : "Q1"
+            "A" : "Q1",
+            "?": "Q1"
         },
         "q119": {
-            "A" : "O"
+            "A" : "O",
+            "?": "O"
         },
         "q120": {
-            "A" : "Q1"
+            "A" : "Q1",
+            "?": "Q1"
         },
         "q121": {
-            "A" : "Q2"
+            "A" : "Q2",
+            "?": "Q2"
         },
         "q122": {
-            "C" : "Q3"
+            "C" : "Q3",
+            "?": "Q3"
         },
         "q123": {
-            "C" : "Q2"
+            "C" : "Q2",
+            "?": "Q2"
         },
         "q124": {
-            "C" : "Q4"
+            "C" : "Q4",
+            "?": "Q4"
         },
         "q125": {
-            "A" : "Q3"
+            "A" : "Q3",
+            "?": "Q3"
         },
         "q126": {
-            "A" : "Q4"
+            "A" : "Q4",
+            "?": "Q4"
         },
         "q127": {
-            "A" : "A"
+            "A" : "A",
+            "?": "A"
         },
         "q128": {
-            "A" : "C"
+            "A" : "C",
+            "?": "C"
         },
         "q129": {
-            "C" : "A"
+            "C" : "A",
+            "?": "A"
         },
         "q130": {
-            "A" : "E"
+            "A" : "E",
+            "?": "E"
         },
         "q131": {
-            "C" : "C"
+            "C" : "C",
+            "?": "C"
         },
         "q132": {
-            "A" : "E"
+            "A" : "E",
+            "?": "E"
         },
         "q133": {
-            "C" : "G"
+            "C" : "G",
+            "?": "G"
         },
         "q134": {
-            "A" : "F"
+            "A" : "F",
+            "?": "F"
         },
         "q135": {
-            "A" : "H"
+            "A" : "H",
+            "?": "H"
         },
         "q136": {
-            "C" : "G"
+            "C" : "G",
+            "?": "G"
         },
         "q137": {
-            "A" : "H"
+            "A" : "H",
+            "?": "H"
         },
         "q138": {
-            "C" : "I"
+            "C" : "I",
+            "?": "I"
         },
         "q139": {
-            "A" : "L"
+            "A" : "L",
+            "?": "L"
         },
         "q140": {
-            "C" : "I"
+            "C" : "I",
+            "?": "I"
         },
         "q141": {
-            "A" : "L"
+            "A" : "L",
+            "?": "L"
         },
         "q142": {
-            "A" : "M"
+            "A" : "M",
+            "?": "M"
         },
         "q143": {
-            "A" : "N"
+            "A" : "N",
+            "?": "N"
         },
         "q145": {
-            "A" : "M"
+            "A" : "M",
+            "?": "M"
         },
         "q146": {
-            "C" : "O"
+            "C" : "O",
+            "?": "O"
         },
         "q147": {
-            "C" : "Q1"
+            "C" : "Q1",
+            "?": "Q1"
         },
         "q148": {
-            "A" : "N"
+            "A" : "N",
+            "?": "N"
         },
         "q149": {
-            "A" : "Q1"
+            "A" : "Q1",
+            "?": "Q1"
         },
         "q150": {
-            "A" : "O"
+            "A" : "O",
+            "?": "O"
         },
         "q151": {
-            "C" : "Q1"
+            "C" : "Q1",
+            "?": "Q1"
         },
         "q152": {
-            "A" : "Q2"
+            "A" : "Q2",
+            "?": "Q2"
         },
         "q154": {
-            "C" : "Q3"
+            "C" : "Q3",
+            "?": "Q3"
         },
         "q155": {
-            "A" : "Q4"
+            "A" : "Q4",
+            "?": "Q4"
         },
         "q156": {
-            "C" : "Q2"
+            "C" : "Q2",
+            "?": "Q2"
         },
         "q157": {
-            "A" : "Q3"
+            "A" : "Q3",
+            "?": "Q3"
         },
         "q158": {
-            "C" : "Q4"
+            "C" : "Q4",
+            "?": "Q4"
         },
         "q159": {
-            "A" : "A"
+            "A" : "A",
+            "?": "A"
         },
         "q160": {
-            "A" : "C"
+            "A" : "C",
+            "?": "C"
         },
         "q161": {
-            "C" : "A"
+            "C" : "A",
+            "?": "A"
         },
         "q162": {
-            "A" : "C"
+            "A" : "C",
+            "?": "C"
         },
         "q163": {
             "A" : "E",
-            "C": "H"
+            "?": "E",
+            "C": "H",
+            "?": "H"
         },
         "q164": {
-            "A" : "F"
+            "A" : "F",
+            "?": "F"
         },
         "q165": {
-            "A" : "E"
+            "A" : "E",
+            "?": "E"
         },
         "q166": {
-            "C" : "G"
+            "C" : "G",
+            "?": "G"
         },
         "q167": {
-            "C" : "H"
+            "C" : "H",
+            "?": "H"
         },
         "q168": {
-            "A" : "G"
+            "A" : "G",
+            "?": "G"
         },
         "q170": {
-            "C" : "I"
+            "C" : "I",
+            "?": "I"
         },
     };
 
@@ -826,12 +984,13 @@ function calculateResults(testAnswers){
     //STRENGTHS & WEAKNESSES RESULTS
     let strengths = [];
     let weaknesses = [];
+    let strengthG;
+    let weaknessG;
 
     //SCORING
     testAnswers.forEach(answer => {
         let ques = answer.name;
         let ans = answer.value.toUpperCase();
-        let calc_temp=0;
 
         //check if the question is in the factor array
         if(factors.hasOwnProperty(ques)) {
@@ -840,64 +999,139 @@ function calculateResults(testAnswers){
             if(factor !== undefined) {
                 switch(factor){
                     case "A":
-                        factorA+=2;
-                        break;
+                        if(ans === '?'){
+                            factorA+=1;
+                            break;
+                        } else {
+                            factorA+=2;
+                            break;
+                        }
             
                     case "C":
-                        factorC+=2;
-                        break;
+                        if(ans === '?'){
+                            factorC+=1;
+                            break;
+                        } else {
+                            factorC+=2;
+                            break;
+                        }
             
                     case "E":
-                        factorE+=2;
-                        break;
+                        if(ans === '?'){
+                            factorE+=1;
+                            break;
+                        } else {
+                            factorE+=2;
+                            break;
+                        }
 
                     case "F":
-                        factorF+=2;
-                        break;
+                        if(ans === '?'){
+                            factorF+=1;
+                            break;
+                        } else {
+                            factorF+=2;
+                            break;
+                        }
 
                     case "G":
-                        factorG+=2;
-                        break;
+                        if(ans === '?'){
+                            factorG+=1;
+                            break;
+                        } else {
+                            factorG+=2;
+                            break;
+                        }
 
                     case "H":
-                        factorH+=2;
-                        break;
+                        if(ans === '?'){
+                            factorH+=1;
+                            break;
+                        } else {
+                            factorH+=2;
+                            break;
+                        }
 
                     case "I":
-                        factorI+=2;
-                        break;
+                        if(ans === '?'){
+                            factorI+=1;
+                            break;
+                        } else {
+                            factorI+=2;
+                            break;
+                        }
 
                     case "L":
-                        factorL+=2;
-                        break;
+                        if(ans === '?'){
+                            factorL+=1;
+                            break;
+                        } else {
+                            factorL+=2;
+                            break;
+                        }
 
                     case "M":
-                        factorM+=2;
-                        break;
+                        if(ans === '?'){
+                            factorM+=1;
+                            break;
+                        } else {
+                            factorM+=2;
+                            break;
+                        }
 
                     case "N":
-                        factorN+=2;
-                        break;
+                        if(ans === '?'){
+                            factorN+=1;
+                            break;
+                        } else {
+                            factorN+=2;
+                            break;
+                        }
 
                     case "O":
-                        factorO+=2;
-                        break;
+                        if(ans === '?'){
+                            factorO+=1;
+                            break;
+                        } else {
+                            factorO+=2;
+                            break;
+                        }
 
                     case "Q1":
-                        factorQ1+=2;
-                        break;
+                        if(ans === '?'){
+                            factorQ1+=1;
+                            break;
+                        } else {
+                            factorQ1+=2;
+                            break;
+                        }
 
                     case "Q2":
-                        factorQ2+=2;
-                        break;
+                        if(ans === '?'){
+                            factorQ2+=1;
+                            break;
+                        } else {
+                            factorQ2+=2;
+                            break;
+                        }
 
                     case "Q3":
-                        factorQ3+=2;
-                        break;
+                        if(ans === '?'){
+                            factorQ3+=1;
+                            break;
+                        } else {
+                            factorQ3+=2;
+                            break;
+                        }
 
                     case "Q4":
-                        factorQ4+=2;
-                        break;
+                        if(ans === '?'){
+                            factorQ4+=1;
+                            break;
+                        } else {
+                            factorQ4+=2;
+                            break;
+                        }
                     
                     default:
                         break;
@@ -1003,14 +1237,14 @@ function calculateResults(testAnswers){
     // FACTOR G CALCULATION
     if (factorG >= 18 && factorG <= 22){
         random_num = Math.floor(Math.random() * 5);
-        strengths["G"] = interpretations["G"]["+"][random_num];
-        console.log(`Factor G result: ${strengths["G"]}+${random_num}`);
+        strengthG = interpretations["G"]["+"][random_num];
+        console.log(`Factor G result: ${strengthG}+${random_num}`);
     }
     
     else if (factorG >= 0 && factorG <= 8){
         random_num = Math.floor(Math.random() * 9);
-        weaknesses["G"] = interpretations["G"]["-"][random_num];
-        console.log(`Factor G result: ${weaknesses["G"]}-${random_num}`);
+        weaknessG = interpretations["G"]["-"][random_num];
+        console.log(`Factor G result: ${weaknessG}-${random_num}`);
     }
     
     else {
@@ -1205,12 +1439,27 @@ function calculateResults(testAnswers){
     // }
 
     //PRINT STRENGTHS RESULTS
+
+    if(strengthG){
+        strengths["G"] = strengthG;
+    }
+
+    if(weaknessG){
+        weaknesses["G"] = weaknessG;
+    }
+
+    console.log(strengths);
+    console.log(weaknesses);
+
     let strengthsList = document.getElementById("strengthsList");
 
     strengthsList.style.listStyleType = "none";
 
     for (let key in strengths){
         if(strengths.hasOwnProperty(key)){
+
+            // console.log(key);
+
             let listItem = document.createElement("li");
             listItem.textContent = strengths[key];
 
@@ -1228,6 +1477,7 @@ function calculateResults(testAnswers){
 
     for (let key in weaknesses){
         if(weaknesses.hasOwnProperty(key)){
+            
             let listItem = document.createElement("li");
             listItem.textContent = weaknesses[key];
 
