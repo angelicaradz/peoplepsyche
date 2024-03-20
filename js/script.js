@@ -1,5 +1,5 @@
 /* 
-*   MAIN FUNCTION
+*   CHANGE THE TEST INTO ITS RESULTS
 */
 document.getElementById('godsGiftTest').addEventListener('submit', function(event) {
     // Prevent default form submission behavior
@@ -43,7 +43,7 @@ document.getElementById('godsGiftTest').addEventListener('submit', function(even
 */
 function calculateResults(testAnswers){
 
-    // FACTOR DICTIONARY
+    //FACTOR DICTIONARY
     const factors = {
         "q1": {
             "A": "A",
@@ -979,15 +979,20 @@ function calculateResults(testAnswers){
 
     //INTERPRETING THE RESULTS
     let random_num = 0;
-    // let results = [];
 
-    //STRENGTHS & WEAKNESSES RESULTS
+    /*
+    * STRENGTHS & WEAKNESSES RESULTS
+    */
+    //Append the results and weaknesses here
     let strengths = [];
     let weaknesses = [];
+    //To append the Factor G result for the last in the list
     let strengthG;
     let weaknessG;
 
-    //SCORING
+    /*
+    * SCORING EACH ANSWER
+    */
     testAnswers.forEach(answer => {
         let ques = answer.name;
         let ans = answer.value.toUpperCase();
@@ -1146,7 +1151,8 @@ function calculateResults(testAnswers){
             console.log(`Question: ${ques} not found. Skip.`)
         }
     });
-
+    
+    // To view the numerical scores of each factor
     console.log(`Factor A: ${factorA}`);
     console.log(`Factor C: ${factorC}`);
     console.log(`Factor E: ${factorE}`);
@@ -1163,7 +1169,11 @@ function calculateResults(testAnswers){
     console.log(`Factor Q3: ${factorQ3}`);
     console.log(`Factor Q4: ${factorQ4}`);
 
-    // FACTOR A CALCULATION
+    /*
+    * GETTING FACTOR INTERPRETATION
+    */
+
+    // FACTOR A
     if (factorA >= 16 && factorA <= 22){
         random_num = Math.floor(Math.random() * 7);
         // results["A"] = interpretations["A"]["+"][random_num];
@@ -1182,7 +1192,7 @@ function calculateResults(testAnswers){
         console.log(`Score is neutral. Skip`);
     }
     
-    // FACTOR C CALCULATION
+    // FACTOR C
     if (factorC >= 17 && factorC <= 20){
         random_num = Math.floor(Math.random() * 4);
         // results["C"] = interpretations["C"]["+"][random_num];
@@ -1200,7 +1210,7 @@ function calculateResults(testAnswers){
         console.log(`Score is neutral. Skip`);
     }
     
-    // FACTOR E CALCULATION
+    // FACTOR E
     if (factorE >= 16 && factorE <= 20){
         random_num = Math.floor(Math.random() * 5);
         weaknesses["E"] = interpretations["E"]["+"][random_num];
@@ -1217,7 +1227,7 @@ function calculateResults(testAnswers){
         console.log(`Score is neutral. Skip`);
     }
     
-    // FACTOR F CALCULATION
+    // FACTOR F
     if (factorF >= 15 && factorF <= 20){
         random_num = Math.floor(Math.random() * 5);
         strengths["F"] = interpretations["F"]["+"][random_num];
@@ -1234,7 +1244,7 @@ function calculateResults(testAnswers){
         console.log(`Score is neutral. Skip`);
     }
 
-    // FACTOR G CALCULATION
+    // FACTOR G
     if (factorG >= 18 && factorG <= 22){
         random_num = Math.floor(Math.random() * 5);
         strengthG = interpretations["G"]["+"][random_num];
@@ -1251,7 +1261,7 @@ function calculateResults(testAnswers){
         console.log(`Score is neutral. Skip`);
     }
 
-    // FACTOR H CALCULATION
+    // FACTOR H
     if (factorH >= 15 && factorH <= 20){
         random_num = Math.floor(Math.random() * 6);
         strengths["H"] = interpretations["H"]["+"][random_num];
@@ -1268,7 +1278,7 @@ function calculateResults(testAnswers){
         console.log(`Score is neutral. Skip`);
     }
 
-    // FACTOR I CALCULATION
+    // FACTOR I
     if (factorI >= 16 && factorI <= 22){
         random_num = Math.floor(Math.random() * 7);
         weaknesses["I"] = interpretations["I"]["+"][random_num];
@@ -1285,7 +1295,7 @@ function calculateResults(testAnswers){
         console.log(`Score is neutral. Skip`);
     }
 
-    // FACTOR L CALCULATION
+    // FACTOR L
     if (factorL >= 14 && factorL <= 20){
         random_num = Math.floor(Math.random() * 7);
         weaknesses["L"] = interpretations["L"]["+"][random_num];
@@ -1302,7 +1312,7 @@ function calculateResults(testAnswers){
         console.log(`Score is neutral. Skip`);
     }
 
-    // FACTOR M CALCULATION
+    // FACTOR M
     if (factorM >= 11 && factorM <= 22){
         random_num = Math.floor(Math.random() * 9);
         strengths["M"] = interpretations["M"]["+"][random_num];
@@ -1319,7 +1329,7 @@ function calculateResults(testAnswers){
         console.log(`Score is neutral. Skip`);
     }
 
-    // FACTOR N CALCULATION
+    // FACTOR N
     if (factorN >= 15 && factorN <= 20){
         random_num = Math.floor(Math.random() * 6);
         weaknesses["N"] = interpretations["N"]["+"][random_num];
@@ -1336,7 +1346,7 @@ function calculateResults(testAnswers){
         console.log(`Score is neutral. Skip`);
     }
 
-    // FACTOR O CALCULATION
+    // FACTOR O
     if (factorO >= 16 && factorO <= 20){
         random_num = Math.floor(Math.random() * 5);
         weaknesses["O"] = interpretations["O"]["+"][random_num];
@@ -1353,7 +1363,7 @@ function calculateResults(testAnswers){
         console.log(`Score is neutral. Skip`);
     }
 
-    // FACTOR Q1 CALCULATION
+    // FACTOR Q1
     if (factorQ1 >= 20 && factorQ1 <= 28){
         random_num = Math.floor(Math.random() * 9);
         strengths["Q1"] = interpretations["Q1"]["+"][random_num];
@@ -1370,7 +1380,7 @@ function calculateResults(testAnswers){
         console.log(`Score is neutral. Skip`);;
     }
 
-    // FACTOR Q2 CALCULATION
+    // FACTOR Q2
     if (factorQ2 >= 12 && factorQ2 <= 20){
         random_num = Math.floor(Math.random() * 9);
         strengths["Q2"] = interpretations["Q2"]["+"][random_num];
@@ -1387,7 +1397,7 @@ function calculateResults(testAnswers){
         console.log(`Score is neutral. Skip`);;
     }
 
-    // FACTOR Q3 CALCULATION
+    // FACTOR Q3
     if (factorQ3 >= 16 && factorQ3 <= 20){
         random_num = Math.floor(Math.random() * 5);
         strengths["Q3"] = interpretations["Q3"]["+"][random_num];
@@ -1404,7 +1414,7 @@ function calculateResults(testAnswers){
         console.log(`Score is neutral. Skip`);;
     }
 
-    // FACTOR Q4 CALCULATION
+    // FACTOR Q4
     if (factorQ4 >= 15 && factorQ4 <= 20){
         random_num = Math.floor(Math.random() * 6);
         weaknesses["Q4"] = interpretations["Q4"]["+"][random_num];
@@ -1421,25 +1431,9 @@ function calculateResults(testAnswers){
         console.log(`Score is neutral. Skip`);;
     }
 
-    //print factor results
-    // let resultsList = document.getElementById("resultsList");
-
-    // resultsList.style.listStyleType = "none";
-
-    // for (let key in results){
-    //     if(results.hasOwnProperty(key)){
-    //         let listItem = document.createElement("li");
-    //         listItem.textContent = results[key];
-
-    //         //styles
-    //         listItem.style.marginBottom = "40px";
-
-    //         resultsList.appendChild(listItem);
-    //     }
-    // }
-
-    //PRINT STRENGTHS RESULTS
-
+    /*
+    * APPEND FACTOR G TO THE INTERPRETATIONS LIST
+    */
     if(strengthG){
         strengths["G"] = strengthG;
     }
@@ -1451,6 +1445,11 @@ function calculateResults(testAnswers){
     console.log(strengths);
     console.log(weaknesses);
 
+    /*
+    * PRINTING RESULTS
+    */
+
+    // PRINT STRENGTHS RESULT
     let strengthsList = document.getElementById("strengthsList");
 
     strengthsList.style.listStyleType = "none";
@@ -1463,44 +1462,30 @@ function calculateResults(testAnswers){
             let listItem = document.createElement("li");
             listItem.textContent = strengths[key];
 
-            //styles
+            //Styles
             listItem.style.marginBottom = "40px";
 
             strengthsList.appendChild(listItem);
         }
     }
 
-    //PRINT WEAKNESS RESULTS
+    //PRINT WEAKNESSES RESULT
     let weaknessesList = document.getElementById("weaknessesList");
 
     weaknessesList.style.listStyleType = "none";
 
     for (let key in weaknesses){
         if(weaknesses.hasOwnProperty(key)){
+
+            // console.log(key);
             
             let listItem = document.createElement("li");
             listItem.textContent = weaknesses[key];
 
-            //styles
+            //Styles
             listItem.style.marginBottom = "40px";
 
             weaknessesList.appendChild(listItem);
         }
     }
-
-    // document.getElementById('factorA').innerHTML = results["A"];
-    // document.getElementById('factorC').innerHTML = results["C"];
-    // document.getElementById('factorE').innerHTML = results["E"];
-    // document.getElementById('factorF').innerHTML = results["F"];
-    // document.getElementById('factorG').innerHTML = results["G"];
-    // document.getElementById('factorH').innerHTML = results["H"];
-    // document.getElementById('factorI').innerHTML = results["I"];
-    // document.getElementById('factorL').innerHTML = results["L"];
-    // document.getElementById('factorM').innerHTML = results["M"];
-    // document.getElementById('factorN').innerHTML = results["N"];
-    // document.getElementById('factorO').innerHTML = results["O"];
-    // document.getElementById('factorQ1').innerHTML = results["Q1"];
-    // document.getElementById('factorQ2').innerHTML = results["Q2"];
-    // document.getElementById('factorQ3').innerHTML = results["Q3"];
-    // document.getElementById('factorQ4').innerHTML = results["Q4"];
 }
