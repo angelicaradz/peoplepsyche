@@ -11,145 +11,152 @@
 
     <body class="p-5">
         <div class="container d-flex flex-lg-row justify-content-center align-items-center min-vh-100">
+
+            <!-- REGISTER BOX -->
             <div class="row border rounded-5 p-4 shadow box-area bg-white justify-content-center align-items-center">
+
+                <!-- FORM TITLE -->
                 <div class="row flex-lg-row mb-3">
                     <h1>Registration Form</h1>
                 </div>
+
+                <!-- REGISTER FORM -->
                 <div class="row flex-lg-row justify-content-center align-items-center">
-                    <form class="row mb-4 g-3 align-items-center needs-validation" novalidate>
+                    <form id="register-form" class="row mb-4 g-3" action="POST">
+
+                        <!-- FIRST NAME -->
                         <div class="col md-3">
                             <div class="form-floating overflow-hidden">
-                                <input type="text" class="form-control" id="floatingGivenName" placeholder="Juan" required>
+                                <input type="name" class="form-control" id="floatingGivenName" placeholder="Juan" required>
                                 <label for="floatingGivenName">Given Name</label>
-                                <div class="invalid-feedback">
-                                    Please fill out this field.
-                                </div>
                             </div>
                         </div>
+
+                        <!-- MIDDLE NAME -->
                         <div class="col-md-3">
                             <div class="form-floating overflow-hidden">
-                                <input type="text" class="form-control" id="floatingMiddleName" placeholder="Dela">
+                                <input type="name" class="form-control" id="floatingMiddleName" placeholder="Dela">
                                 <label for="floatingMiddleName">Middle Name</label>
                             </div>
                         </div>
+
+                        <!-- LAST NAME -->
                         <div class="col-md-3">
                             <div class="form-floating overflow-hidden">
-                                <input type="text" class="form-control" id="floatingLastName" placeholder="Cruz" required>
+                                <input type="name" class="form-control" id="floatingLastName" placeholder="Cruz" required>
                                 <label for="floatingLastName">Last Name</label>
-                                <div class="invalid-feedback">
-                                    Please fill out this field.
-                                </div>
                             </div>
                         </div>
+
+                        <!-- SUFFIX NAME -->
                         <div class="col-md-3">
                             <div class="form-floating overflow-hidden">
-                                <input type="text" class="form-control" id="floatingSuffixName" placeholder="Jr">
-                                <label for="floatingLastName">Suffix Name</label>
+                                <input type="name" class="form-control" id="floatingSuffixName" placeholder="Jr">
+                                <label for="floatingSuffixName">Suffix Name</label>
                             </div>
                         </div>
+
+                        <!-- EMAIL ADDRESS -->
                         <div class="col-md-6">
                             <div class="form-floating overflow-hidden">
                                 <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com" required>
                                 <label for="floatingEmail">Email</label>
-                                <div class="invalid-feedback">
-                                    Please fill out this field.
-                                </div>
                             </div>
                         </div>
+
+                        <!-- PHONE NUMBER -->
                         <div class="col-md-6">
                             <div class="form-floating overflow-hidden">
-                                <input type="number" class="form-control" id="floatingCpNumber" placeholder="XXXXXXXXXXX" required>
+                                <input type="tel" class="form-control" id="floatingCpNumber" placeholder="XXXXXXXXXXX" required>
                                 <label for="floatingCpNumber">Mobile Number</label>
-                                <div class="invalid-feedback">
-                                    Please fill out this field.
-                                </div>
                             </div>
                         </div>
+
+                        <!-- BIRTHDATE -->
                         <div class="col-md-6">
                             <div class="form-floating overflow-hidden">
                                 <input type="date" class="form-control" id="floatingBirthday" placeholder="MM/DD/YYYY" required>
                                 <label for="floatingBirthday">Birthday</label>
-                                <div class="invalid-feedback">
-                                    Please fill out this field.
-                                </div>
                             </div>
                         </div>
+
+                        <!-- SEX -->
                         <div class="col-md-6">
                             <div class="form-floating overflow-hidden">
-                                <select class="form-select" id="floatingGender" aria-label="Floating label select example" required>
-                                  <option selected>Male</option>
-                                  <option value="1">Female</option>
+                                <select class="form-select" id="floatingSex" aria-label="Floating label select example" required>
+                                    <option selected disabled>Select Sex</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
                                 </select>
-                                <label for="floatingGender">Gender</label>
-                                <div class="invalid-feedback">
-                                    Please select an option.
-                                </div>
+                                <label for="floatingGender">Sex</label>
                             </div>
                         </div>
+
+                        <!-- CIVIL STATUS -->
                         <div class="col-md-6">
                             <div class="form-floating overflow-hidden">
                                 <select class="form-select" id="floatingCivilStat" aria-label="Floating label select example" required>
-                                  <option selected>Single</option>
-                                  <option value="1">Married</option>
-                                  <option value="1">Separated</option>
-                                  <option value="1">Divorced</option>
-                                  <option value="1">Widowed</option>
+                                    <option selected disabled>Select Civil Status</option>
+                                    <option value="Single">Single</option>
+                                    <option value="Married">Married</option>
+                                    <option value="Separated">Separated</option>
+                                    <option value="Divorced">Divorced</option>
+                                    <option value="Widowed">Widowed</option>
                                 </select>
                                 <label for="floatingCivilStat">Civil Status</label>
-                                <div class="invalid-feedback">
-                                    Please select an option.
-                                </div>
                             </div>
                         </div>
+
+                        <!-- RELIGION -->
                         <div class="col-md-6">
                             <div class="form-floating overflow-hidden">
                                 <input type="text" class="form-control" id="floatingReligion" placeholder="Roman Catholic">
                                 <label for="floatingReligion">Religion</label>
                             </div>
                         </div>
+
+                        <!-- HOME ADDRESS -->
                         <div class="col-md-12">
                             <div class="form-floating overflow-hidden">
                                 <input type="text" class="form-control" id="floatingAddress" placeholder="Home address" required>
                                 <label for="floatingAddress">Home Address</label>
-                                <div class="invalid-feedback">
-                                    Please fill out this field.
-                                </div>
                             </div>
                         </div>
+
+                        <!-- ACCESS CODE -->
                         <div class="col-md-12">
                             <div class="form-floating overflow-hidden">
                                 <input type="text" class="form-control" id="floatingRegCode" placeholder="Access code" required>
                                 <label for="floatingRegCode">Access Code</label>
-                                <div class="invalid-feedback">
-                                    Please fill out this field.
-                                </div>
                             </div>
                         </div>
+
+                        <!-- PASSWORD -->
                         <div class="col-md-12">
                             <div class="form-floating">
                                 <input type="password" class="form-control" id="floatingPassword" placeholder="Password" required>
                                 <label for="floatingPassword">Password</label>
-                                <div class="invalid-feedback">
-                                    Please fill out this field.
-                                </div>
                             </div>
                         </div>
+
+                        <!-- TERMS AND CONDITIONS -->
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked required>
                             <label class="form-check-label text-secondary" for="flexCheckChecked">
                                 I have read and agree to the <a href="#">Terms and Conditions</a>.
                             </label>
-                            <div class="invalid-feedback">
-                                Please tick the box.
-                            </div>
+                        </div>
+
+                        <!-- REGISTER BUTTON -->
+                        <div class="input-group">
+                            <button class="btn btn-lg w-100 fs-6" type="submit" value="Register">Register</button>
+                        </div>
+
+                        <!-- LOGIN IF HAS ACCOUNT -->
+                        <div class="row mb-3 text-center">
+                            <small>Already registered? <a href="login.html" style="color: chocolate;">Login here.</a></small>
                         </div>
                     </form>
-                </div>
-                <div class="input-group">
-                    <button class="btn btn-lg w-100 fs-6" type="submit">Register</button>
-                </div>
-                <div class="row mb-3 text-center">
-                    <small>Already registered? <a href="login.html" style="color: chocolate;">Login here.</a></small>
                 </div>
             </div>
         </div>

@@ -1,41 +1,42 @@
 body {
-    background-image: url('../images/background.jpg');
+    background-image: url('../images/download.jpg');
     background-position: center;
     background-size: cover;
-    backdrop-filter: blur(15px);
+    background-repeat: repeat-x;
+    backdrop-filter: blur(10px);
 }
 
-.header{
+#home-hdr{
     text-align: center;
 }
 
-.header p {
+#home-hdr p {
     text-shadow: 0 0 10px darkgray;
     
 }
 
-.d-grid .register-btn {
+#home-buttons .register-btn, #mandarin-btn {
     background-color: chocolate;
     border-color: chocolate;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     color: white;
 }
 
-.d-grid .login-btn {
+#home-buttons .login-btn, #english-btn {
     background: transparent;
     border-color: chocolate;
     color: chocolate;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
-.d-grid .register-btn:hover{
+#home-buttons .register-btn:hover, #mandarin-btn:hover{
     background-color: rgba(168, 84, 24);
     box-shadow: none;
     border-color: rgba(168, 84, 24);
     color: whitesmoke;
 }
 
-.d-grid .login-btn:hover {
+#home-buttons .login-btn:hover, #english-btn:hover {
     background-color: whitesmoke;
     border-color: rgba(168, 84, 24);
     box-shadow: none;

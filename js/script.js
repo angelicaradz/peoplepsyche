@@ -1,5 +1,24 @@
+/*
+* SELECT LANGUAGE PROCESS
+*/
+
+// Add event listener to the English button
+document.getElementById("english-btn").addEventListener("click", function() {
+    // Change the content of the header to English
+    document.getElementById("language-header").innerText = "English Selected";
+    // You can also perform additional actions here if needed
+});
+
+// Add event listener to the Mandarin button
+document.getElementById("mandarin-btn").addEventListener("click", function() {
+    // Change the content of the header to Mandarin
+    document.getElementById("language-header").innerText = "Chinese (Mandarin) Selected";
+    // You can also perform additional actions here if needed
+});
+
+
 /* 
-*   CHANGE THE TEST INTO ITS RESULTS
+*   GOD'S GIFT ASSESSMENT PROCESS
 */
 document.getElementById('godsGiftTest').addEventListener('submit', function(event) {
     // Prevent default form submission behavior
@@ -1489,3 +1508,4 @@ function calculateResults(testAnswers){
         }
     }
 }
+
