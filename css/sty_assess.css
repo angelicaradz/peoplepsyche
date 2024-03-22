@@ -1,9 +1,9 @@
 body {
     background-image: url('../images/background.jpg');
-    background-blend-mode: multiply;
-    background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
+    background-size: cover;
+    background-repeat: repeat-x;
+    backdrop-filter: blur(10px);
 }
 
 div.page-container {

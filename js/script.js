@@ -1,5 +1,8 @@
 /*
 * SELECT LANGUAGE PROCESS
+*
+* NOTE!!!
+* WILL NOT BE PRIORITIZING AS OF MAR 22
 */
 
 // Add event listener to the English button
@@ -7,6 +10,9 @@ document.getElementById("english-btn").addEventListener("click", function() {
     // Change the content of the header to English
     document.getElementById("language-header").innerText = "English Selected";
     // You can also perform additional actions here if needed
+    document.getElementById('language-selection').style.display = 'none';
+
+    document.getElementById('login-page').style.display = 'block;'
 });
 
 // Add event listener to the Mandarin button
@@ -15,7 +21,6 @@ document.getElementById("mandarin-btn").addEventListener("click", function() {
     document.getElementById("language-header").innerText = "Chinese (Mandarin) Selected";
     // You can also perform additional actions here if needed
 });
-
 
 /* 
 *   GOD'S GIFT ASSESSMENT PROCESS

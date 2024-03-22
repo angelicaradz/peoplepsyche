@@ -10,29 +10,34 @@
     </head>
 
     <body>
-        <div class="container d-flex flex-lg-row justify-content-center align-items-center min-vh-100">
-            <div class="row border rounded-5 p-5 shadow box-area bg-white justify-content-center align-items-center d-flex flex-lg-row">
+        <div class="container d-flex justify-content-center align-items-center min-vh-100">
+            <!-- SUPERADMIN LOGIN BOX -->
+            <div id="superadmin-login-page" class="row border rounded-5 p-5 shadow box-area bg-white justify-content-center align-items-center d-flex flex-lg-row">
+                
+                <!-- FORM TITLE -->
                 <div class="row flex-lg-row mb-4">
                     <h2 class="text-center">SuperAdmin Login</h2>
                 </div>
-                <div class="row flex-lg-row justify-content-center align-items-center">
-                    <form class="g-3 align-items-center needs-validation" novalidate>
+
+                <!-- LOGIN FORM -->
+                <div class="row justify-content-center align-items-center">
+                    <form id="superadmin-login-form" class="g-3" action="POST">
+                        
+                        <!-- EMAIL ADDRESS INPUT FIELD -->
                         <div class="form-floating mb-2 overflow-hidden">
                             <input type="text" class="form-control" id="floatingInput" placeholder="Enter username" required>
-                            <label for="floatingInput" class="form-label">Username</label>
-                            <div class="invalid-feedback">
-                                Please fill out this field.
-                            </div>
+                            <label for="floatingInput">Username</label>
                         </div>
+
+                        <!-- PASSWORD INPUT FIELD -->
                         <div class="form-floating overflow-hidden">
                             <input type="password" class="form-control" id="floatingPassword" placeholder="Password" required>
                             <label for="floatingPassword">Password</label>
-                            <div class="invalid-feedback">
-                                Please fill out this field.
-                            </div>
                         </div>
+
+                        <!-- SUBMIT BUTTON -->
                         <div class="input-group mt-4">
-                            <button class="btn btn-lg btn-primary w-100 fs-6" type="submit">Login</button>
+                            <button class="btn btn-lg w-100 fs-6" type="submit" value="Login">Login</button>
                         </div>
                     </form>
                 </div>

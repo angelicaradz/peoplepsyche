@@ -11,22 +11,33 @@
 
     <body>
         <div class="container d-flex justify-content-center align-items-center min-vh-100">
-            <div class="row border rounded-5 p-5 shadow box-area bg-white justify-content-center align-items-center d-flex flex-lg-row">
+            <!-- TAKE ASSESSMENT BOX -->
+            <div id="client-assess-page" class="row border rounded-5 p-5 shadow box-area bg-white justify-content-center align-items-center d-flex flex-lg-row">
+                
+                <!-- FORM TITLE -->
                 <div class="row mb-4">
                     <h2 class="text-center">Assessment</h2>
                 </div>
+
+                <!-- TAKE ASSESSMENT FORM -->
                 <div class="row justify-content-center align-items-center">
-                    <form class="g-3 align-items-center needs-validation" novalidate>
+                    <form id="client-assess-form" class="g-3" action="POST">
+                        
+                        <!-- CODE INPUT FIELD -->
                         <div class="overflow-hidden mb-3">
-                            <label for="codeInput" class="form-label">Enter code</label>
-                            <input type="text" class="form-control" id="codeInput" placeholder="Enter code">
+                            <label for="codeInput">Enter code</label>
+                            <input type="text" class="form-control" id="codeInput" placeholder="Enter code" required>
                         </div>
+
+                        <!-- UPLOAD FILE (PROOF OF PAYMENT) FIELD -->
                         <div class="overflow-hidden mb-3">
-                            <label for="formFile" class="form-label">Proof of payment</label>
-                            <input class="form-control" type="file" id="formFile">
+                            <label for="formFile">Proof of payment</label>
+                            <input class="form-control" type="file" id="formFile" required>
                         </div>
+
+                        <!-- SUBMIT BUTTON -->
                         <div class="d-grid gap-2 d-md-flex justify-content-center align-items-center">
-                            <button class="assess-btn btn btn-lg fs-6" type="submit">Submit</button>
+                            <button class="assess-btn btn btn-lg fs-6" type="submit" value="Submit">Submit</button>
                             <a href="dashboard.html" class="cancel-assess-btn btn btn-lg fs-6" type="button">Cancel</a>
                         </div>
                         
