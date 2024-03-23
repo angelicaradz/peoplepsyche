@@ -1,3 +1,8 @@
+.dashboard-body {
+    height: 100vh;
+    overflow: hidden;
+}
+
 button.sidebar-btn {
     border: none;
     background: none;
@@ -57,4 +62,14 @@ div.sidebar-itemlist ul li.active a{
 
 div.main-content {
     padding: 20px;
+}
+
+#dashboard-card .card-body{
+    overflow: auto;
+    max-height: 200px;
+}
+
+#table-list .card-body{
+    overflow: auto;
+    max-height: 400px;
 }
