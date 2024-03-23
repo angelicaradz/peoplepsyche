@@ -68,6 +68,48 @@
                     <div class="d-flex flex-lg-row mt-4">
                         <h1>Settings</h1>
                     </div>
+
+                    <!-- PAGE CONTENT -->
+
+                    <!-- SETTINGS -->
+                    <div class="d-flex mt-5 justify-content-center">
+                        
+                        <!-- DISPLAY ACCOUNT -->
+                        <div id="settings-info">
+                            <div class="row">
+                                <p> <span class="fw-bold">Email address:</span>
+                                    <span id="email">jungkook@jeon.com</span>
+                                </p>
+                            </div>
+                            <div class="row">
+                                <p> <span class="fw-bold">Password:</span>
+                                    <span id="password">mypassword123</span>
+                                </p>
+                            </div>
+                            <div class="row">
+                                <button onclick="edit()" type="button" class="btn"><i class="fa-regular fa-pen-to-square" style="padding-right: 5px;"></i>Edit Profile</button>
+                            </div>
+                        </div>
+
+                        <!-- EDIT ACCOUNT -->
+                        <form id="settings-form" class="form-hidden" onsubmit="save(event)">
+                            <fieldset>
+                                <div class="row">
+                                    <p> <span class="fw-bold">Email address:</span>
+                                        <input id="new-email" type="email" class="form-control" placeholder="Enter new email">
+                                    </p>
+                                </div>
+                                <div class="row">
+                                    <p><span class="fw-bold">Password:</span>
+                                        <input id="new-password" type="password" class="form-control" placeholder="Enter new password">
+                                    </p>
+                                </div>
+                                <div class="row">
+                                    <button type="submit" value="Submit" class="btn"><i class="fa-regular fa-floppy-disk" style="padding-right: 5px;"></i>Save Changes</button>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -76,5 +118,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
         <script src="../js/sidebar-nav.js"></script>
+        <script src="../js/change-settings.js" defer></script>
+        <script src="../js/edit-profile.js"></script>
     </body>
 </html>
