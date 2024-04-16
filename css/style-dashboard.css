@@ -105,6 +105,18 @@ button.btn:hover{
     color: whitesmoke;
 }
 
+button.btn-cancel{
+    background-color: white;
+    border: chocolate;
+    color: chocolate;
+}
+
+button.btn-cancel:hover{
+    background-color: chocolate;
+    box-shadow: none;
+    color: white;
+}
+
 #profile-form, #settings-form{
     display: none;
 }

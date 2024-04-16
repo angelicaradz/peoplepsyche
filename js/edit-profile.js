@@ -42,6 +42,8 @@ function edit() {
     document.getElementById('new-religion').value = religion;
     document.getElementById('new-address').value = address;
 
+    hideModal();
+
     //Show the edit form and hide the profile info
     // document.getElementById('profile-info').classList.add('form-hidden');
     // document.getElementById('profile-form').classList.remove('form-hidden');
@@ -49,6 +51,7 @@ function edit() {
 }
 
 function save(event){
+
     //Prevent form submission
     event.preventDefault();
 
@@ -78,8 +81,23 @@ function save(event){
     document.getElementById('sex').innerText = newSex;
     document.getElementById('religion').innerText = newReligion;
     document.getElementById('address').innerText = newAddress;
+
+    $('.modal-backdrop').remove();
     
     //Hide the edit form and show the profile info
     // document.getElementById('profile-form').classList.add('form-hidden');
     // document.getElementById('profile-info').classList.remove('form-hidden');
+}
+
+function showModal(){
+    
+}
+
+function hideModal(){
+    let modal = document.querySelector('.modal');
+    modal.style.display = 'none';
+}
+
+function removeModalBackdrop(){
+    document.getElementById('staticBackdrop').removeAttribute('aria-hidden');
 }
