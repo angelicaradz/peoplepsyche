@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -11,59 +12,58 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "web" middleware group. Make something great!
 |
-
-/home
-
-/login
-
-/register
-
-/test-page
-
-/dashboard
-
-/assessments
-
-/profile
-
-/settings
-
-/admin/login
-
-/admin/dashboard
-
-/admin/clients
-
-/admin/pending-requests
-
-/admin/profile
-
-/admin/settings
-
-/superadmin/login
-
-/superadmin/dashboard
-
-/superadmin/users
-
-/superadmin/profile
-
-/superadmin/settings
-
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
-Route::get('/test-page', function () {
-    return view('test-page');
-});
+/*
+| CLIENTS
+*/
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('users.client.dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/assessments-list', function () {
+    return view('users.client.assessments-list');
+})->middleware(['auth', 'verified'])->name('assessments-list');
+
+Route::get('/test-page', function () {
+    return view('users.client.test-page');
+})->middleware(['auth', 'verified'])->name('test-page');
+
+/*
+| ADMINS
+*/
+Route::get('/admin/dashboard', function () {
+    return view('users.admin.dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/admin/clients', function () {
+    return view('users.admin.clients');
+})->middleware(['auth', 'verified'])->name('clients');
+
+Route::get('/admin/pending-requests', function () {
+    return view('users.admin.pending-requests');
+})->middleware(['auth', 'verified'])->name('pending-requests');
+
+/*
+| SUPERADMINS
+*/
+Route::get('/superadmin/dashboard', function () {
+    return view('users.superadmin.dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/superadmin/users', function () {
+    return view('users.superadmin.users');
+})->middleware(['auth', 'verified'])->name('users');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/profile', function () {
-    return view('users.profile');
-});
+require __DIR__.'/auth.php';
