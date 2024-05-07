@@ -40,6 +40,14 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+        'superadmin' => [
+            'driver' => 'session',
+            'provider' => 'superadmins',
+        ],
     ],
 
     /*
@@ -64,6 +72,14 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Admin::class,
+        ],
+        'superadmins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Superadmin::class,
+        ]
 
         // 'users' => [
         //     'driver' => 'database',
