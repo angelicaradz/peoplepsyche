@@ -9,6 +9,6 @@
         <p class="fs-5 fw-bold mb-0">Assessment Results</p>
     </div>
     <div class="alert alert-info" role="alert">
-        No assessment taken. <a href="client-assess.html" type="button">Take assessment here</a>.
+        No assessment taken.<x-nav-link :href="route('test-page')" type="button">Take assessment here.</x-nav-link>
     </div>
 @endsection
