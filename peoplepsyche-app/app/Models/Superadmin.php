@@ -22,6 +22,7 @@ class Superadmin extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -43,4 +44,14 @@ class Superadmin extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function admins()
+    {
+        return $this->belongsToMany(Admin::class);
+    }
+
+    public function clients()
+    {
+        return User::all();
+    }
 }

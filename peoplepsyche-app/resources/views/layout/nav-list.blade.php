@@ -1,4 +1,4 @@
-@if(Auth::user()->name === 'User')
+@if(Auth::user()->role === 'client')
     <li class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">
         <x-nav-link :href="route('dashboard')">
             {{ __('Dashboard') }}
@@ -9,13 +9,15 @@
             {{ __('Assessments') }}
         </x-nav-link>
     </li>
-    <li class="">
+    <li class="{{ request()->routeIs('profile.edit') ? 'active' : '' }}">
         <x-nav-link :href="route('profile.edit')">
             {{ __('Profile') }}
         </x-nav-link>
     </li>
-    <li class="">
-        <a href="settings.html">Settings</a>
+    <li class="{{ request()->routeIs('settings.edit') ? 'active' : '' }}">
+        <x-nav-link :href="route('settings.edit')">
+            {{ __('Settings') }}
+        </x-nav-link>
     </li>
     <form method="POST" action="{{ route('logout') }}">
         @csrf
@@ -28,7 +30,7 @@
     </form>
 @endif
 
-@if(Auth::user()->name === 'Admin')
+@if(Auth::user()->role === 'admin')
     <li class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
         <x-nav-link :href="route('admin.dashboard')">
             {{ __('Dashboard') }}
@@ -44,13 +46,15 @@
             {{ __('Pending Requests') }}
         </x-nav-link>
     </li>
-    <li class="">
-        <x-nav-link :href="route('profile.edit')">
+    <li class="{{ request()->routeIs('admin.profile.edit') ? 'active' : '' }}">
+        <x-nav-link :href="route('admin.profile.edit')">
             {{ __('Profile') }}
         </x-nav-link>
     </li>
-    <li class="">
-        <a href="admin-settings.html">Settings</a>
+    <li class="{{ request()->routeIs('admin.settings.edit') ? 'active' : '' }}">
+        <x-nav-link :href="route('admin.settings.edit')">
+            {{ __('Settings') }}
+        </x-nav-link>
     </li>
     <form method="POST" action="{{ route('admin.logout') }}">
         @csrf
@@ -63,7 +67,7 @@
     </form>
 @endif
 
-@if(Auth::user()->name === 'SuperAdmin')
+@if(Auth::user()->role === 'superadmin')
     <li class="{{ request()->routeIs('superadmin.dashboard') ? 'active' : '' }}">
         <x-nav-link :href="route('superadmin.dashboard')">
             {{ __('Dashboard') }}
@@ -74,11 +78,10 @@
             {{ __('Users') }}
         </x-nav-link>
     </li>
-    <li class="">
-        <a href="superadmin-profile.html">Profile</a>
-    </li>
-    <li class="">
-        <a href="superadmin-settings.html">Settings</a>
+    <li class="{{ request()->routeIs('superadmin.settings.edit') ? 'active' : '' }}">
+        <x-nav-link :href="route('superadmin.settings.edit')">
+            {{ __('Profile Settings') }}
+        </x-nav-link>
     </li>
     <form method="POST" action="{{ route('superadmin.logout') }}">
         @csrf

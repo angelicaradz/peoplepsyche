@@ -1,7 +1,7 @@
 @extends('layout.dashboard')
 
 @section('page-title')
-    Welcome to Dashboard, {{ Auth::user()->name }}
+    Welcome to Dashboard, {{ Auth::user()->givenName }}
 @endsection
 
 @section('content')

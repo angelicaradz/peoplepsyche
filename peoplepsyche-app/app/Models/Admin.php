@@ -19,9 +19,21 @@ class Admin extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'givenName',
+        'middleName',
+        'lastName',
+        'suffixName',
         'email',
+        'cpNumber',
+        'birthday',
+        'sex',
+        'civilStat',
+        'religion',
+        'address',
+        'address2',
+        'address3',
         'password',
+        'role'
     ];
 
     /**
@@ -43,4 +55,20 @@ class Admin extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function accessCodes()
+    {
+        return $this->hasMany(AccessCode::class);
+    }
+
+    public function clients()
+    {
+        return $this->belongsToMany(User::class, 'admin_user', 'admin_id', 'client_id');
+        // return $this->hasMany(User::class);
+    }
+
+    public function superadmins()
+    {
+        return $this->belongsToMany(Superadmin::class);
+    }
 }

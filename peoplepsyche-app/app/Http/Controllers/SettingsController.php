@@ -9,14 +9,14 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
-class ProfileController extends Controller
+class SettingsController extends Controller
 {
     /**
      * Display the user's profile form.
      */
     public function edit(Request $request): View
     {
-        return view('users.client.profile', [
+        return view('users.client.settings', [
             'user' => $request->user(),
         ]);
     }
@@ -26,8 +26,6 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-
-        dd($request);
         $request->user()->fill($request->validated());
 
         if ($request->user()->isDirty('email')) {
@@ -36,7 +34,7 @@ class ProfileController extends Controller
 
         $request->user()->save();
 
-        return Redirect::route('users.client.profile')->with('status', 'profile-updated');
+        return Redirect::route('users.client.settings')->with('status', 'settings-updated');
     }
 
     /**

@@ -18,9 +18,20 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'givenName',
+        'middleName',
+        'lastName',
+        'suffixName',
         'email',
+        'cpNumber',
+        'birthday',
+        'sex',
+        'civilStat',
+        'religion',
+        'address',
         'password',
+        'role',
+        'admin_id'
     ];
 
     /**
@@ -41,4 +52,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function admins()
+    {
+        return $this->belongsToMany(Admin::class, 'admin_user', 'client_id', 'admin_id');
+        // return $this->belongsTo(Admin::class);
+    }
+
+    public function clients()
+    {
+        return $this->belongsToMany(User::class, 'admin_user', 'admin_id', 'client_id');
+    }
 }

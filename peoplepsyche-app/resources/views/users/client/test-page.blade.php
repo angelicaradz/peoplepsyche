@@ -9,7 +9,9 @@ UBAN TESTS! --}}
 @endsection
 
 @section('test-content')
+    <div id="user-info" data-sex="{{ Auth::user()->sex }}"></div>
     <form id="godsGiftTest" action="POST">
+        @csrf
 
         <!-- ASSESSMENT DESCRIPTION -->
         <div class="row mx-4 my-5 justify-content-start align-items-center">
@@ -5142,7 +5144,7 @@ UBAN TESTS! --}}
             <!-- <h2 class="fw-bold" style="color: red;">STOP</h2>
             <h5 class="fw-bold">THANK YOU!</h5> -->
             <div class="input-group justify-content-center align-items-center">
-                <a href="dashboard.html" class="btn btn-lg fs-4" type="button">DONE</a>
+                <a href="{{ route('dashboard') }}" class="btn btn-lg fs-4" type="button">DONE</a>
             </div>
         </div>
     </div>
