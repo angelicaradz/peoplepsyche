@@ -53,14 +53,18 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function admins()
+    // public function admins()
+    // {
+    //     return $this->belongsTo(Admin::class);
+    // }
+
+    public function admin()
     {
-        return $this->belongsToMany(Admin::class, 'admin_user', 'client_id', 'admin_id');
-        // return $this->belongsTo(Admin::class);
+        return $this->belongsTo(Admin::class, 'admin_id');
     }
 
-    public function clients()
-    {
-        return $this->belongsToMany(User::class, 'admin_user', 'admin_id', 'client_id');
-    }
+    // public function clients()
+    // {
+    //     return $this->belongsToMany(User::class, 'admin_user', 'admin_id', 'client_id');
+    // }
 }

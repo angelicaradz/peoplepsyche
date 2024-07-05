@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminProfileController;
 use App\Http\Controllers\AdminSettingsController;
 use App\Http\Controllers\ProfileController;
@@ -83,7 +84,14 @@ Route::middleware('auth:admin')->group(function () {
     Route::delete('/admin/settings', [AdminSettingsController::class, 'destroy'])->name('admin.settings.destroy');
 });
 
-Route::post('/admin/generate-code', 'AdminController@generateCode')->name('admin.generate-code');
+// Route::post('/admin/generate-code', 'AdminController@generateCode')->name('admin.generate-code');
+Route::post('/admin/generate-code', [AdminController::class, 'generateCode'])
+    ->name('admin.generate-code')
+    ->middleware('auth:admin');
+
+Route::post('/admin/add-client', [AdminController::class, 'addClient'])
+    ->name('admin.add-client')
+    ->middleware('auth:admin');
 
 require __DIR__.'/adminauth.php';
 

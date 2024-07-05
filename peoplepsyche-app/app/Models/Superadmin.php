@@ -47,11 +47,11 @@ class Superadmin extends Authenticatable
 
     public function admins()
     {
-        return $this->belongsToMany(Admin::class);
+        return $this->hasMany(Admin::class);
     }
 
     public function clients()
     {
-        return User::all();
+        return $this->hasMany(User::class);
     }
 }

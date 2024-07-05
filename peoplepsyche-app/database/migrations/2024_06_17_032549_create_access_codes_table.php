@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('access_codes', function (Blueprint $table) {
             $table->id();
             $table->string('code')->unique();
-            $table->foreignId('admin_id')->constrained()->onDelete('cascade');
+            $table->unsignedBigInteger('admin_id');
             $table->timestamps();
         });
     }

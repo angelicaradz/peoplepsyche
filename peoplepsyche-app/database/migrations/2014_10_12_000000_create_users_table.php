@@ -24,7 +24,7 @@ return new class extends Migration
             $table->enum('civilStat', ['Single', 'Married', 'Separated', 'Annulled', 'Divorced', 'Widowed']);
             $table->string('religion')->nullable();
             $table->string('address');
-            $table->foreignId('admin_id')->constrained()->onDelete('cascade');
+            $table->unsignedBigInteger('admin_id');
             $table->string('role')->default('client');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
@@ -38,6 +38,13 @@ return new class extends Migration
      */
     public function down(): void
     {
+
+        // Schema::table('users', function(Blueprint $table){
+        //     $table->dropForeign('admin_id');
+        //     $table->dropIndex('admin_id');
+        //     $table->dropColumn('admin_id');
+        // });
         Schema::dropIfExists('users');
+
     }
 };

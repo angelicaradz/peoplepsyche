@@ -14,6 +14,7 @@ use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 use Illuminate\Validation\Rule;
 use App\Models\AccessCode;
+use Illuminate\Validation\Rules\Exists;
 
 class RegisteredUserController extends Controller
 {
@@ -53,7 +54,11 @@ class RegisteredUserController extends Controller
                     ->symbols()
                     // ->uncompromised()
             ],
-            'access_code' => 'required|string|exists:access_codes,code',
+            'access_code' => [
+                'required',
+                'string',
+                'exists:access_codes,code',
+            ],
         ]);
 
         $accessCode = $request->input('access_code');
@@ -83,6 +88,8 @@ class RegisteredUserController extends Controller
         ]);
 
         event(new Registered($user));
+
+        $code->delete();
 
         // Auth::login($user);
 

@@ -7,6 +7,6 @@
 </head>
 <body>
     <h1>Hashed Password</h1>
-    <p>{{ dd(Hash::make('Superadmin1234!')) }}</p>
+    <p>{{ dd(Hash::make('Angelica1234!')) }}</p>
 </body>
 </html>

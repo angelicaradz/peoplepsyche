@@ -63,8 +63,7 @@ class Admin extends Authenticatable
 
     public function clients()
     {
-        return $this->belongsToMany(User::class, 'admin_user', 'admin_id', 'client_id');
-        // return $this->hasMany(User::class);
+        return $this->hasMany(User::class);
     }
 
     public function superadmins()
