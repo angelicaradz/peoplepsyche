@@ -10,7 +10,7 @@ UBAN TESTS! --}}
 
 @section('test-content')
     <div id="user-info" data-sex="{{ Auth::user()->sex }}"></div>
-    <form id="godsGiftTest" action="POST">
+    <form id="godsGiftTest" action={{ route('godsGift') }} method="POST">
         @csrf
 
         <!-- ASSESSMENT DESCRIPTION -->

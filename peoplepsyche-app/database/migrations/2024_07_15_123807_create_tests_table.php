@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('tests', function (Blueprint $table) {
             $table->id();
-            $table->string('test_name');
-            $table->unsignedBigInteger('test_type_id');
+            $table->string('name');
+            $table->unsignedBigInteger('testable_id');
+            $table->string('testable_type');
             $table->timestamps();
         });
     }

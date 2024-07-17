@@ -70,4 +70,14 @@ class Admin extends Authenticatable
     {
         return $this->belongsToMany(Superadmin::class);
     }
+
+    public function assess_code()
+    {
+        return $this->hasMany(AssessCode::class);
+    }
+
+    public function assessType()
+    {
+        return $this->hasMany(AssessCode::class);
+    }
 }

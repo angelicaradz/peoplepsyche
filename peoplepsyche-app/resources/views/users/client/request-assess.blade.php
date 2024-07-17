@@ -1,0 +1,39 @@
+@extends('layout.home')
+
+@section('body')
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <!-- REQUEST ASSESS CODE BOX -->
+        <div id="request-assess-page" class="row border rounded-5 p-5 shadow box-area bg-white justify-content-center align-items-center d-flex flex-lg-row">
+
+            <!-- FORM TITLE -->
+            <div class="row mb-4">
+                <h2 class="text-center">Request Assessment Code</h2>
+            </div>
+
+            <!-- TAKE ASSESSMENT FORM -->
+            <div class="row justify-content-center align-items-center">
+                <form id="request-assess-form" class="g-3" method="POST" action="{{ route('request-assess') }}">
+                    @csrf
+
+                    <!-- CODE INPUT FIELD -->
+                    <div class="overflow-hidden mb-3">
+                        <label for="assess_type">{{ __('Select assessment type') }}</label>
+                        <select name="assess_type" id="assess_type" class="form-select" required>
+                            <option selected disabled>Select Assessment Type</option>
+                            <option value="Therapy">Therapy</option>
+                            <option value="Employment-Drivers">Employment - Drivers</option>
+                        </select>
+                    </div>
+
+                    <!-- SUBMIT BUTTON -->
+                    <div class="d-grid gap-2 d-flex justify-content-center align-items-center">
+                        <button class="toggle-btn btn btn-lg fs-6" type="submit">Send Request</button>
+                    </div>
+
+                    <div id="send-request"></div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+@endsection

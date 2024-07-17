@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Http\Controllers\AssessmentResultController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -63,8 +65,13 @@ class User extends Authenticatable
         return $this->belongsTo(Admin::class, 'admin_id');
     }
 
-    // public function clients()
-    // {
-    //     return $this->belongsToMany(User::class, 'admin_user', 'admin_id', 'client_id');
-    // }
+    public function godsGift()
+    {
+        return $this->hasMany(GodsGiftTest::class);
+    }
+
+    public function request()
+    {
+        return $this->hasMany(PendingRequests::class);
+    }
 }

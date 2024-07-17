@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminProfileController;
 use App\Http\Controllers\AdminSettingsController;
+use App\Http\Controllers\AssessmentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\SuperadminSettingsController;
@@ -39,9 +40,25 @@ Route::get('/assessments-list', function () {
     return view('users.client.assessments-list');
 })->middleware(['auth', 'verified'])->name('assessments-list');
 
+
+//SENDING REQUEST FOR ASSESSMENT CODE
+//LIHOKON PA NI
+Route::get('/take-assessment', function () {
+    return view('users.client.assess-access-form');
+})->middleware(['auth', 'verified'])->name('take-assessment');
+
+Route::post('/take-assessment', [AdminController::class, 'generateCode'])
+    ->name('request-assess')
+    ->middleware('auth');
+//end
+
 Route::get('/test-page', function () {
     return view('users.client.test-page');
 })->middleware(['auth', 'verified'])->name('test-page');
+
+Route::post('/results', [AssessmentController::class, 'store'])
+    ->name('godsGift')
+    ->middleware(['auth', 'verified']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -54,6 +71,10 @@ Route::middleware('auth')->group(function () {
     Route::patch('/settings', [SettingsController::class, 'update'])->name('settings.update');
     Route::delete('/settings', [SettingsController::class, 'destroy'])->name('settings.destroy');
 });
+
+// Route::post('/results', [AssessmentResultController::class, 'calculateResults'])
+//     ->name('test-page.results')
+//     ->middleware('auth');
 
 require __DIR__.'/auth.php';
 
@@ -85,6 +106,7 @@ Route::middleware('auth:admin')->group(function () {
 });
 
 // Route::post('/admin/generate-code', 'AdminController@generateCode')->name('admin.generate-code');
+
 Route::post('/admin/generate-code', [AdminController::class, 'generateCode'])
     ->name('admin.generate-code')
     ->middleware('auth:admin');

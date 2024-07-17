@@ -1,1 +1,54 @@
-TAKE ASSESSMENT FORM
+@extends('layout.home')
+
+@section('body')
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <!-- TAKE ASSESSMENT BOX -->
+        <div id="client-assess-page" class="row border rounded-5 p-5 shadow box-area bg-white justify-content-center align-items-center d-flex flex-lg-row">
+
+            <!-- FORM TITLE -->
+            <div class="row mb-4">
+                <h2 class="text-center">Assessment</h2>
+            </div>
+
+            <!-- TAKE ASSESSMENT FORM -->
+            <div class="row justify-content-center align-items-center">
+                <form id="client-assess-form" class="g-3" method="POST" action="{{ route('take-assessment') }}">
+                    @csrf
+
+                    <!-- CODE INPUT FIELD -->
+                    <div class="overflow-hidden mb-3">
+                        <label for="codeInput">{{ __('Enter assessment code') }}</label>
+                        <input type="text" name="assess_code" class="form-control" id="codeInput" placeholder="Enter code" value="{{ old('assess_code') }}" required />
+                    </div>
+
+                    <!-- CODE INPUT FIELD -->
+                    <div class="overflow-hidden mb-3">
+                        <label for="assess_type">{{ __('Select assessment type') }}</label>
+                        <select name="assess_type" id="assess_type" class="form-select" required>
+                            <option selected disabled>Select Assessment Type</option>
+                            <option value="Therapy">Therapy</option>
+                            <option value="Employment-Drivers">Employment - Drivers</option>
+                        </select>
+                    </div>
+
+                    <!-- UPLOAD FILE (PROOF OF PAYMENT) FIELD -->
+                    <div class="overflow-hidden mb-3">
+                        <label for="formFile">{{ __('Proof of payment') }}</label>
+                        <input class="form-control" type="file" id="formFile" required />
+                    </div>
+
+                    <!-- SUBMIT BUTTON -->
+                    <div class="d-grid gap-2 d-flex justify-content-center align-items-center">
+                        <button class="assess-btn btn btn-lg fs-6" type="submit" value="Submit">{{ __('Submit') }}</button>
+                        <a href="{{ route('dashboard') }}" class="cancel-assess-btn btn btn-lg fs-6" type="button">Cancel</a>
+                    </div>
+
+                    <div class="row mb-3 text-center">
+                        <small>No access code? <a href="#" style="color: chocolate;">Request here!</a></small>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+@endsection
