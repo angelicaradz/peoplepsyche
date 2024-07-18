@@ -10,29 +10,37 @@
                 <h2 class="text-center">Request Assessment Code</h2>
             </div>
 
-            <!-- TAKE ASSESSMENT FORM -->
+            <!-- REQUEST ASSESSMENT FORM -->
             <div class="row justify-content-center align-items-center">
                 <form id="request-assess-form" class="g-3" method="POST" action="{{ route('request-assess') }}">
                     @csrf
 
-                    <!-- CODE INPUT FIELD -->
                     <div class="overflow-hidden mb-3">
-                        <label for="assess_type">{{ __('Select assessment type') }}</label>
+                        <label for="assess_type_id">{{ __('Select assessment type') }}</label>
                         <select name="assess_type" id="assess_type" class="form-select" required>
                             <option selected disabled>Select Assessment Type</option>
-                            <option value="Therapy">Therapy</option>
-                            <option value="Employment-Drivers">Employment - Drivers</option>
+
+                            @foreach($assess_types as $type)
+                                <option value="{{ $type->id }}">{{ $type->name }}</option>
+                            @endforeach
                         </select>
                     </div>
 
                     <!-- SUBMIT BUTTON -->
                     <div class="d-grid gap-2 d-flex justify-content-center align-items-center">
-                        <button class="toggle-btn btn btn-lg fs-6" type="submit">Send Request</button>
+                        <button class="request-btn btn btn-lg fs-6" type="submit" value="Submit">Send Request</button>
                     </div>
-
-                    <div id="send-request"></div>
                 </form>
-
+                @if (session('success'))
+                    <div class="alert alert-danger">
+                        {{ session('success') }}
+                    </div>
+                @endif
+                @if (session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
             </div>
         </div>
     </div>

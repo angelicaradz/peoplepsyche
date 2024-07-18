@@ -55,10 +55,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    // public function admins()
-    // {
-    //     return $this->belongsTo(Admin::class);
-    // }
+    // Accessor for full name with shortened middle name
+    public function getFullNameAttribute()
+    {
+        return $this->givenName . ' ' . $this->middleInitial . ' ' . $this->lastName;
+    }
+
+    // Accessor for middle name initial
+    public function getMiddleInitialAttribute()
+    {
+        return $this->middleName ? substr($this->middleName, 0, 1) . '.' : '';
+    }
 
     public function admin()
     {
@@ -73,5 +80,10 @@ class User extends Authenticatable
     public function request()
     {
         return $this->hasMany(PendingRequests::class);
+    }
+
+    public function test()
+    {
+        return $this->hasMany(Tests::class);
     }
 }

@@ -4,6 +4,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminProfileController;
 use App\Http\Controllers\AdminSettingsController;
 use App\Http\Controllers\AssessmentController;
+use App\Http\Controllers\DataController;
+use App\Http\Controllers\PendingRequestsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\SuperadminSettingsController;
@@ -32,24 +34,29 @@ Route::get('/', function () {
 | CLIENTS
 */
 
-Route::get('/dashboard', function () {
-    return view('users.client.dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('users.client.dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/dashboard', [DataController::class, 'showAssessments'])
+    ->name('dashboard')
+    ->middleware(['auth', 'verified']);
 
 Route::get('/assessments-list', function () {
     return view('users.client.assessments-list');
 })->middleware(['auth', 'verified'])->name('assessments-list');
 
-
-//SENDING REQUEST FOR ASSESSMENT CODE
-//LIHOKON PA NI
 Route::get('/take-assessment', function () {
     return view('users.client.assess-access-form');
 })->middleware(['auth', 'verified'])->name('take-assessment');
 
-Route::post('/take-assessment', [AdminController::class, 'generateCode'])
+Route::get('/request-assess-form', [PendingRequestsController::class, 'showForm'])
+    ->name('request-assess-form')
+    ->middleware(['auth', 'verified']);
+
+Route::post('/request-assess', [PendingRequestsController::class, 'send_request'])
     ->name('request-assess')
-    ->middleware('auth');
+    ->middleware(['auth', 'verified']);
 //end
 
 Route::get('/test-page', function () {

@@ -14,6 +14,7 @@ class AssessmentController extends Controller
     {
 
         $user = auth()->user();
+        $admin = $user->admin_id;
 
         // Retrieve the JSON data from the request
         $data = $request->json()->all();
@@ -33,6 +34,7 @@ class AssessmentController extends Controller
 
             $godsGift_result = GodsGiftTest::create([
                 'user_id' => $user->id,
+                'admin_id' => $admin,
                 'strengths' => $strengths,
                 'weaknesses' => $weaknesses
             ]);

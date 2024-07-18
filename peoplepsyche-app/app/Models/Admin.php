@@ -56,6 +56,18 @@ class Admin extends Authenticatable
         'password' => 'hashed',
     ];
 
+    // Accessor for full name with shortened middle name
+    public function getFullNameAttribute()
+    {
+        return $this->givenName . ' ' . $this->middleInitial . ' ' . $this->lastName;
+    }
+
+    // Accessor for middle name initial
+    public function getMiddleInitialAttribute()
+    {
+        return $this->middleName ? substr($this->middleName, 0, 1) . '.' : '';
+    }
+
     public function accessCodes()
     {
         return $this->hasMany(AccessCode::class);
@@ -79,5 +91,20 @@ class Admin extends Authenticatable
     public function assessType()
     {
         return $this->hasMany(AssessCode::class);
+    }
+
+    public function request()
+    {
+        return $this->hasMany(PendingRequests::class);
+    }
+
+    public function test()
+    {
+        return $this->hasMany(Tests::class);
+    }
+
+    public function godsGiftTest()
+    {
+        return $this->hasMany(GodsGiftTest::class);
     }
 }

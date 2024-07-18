@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tests;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DataController extends Controller
 {
@@ -25,5 +27,17 @@ class DataController extends Controller
     public function getAllUsers()
     {
 
+    }
+
+    public function showAssessments()
+    {
+
+        // Fetch all records from the Tests table
+        $tests = Tests::with('admin')->get();
+
+        // Alternatively, fetch all records from the GodsGiftTest table
+        // $tests = GodsGiftTest::all();
+
+        return view('users.client.dashboard', compact('tests'));
     }
 }

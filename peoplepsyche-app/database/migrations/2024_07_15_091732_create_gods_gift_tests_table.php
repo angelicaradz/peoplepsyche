@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('gods_gift_tests', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('admin_id');
             $table->json('strengths')->nullable();
             $table->json('weaknesses')->nullable();
             $table->timestamps();

@@ -44,7 +44,7 @@
                     </div>
 
                     <div class="row mb-3 text-center">
-                        <small>No access code? <a href="#" style="color: chocolate;">Request here!</a></small>
+                        <small>No access code? <a href="{{ route('request-assess-form') }}" style="color: chocolate;">Request here!</a></small>
                     </div>
                 </form>
 

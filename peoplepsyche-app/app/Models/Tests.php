@@ -9,6 +9,8 @@ class Tests extends Model
 {
     protected $fillable = [
         'name',
+        'user_id',
+        'admin_id',
         'testable_id',
         'testable_type'
     ];
@@ -21,5 +23,15 @@ class Tests extends Model
     public function testable(): MorphTo
     {
         return $this->morphTo();
+    }
+
+    public function client()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function admin()
+    {
+        return $this->belongsTo(Admin::class, 'admin_id');
     }
 }

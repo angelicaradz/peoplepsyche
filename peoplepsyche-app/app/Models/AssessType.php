@@ -19,4 +19,9 @@ class AssessType extends Model
     {
         return $this->belongsToMany(Tests::class, 'assess_type_test');
     }
+
+    public function request()
+    {
+        return $this->hasMany(PendingRequests::class);
+    }
 }
