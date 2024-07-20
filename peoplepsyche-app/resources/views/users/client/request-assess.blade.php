@@ -10,6 +10,21 @@
                 <h2 class="text-center">Request Assessment Code</h2>
             </div>
 
+            @if (session('success'))
+                <div class="row justify-content-center align-items-center">
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                </div>
+            @endif
+            @if (session('error'))
+                <div class="row justify-content-center align-items-center">
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                </div>
+            @endif
+
             <!-- REQUEST ASSESSMENT FORM -->
             <div class="row justify-content-center align-items-center">
                 <form id="request-assess-form" class="g-3" method="POST" action="{{ route('request-assess') }}">
@@ -31,16 +46,6 @@
                         <button class="request-btn btn btn-lg fs-6" type="submit" value="Submit">Send Request</button>
                     </div>
                 </form>
-                @if (session('success'))
-                    <div class="alert alert-danger">
-                        {{ session('success') }}
-                    </div>
-                @endif
-                @if (session('error'))
-                    <div class="alert alert-danger">
-                        {{ session('error') }}
-                    </div>
-                @endif
             </div>
         </div>
     </div>

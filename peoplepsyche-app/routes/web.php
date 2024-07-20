@@ -34,10 +34,6 @@ Route::get('/', function () {
 | CLIENTS
 */
 
-// Route::get('/dashboard', function () {
-//     return view('users.client.dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
-
 Route::get('/dashboard', [DataController::class, 'showAssessments'])
     ->name('dashboard')
     ->middleware(['auth', 'verified']);
@@ -88,17 +84,22 @@ require __DIR__.'/auth.php';
 /*
 | ADMINS
 */
-Route::get('/admin/dashboard', function () {
-    return view('users.admin.dashboard');
-})->middleware(['auth:admin', 'verified'])->name('admin.dashboard');
 
-Route::get('/admin/clients', function () {
-    return view('users.admin.clients');
-})->middleware(['auth:admin', 'verified'])->name('admin.clients');
+Route::get('/admin/dashboard', [DataController::class, 'showDashboardData'])
+    ->name('admin.dashboard')
+    ->middleware(['auth:admin', 'verified']);
 
-Route::get('/admin/pending-requests', function () {
-    return view('users.admin.pending-requests');
-})->middleware(['auth:admin', 'verified'])->name('admin.pending-requests');
+// Route::get('/admin/clients', function () {
+//     return view('users.admin.clients');
+// })->middleware(['auth:admin', 'verified'])->name('admin.clients');
+
+Route::get('/admin/clients', [DataController::class, 'showClients'])
+    ->name('admin.clients')
+    ->middleware(['auth:admin', 'verified']);
+
+Route::get('/admin/pending-requests', [DataController::class, 'showRequests'])
+    ->name('admin.pending-requests')
+    ->middleware(['auth:admin', 'verified']);
 
 Route::middleware('auth:admin')->group(function () {
     Route::get('/admin/profile', [AdminProfileController::class, 'edit'])->name('admin.profile.edit');
@@ -131,9 +132,17 @@ Route::get('/superadmin/dashboard', function () {
     return view('users.superadmin.dashboard');
 })->middleware(['auth:superadmin', 'verified'])->name('superadmin.dashboard');
 
+Route::get('/superadmin/dashboard', [DataController::class, 'showTotalUsers'])
+    ->name('superadmin.dashboard')
+    ->middleware(['auth:superadmin', 'verified']);
+
 Route::get('/superadmin/users', function () {
     return view('users.superadmin.users');
 })->middleware(['auth:superadmin', 'verified'])->name('superadmin.users');
+
+Route::get('/superadmin/users', [DataController::class, 'showAllUsers'])
+    ->name('superadmin.users')
+    ->middleware(['auth:superadmin', 'verified']);
 
 Route::middleware('auth:superadmin')->group(function () {
     Route::get('/superadmin/settings', [SuperadminSettingsController::class, 'edit'])->name('superadmin.settings.edit');

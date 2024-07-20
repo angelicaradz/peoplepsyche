@@ -98,88 +98,88 @@ class AdminController extends Controller
     }
 
     //for the assess code
-    // public function generate_assess_code(Request $request)
-    // {
+    public function generate_assess_code(Request $request)
+    {
 
-    //     // Get the authenticated admin (you might need to adjust this logic based on your authentication setup)
-    //     $admin = auth()->user(); // Assuming admin is authenticated
+        // Get the authenticated admin (you might need to adjust this logic based on your authentication setup)
+        $admin = auth()->user(); // Assuming admin is authenticated
 
-    //     // Check if user is authenticated
-    //     // Error handler
-    //     // if(!$admin){
-    //     //     return response()->json(['error' => 'User not found'], 500);
-    //     // }
+        // Check if user is authenticated
+        // Error handler
+        // if(!$admin){
+        //     return response()->json(['error' => 'User not found'], 500);
+        // }
 
-    //     //initials
-    //     $first = $admin->givenName;
-    //     $middle = $admin->middleName;
-    //     $last = $admin->lastName;
-    //     $suffix = $admin->suffixName;
-    //     $names = [
-    //         $first,
-    //         $middle,
-    //         $last,
-    //         $suffix
-    //     ];
+        //initials
+        $first = $admin->givenName;
+        $middle = $admin->middleName;
+        $last = $admin->lastName;
+        $suffix = $admin->suffixName;
+        $names = [
+            $first,
+            $middle,
+            $last,
+            $suffix
+        ];
 
-    //     $initials = '';
+        $initials = '';
 
-    //     // Check if user info is fetched
-    //     // Error handling
-    //     // if(!$names){
-    //     //     return response()->json(['error' => 'User not found'], 500);
-    //     // }
-    //     // else{
-    //     //     return $names;
-    //     // }
+        // Check if user info is fetched
+        // Error handling
+        // if(!$names){
+        //     return response()->json(['error' => 'User not found'], 500);
+        // }
+        // else{
+        //     return $names;
+        // }
 
-    //     foreach ($names as $name){
+        foreach ($names as $name){
 
-    //         // return $name;
+            // return $name;
 
-    //         if(!empty($name)) {
+            if(!empty($name)) {
 
-    //             $doublenames = [];
+                $doublenames = [];
 
-    //             // Check if there are spaces in a name and separate them into an array
-    //             if(strpos($name, ' ') !== false) {
-    //                 $doublenames = explode(' ', $name);
+                // Check if there are spaces in a name and separate them into an array
+                if(strpos($name, ' ') !== false) {
+                    $doublenames = explode(' ', $name);
 
-    //                 foreach($doublenames as $doublename){
-    //                     // if($doublename === ''){
-    //                     //     unset($doublename);
-    //                     // }
+                    foreach($doublenames as $doublename){
+                        // if($doublename === ''){
+                        //     unset($doublename);
+                        // }
 
-    //                     // else{
-    //                     //     $initials .= $doublename[0];
-    //                     // }
+                        // else{
+                        //     $initials .= $doublename[0];
+                        // }
 
-    //                     // Trim the name to remove any leading or trailing whitespace
-    //                     $doublename = trim($doublename);
+                        // Trim the name to remove any leading or trailing whitespace
+                        $doublename = trim($doublename);
 
-    //                     // Check if the trimmed name is not empty
-    //                     if (!empty($doublename)) {
-    //                         $initials .= $doublename[0]; // Append the first character
-    //                     }
-    //                 }
-    //             }
-    //             else{
-    //                 $initials .= $name[0];
-    //             }
-    //         }
-    //     }
+                        // Check if the trimmed name is not empty
+                        if (!empty($doublename)) {
+                            $initials .= $doublename[0]; // Append the first character
+                        }
+                    }
+                }
+                else{
+                    $initials .= $name[0];
+                }
+            }
+        }
 
-    //     // Generate a random unique code (adjust as per your requirements)
-    //     $code = uniqid($initials);
+        // Generate a random unique code (adjust as per your requirements)
+        $code = uniqid($initials);
 
-    //     // Store the generated code in the database
-    //     $accessCode = AssessCode::create([
-    //         'assess_code' => $code,
-    //         'admin_id' => $admin->id,
-    //     ]);
+        // Store the generated code in the database
+        $accessCode = AssessCode::create([
+            'assess_code' => $code,
+            'admin_id' => $admin->id,
+        ]);
 
-    //     return response()->json(['assess_code' => $code]); // Respond with the generated code (for AJAX handling)
-    // }
+        return response()->json(['assess_code' => $code]); // Respond with the generated code (for AJAX handling)
+    }
 
     /**
      * Handle an incoming registration request.

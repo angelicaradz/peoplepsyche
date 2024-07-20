@@ -80,7 +80,7 @@ class Admin extends Authenticatable
 
     public function superadmins()
     {
-        return $this->belongsToMany(Superadmin::class);
+        return $this->belongsToMany(Superadmin::class, 'superadmin_admin', 'admin_id', 'superadmin_id');
     }
 
     public function assess_code()

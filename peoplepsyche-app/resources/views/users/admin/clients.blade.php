@@ -168,154 +168,28 @@
                     <th scope="col">Middle Name</th>
                     <th scope="col">Suffix</th>
                     <th scope="col">Date Registered</th>
-                    <th scope="col"></th>
+                    <th scope="col">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                    <th scope="row">1</th>
-                    <td>Cruz</td>
-                    <td>Juan</td>
-                    <td>Dela</td>
-                    <td></td>
-                    <td>11/29/2023 3:30PM</td>
-                    <td>
-                        <div class="dropdown">
-                            <a class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
-                            <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">View</a></li>
-                            <li><a class="dropdown-item" href="#">Delete</a></li>
-                            <li><a class="dropdown-item" href="#">Edit</a></li>
-                            </ul>
-                        </div>
-                    </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Doe</td>
-                        <td>John</td>
-                        <td></td>
-                        <td></td>
-                        <td>11/29/2023 3:30PM</td>
-                        <td>
-                            <div class="dropdown">
-                                <a class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
-                                <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">View</a></li>
-                                <li><a class="dropdown-item" href="#">Delete</a></li>
-                                <li><a class="dropdown-item" href="#">Edit</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Jeon</td>
-                        <td>Jungkook</td>
-                        <td></td>
-                        <td>Jr.</td>
-                        <td>11/29/2023 3:30PM</td>
-                        <td>
-                            <div class="dropdown">
-                                <a class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
-                                <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">View</a></li>
-                                <li><a class="dropdown-item" href="#">Delete</a></li>
-                                <li><a class="dropdown-item" href="#">Edit</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">4</th>
-                        <td>Jeon</td>
-                        <td>Wonwoo</td>
-                        <td></td>
-                        <td></td>
-                        <td>03/23/2024 11:34PM</td>
-                        <td>
-                            <div class="dropdown">
-                                <a class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
-                                <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">View</a></li>
-                                <li><a class="dropdown-item" href="#">Delete</a></li>
-                                <li><a class="dropdown-item" href="#">Edit</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">5</th>
-                        <td>Kim</td>
-                        <td>Mingyu</td>
-                        <td></td>
-                        <td>III</td>
-                        <td>03/23/2024 11:35PM</td>
-                        <td>
-                            <div class="dropdown">
-                                <a class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
-                                <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">View</a></li>
-                                <li><a class="dropdown-item" href="#">Delete</a></li>
-                                <li><a class="dropdown-item" href="#">Edit</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">6</th>
-                        <td>Ramirez</td>
-                        <td>Angelica</td>
-                        <td></td>
-                        <td></td>
-                        <td>03/23/2024 11:36PM</td>
-                        <td>
-                            <div class="dropdown">
-                                <a class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
-                                <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">View</a></li>
-                                <li><a class="dropdown-item" href="#">Delete</a></li>
-                                <li><a class="dropdown-item" href="#">Edit</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">7</th>
-                        <td>Kim</td>
-                        <td>Seokmin</td>
-                        <td></td>
-                        <td></td>
-                        <td>03/23/2024 11:36PM</td>
-                        <td>
-                            <div class="dropdown">
-                                <a class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
-                                <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">View</a></li>
-                                <li><a class="dropdown-item" href="#">Delete</a></li>
-                                <li><a class="dropdown-item" href="#">Edit</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">8</th>
-                        <td>Lee</td>
-                        <td>Chan</td>
-                        <td></td>
-                        <td>Sr.</td>
-                        <td>03/23/2024 11:37PM</td>
-                        <td>
-                            <div class="dropdown">
-                                <a class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
-                                <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">View</a></li>
-                                <li><a class="dropdown-item" href="#">Delete</a></li>
-                                <li><a class="dropdown-item" href="#">Edit</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
+                    @foreach($clients as $client)
+                        <tr>
+                            <th scope="row">{{ $loop->iteration }}</th>
+                            <td>{{ $client->lastName }}</td>
+                            <td>{{ $client->givenName }}</td>
+                            <td>{{ $client->middleName ?? '-' }}</td>
+                            <td>{{ $client->suffixName ?? '-' }}</td>
+                            <td>{{ $client->created_at->format('m/d/Y g:iA') }}</td>
+                            <td>
+                                <div class="dropdown">
+                                    <a class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
+                                    <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">View</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

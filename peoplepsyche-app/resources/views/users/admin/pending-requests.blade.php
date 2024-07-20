@@ -18,44 +18,29 @@
                     <th scope="col">Middle Name</th>
                     <th scope="col">Suffix</th>
                     <th scope="col">Date Requested</th>
-                    <th scope="col"></th>
+                    <th scope="col">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                    <th scope="row">1</th>
-                    <td>Cruz</td>
-                    <td>Juan</td>
-                    <td>Dela</td>
-                    <td></td>
-                    <td>11/29/2023 3:36PM</td>
-                    <td>
-                        <div class="dropdown">
-                            <a class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
-                            <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Approve</a></li>
-                            <li><a class="dropdown-item" href="#">Cancel</a></li>
-                            </ul>
-                        </div>
-                    </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Doe</td>
-                        <td>John</td>
-                        <td></td>
-                        <td></td>
-                        <td>11/29/2023 3:37PM</td>
-                        <td>
-                            <div class="dropdown">
-                                <a class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
-                                <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Approve</a></li>
-                                <li><a class="dropdown-item" href="#">Cancel</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
+                    @foreach($requests as $request)
+                        <tr>
+                            <th scope="row">{{ $loop->iteration }}</th>
+                            <td>{{ $request->client->lastName }}</td>
+                            <td>{{ $request->client->givenName }}</td>
+                            <td>{{ $request->client->middleName ?? '-' }}</td>
+                            <td>{{ $request->client->suffixName ?? '-' }}</td>
+                            <td>{{ $request->created_at->format('m/d/Y g:iA') }}</td>
+                            <td>
+                                <div class="dropdown">
+                                    <a class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
+                                    <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Approve</a></li>
+                                    <li><a class="dropdown-item" href="#">Cancel</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

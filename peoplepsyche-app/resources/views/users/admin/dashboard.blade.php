@@ -16,7 +16,7 @@
                         <h4 class="fw-bold mb-0">TOTAL TAKERS</h4>
                     </div>
                     <div class="row">
-                        <h2 class="fs-1 fw-bold mb-0">15</h2>
+                        <h2 class="fs-1 fw-bold mb-0">{{ $takers_count ?? '0' }}</h2>
                     </div>
                 </div>
             </div>
@@ -30,7 +30,7 @@
                         <h4 class="fw-bold mb-0">TOTAL CLIENTS</h4>
                     </div>
                     <div class="row">
-                        <h2 class="fs-1 fw-bold mb-0">22</h2>
+                        <h2 class="fs-1 fw-bold mb-0">{{ $clients_count ?? '0' }}</h2>
                     </div>
                 </div>
             </div>
@@ -59,30 +59,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                            <th scope="row">1</th>
-                            <td>Cruz</td>
-                            <td>Juan</td>
-                            <td>Dela</td>
-                            <td></td>
-                            <td>11/29/2023 3:36PM</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Doe</td>
-                                <td>John</td>
-                                <td></td>
-                                <td></td>
-                                <td>11/29/2023 3:37PM</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Doe</td>
-                                <td>John</td>
-                                <td></td>
-                                <td></td>
-                                <td>11/29/2023 3:37PM</td>
-                            </tr>
+                            @foreach($requests as $request)
+                                <tr>
+                                    <th scope="row">{{ $loop->iteration }}</th>
+                                    <td>{{ $request->client->lastName }}</td>
+                                    <td>{{ $request->client->givenName }}</td>
+                                    <td>{{ $request->client->middleName ?? '-' }}</td>
+                                    <td>{{ $request->client->suffixName ?? '-' }}</td>
+                                    <td>{{ $request->created_at->format('m/d/Y g:iA') }}</td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -111,14 +97,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                          <th scope="row">1</th>
-                          <td>Jeon</td>
-                          <td>Jungkook</td>
-                          <td></td>
-                          <td>Jr.</td>
-                          <td>11/29/2023 3:38PM</td>
-                        </tr>
+                        @foreach($takers as $taker)
+                            <tr>
+                                <th scope="row">{{ $loop->iteration }}</th>
+                                <td>{{ $taker->client->lastName }}</td>
+                                <td>{{ $taker->client->givenName }}</td>
+                                <td>{{ $taker->client->middleName ?? '-' }}</td>
+                                <td>{{ $taker->client->suffixName ?? '-' }}</td>
+                                <td>{{ $taker->created_at->format('m/d/Y g:iA') }}</td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

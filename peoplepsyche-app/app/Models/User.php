@@ -67,6 +67,11 @@ class User extends Authenticatable
         return $this->middleName ? substr($this->middleName, 0, 1) . '.' : '';
     }
 
+    public function superadmin()
+    {
+        return $this->belongsToMany(Superadmin::class, 'superadmin_user', 'user_id', 'superadmin_id');
+    }
+
     public function admin()
     {
         return $this->belongsTo(Admin::class, 'admin_id');

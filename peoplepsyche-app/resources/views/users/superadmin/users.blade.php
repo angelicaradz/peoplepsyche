@@ -304,93 +304,42 @@
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
-                    <th scope="col">No.</th>
-                    <th scope="col">Last Name</th>
-                    <th scope="col">First Name</th>
-                    <th scope="col">Middle Name</th>
-                    <th scope="col">Suffix</th>
-                    <th scope="col">Role</th>
-                    <th scope="col">Date Registered</th>
-                    <th scope="col"></th>
+                        <th scope="col">No.</th>
+                        <th scope="col">Full Name</th>
+                        <th scope="col">Role</th>
+                        <th scope="col">Date Registered</th>
+                        <th scope="col">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                    <th scope="row">1</th>
-                    <td>Cruz</td>
-                    <td>Juan</td>
-                    <td>Dela</td>
-                    <td></td>
-                    <td>Client</td>
-                    <td>11/29/2023 3:30PM</td>
-                    <td>
-                        <div class="dropdown">
-                            <a class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
-                            <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">View</a></li>
-                            <li><a class="dropdown-item" href="#">Delete</a></li>
-                            <li><a class="dropdown-item" href="#">Edit</a></li>
-                            </ul>
-                        </div>
-                    </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Doe</td>
-                        <td>John</td>
-                        <td></td>
-                        <td></td>
-                        <td>Client</td>
-                        <td>11/29/2023 3:30PM</td>
-                        <td>
-                            <div class="dropdown">
-                                <a class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
-                                <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">View</a></li>
-                                <li><a class="dropdown-item" href="#">Delete</a></li>
-                                <li><a class="dropdown-item" href="#">Edit</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Jeon</td>
-                        <td>Jungkook</td>
-                        <td></td>
-                        <td>Jr.</td>
-                        <td>Client</td>
-                        <td>11/29/2023 3:30PM</td>
-                        <td>
-                            <div class="dropdown">
-                                <a class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
-                                <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">View</a></li>
-                                <li><a class="dropdown-item" href="#">Delete</a></li>
-                                <li><a class="dropdown-item" href="#">Edit</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">4</th>
-                        <td>Lim</td>
-                        <td>Cora</td>
-                        <td>E.</td>
-                        <td></td>
-                        <td>Admin</td>
-                        <td>11/29/2023 3:30PM</td>
-                        <td>
-                            <div class="dropdown">
-                                <a class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
-                                <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">View</a></li>
-                                <li><a class="dropdown-item" href="#">Delete</a></li>
-                                <li><a class="dropdown-item" href="#">Edit</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
+                    @foreach($users as $user)
+                        <tr>
+                            <th scope="row">{{ $loop->iteration }}</th>
+                            @if($user->role === 'superadmin')
+                                <td>{{ $user->name }}</td>
+                            @else
+                                <td>{{ $user->full_name ?? '-' }}</td>
+                            @endif
+                            <td>
+                                @if ($user instanceof App\Models\Admin)
+                                    Admin
+                                @elseif ($user instanceof App\Models\User)
+                                    Client
+                                @elseif ($user instanceof App\Models\Superadmin)
+                                    Superadmin
+                                @endif
+                            </td>
+                            <td>{{ $user->created_at ? $user->created_at->format('m/d/Y g:iA') : '-' }}</td>
+                            <td>
+                                <div class="dropdown">
+                                    <a class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
+                                    <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">View</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

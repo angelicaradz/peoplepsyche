@@ -33,7 +33,7 @@
                         <h4 class="fw-bold mb-0">TOTAL USERS</h4>
                     </div>
                     <div class="row">
-                        <h2 class="fs-1 fw-bold mb-0">15</h2>
+                        <h2 class="fs-1 fw-bold mb-0">{{ $totalUsers }}</h2>
                     </div>
                 </div>
             </div>
@@ -61,7 +61,7 @@
                         <h4 class="fw-bold mb-0">TOTAL ADMINS</h4>
                     </div>
                     <div class="row">
-                        <h2 class="fs-1 fw-bold mb-0">22</h2>
+                        <h2 class="fs-1 fw-bold mb-0">{{ $totalAdmins }}</h2>
                     </div>
                 </div>
             </div>

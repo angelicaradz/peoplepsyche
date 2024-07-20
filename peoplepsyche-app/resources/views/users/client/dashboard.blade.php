@@ -32,7 +32,7 @@
                                 <th scope="row">{{ $loop->iteration }}</th>
                                 <td>{{ $test->name }}</td>
                                 <td>{{ $test->created_at->format('m/d/Y g:iA') }}</td>
-                                <td>{{ $test->admin->full_name ?? 'Unknown' }}</td>
+                                <td>{{ $test->admin->full_name ?? '-' }}</td>
                                 <td>
                                     <div class="dropdown">
                                         <a class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
