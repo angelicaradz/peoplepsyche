@@ -17,7 +17,7 @@ class Tests extends Model
 
     public function assess_type()
     {
-        return $this->belongsToMany(AssessType::class, 'assess_type_test');
+        return $this->belongsToMany(AssessType::class, 'assess_types_test', 'test_id', 'assess_type_id');
     }
 
     public function testable(): MorphTo
@@ -33,5 +33,10 @@ class Tests extends Model
     public function admin()
     {
         return $this->belongsTo(Admin::class, 'admin_id');
+    }
+
+    public function result()
+    {
+        return $this->hasMany(AssessmentResult::class);
     }
 }

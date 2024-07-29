@@ -4,6 +4,10 @@ UBAN TESTS! --}}
 
 @extends('layout.test-page')
 
+@section('title')
+    Assessment |
+@endsection
+
 @section('test-title')
     God's Gift Assessment
 @endsection

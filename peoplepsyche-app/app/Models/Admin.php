@@ -83,14 +83,14 @@ class Admin extends Authenticatable
         return $this->belongsToMany(Superadmin::class, 'superadmin_admin', 'admin_id', 'superadmin_id');
     }
 
-    public function assess_code()
-    {
-        return $this->hasMany(AssessCode::class);
-    }
+    // public function assess_code()
+    // {
+    //     return $this->hasMany(AssessCode::class);
+    // }
 
     public function assessType()
     {
-        return $this->hasMany(AssessCode::class);
+        return $this->hasMany(AssessType::class);
     }
 
     public function request()

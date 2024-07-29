@@ -1,8 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Mail\AssessCodeMail;
 use App\Models\AccessCode;
 use App\Models\AssessCode;
+use App\Models\AssessType;
+use App\Models\PendingRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules;
@@ -11,6 +15,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Redirect;
 
 class AdminController extends Controller
 {
@@ -97,10 +103,8 @@ class AdminController extends Controller
         return response()->json(['code' => $code]); // Respond with the generated code (for AJAX handling)
     }
 
-    //for the assess code
-    public function generate_assess_code(Request $request)
+    public function approveRequest($id)
     {
-
         // Get the authenticated admin (you might need to adjust this logic based on your authentication setup)
         $admin = auth()->user(); // Assuming admin is authenticated
 
@@ -110,19 +114,32 @@ class AdminController extends Controller
         //     return response()->json(['error' => 'User not found'], 500);
         // }
 
-        //initials
-        $first = $admin->givenName;
-        $middle = $admin->middleName;
-        $last = $admin->lastName;
-        $suffix = $admin->suffixName;
+        $request = PendingRequests::findOrFail($id);
+        $request_id = $request->id;
+        $user_id = $request->user_id;
+        $admin_id = $admin->id;
+        $assess_type_id = $request->assess_type_id;
+
+        // INITIALS FOR THE CODE
+        $initials = '';
+
+        $assess_type = AssessType::findOrFail($assess_type_id);
+        $user = User::findOrFail($user_id);
+        $assess_type_name = $assess_type->name;
+
+        $initials .= $assess_type_name[0];
+
+        //user name initials
+        $first = $user->givenName;
+        $middle = $user->middleName;
+        $last = $user->lastName;
+        $suffix = $user->suffixName;
         $names = [
             $first,
             $middle,
             $last,
             $suffix
         ];
-
-        $initials = '';
 
         // Check if user info is fetched
         // Error handling
@@ -169,24 +186,49 @@ class AdminController extends Controller
             }
         }
 
-        // Generate a random unique code (adjust as per your requirements)
-        $code = uniqid($initials);
+        // Calculate the remaining bytes available for random generation
+        $remainingLength = (10 - strlen($initials)) * 2; // Multiply by 2 for hexadecimal representation
+        // Generate random bytes
+        $randomBytes = openssl_random_pseudo_bytes($remainingLength);
 
-        // Store the generated code in the database
-        $accessCode = AssessCode::create([
-            'assess_code' => $code,
-            'admin_id' => $admin->id,
+        // Convert random bytes to hexadecimal
+        $randomHex = bin2hex($randomBytes);
+
+        // Combine unique identifier and random hexadecimal
+        $code = $initials . $randomHex;
+
+        // Ensure the final code does not exceed 10 characters (bytes)
+        $code = substr($code, 0, 10);
+
+        // Generate access code (assuming AccessCode model exists)
+        $assessCode = AssessCode::create([
+            'code' => $code,
+            'assess_type_id' => $assess_type_id,
+            'request_id' => $request_id,
+            'admin_id' => $admin_id,
+            'user_id' => $user->id
         ]);
 
-        return response()->json(['assess_code' => $code]); // Respond with the generated code (for AJAX handling)
+        Mail::to($user->email)->send(new AssessCodeMail($user, $code));
+
+        // Delete the request from the database
+        $request->delete();
+
+        return redirect()->route('admin.pending-requests')->with('success', 'Request approved!');
     }
 
-    /**
-     * Handle an incoming registration request.
-     *
-     * @throws \Illuminate\Validation\ValidationException
-     */
-    public function addClient(Request $request)
+    public function cancelRequest($id)
+    {
+
+        $request = PendingRequests::findOrFail($id);
+
+        // Delete the request from the database
+        $request->delete();
+
+        return redirect()->route('admin.pending-requests')->with('success', 'Request deleted!');
+    }
+
+    public function addClient(Request $request): RedirectResponse
     {
 
         $request->validate([
@@ -194,9 +236,12 @@ class AdminController extends Controller
             'middleName' => ['nullable', 'string', 'max:255'],
             'lastName' => ['required', 'string', 'max:255'],
             'suffixName' => ['nullable', 'string', 'max:10'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:users,email'],
+            'cpNumber' => ['nullable', 'string', 'max:20'],
             'birthday' => ['required', 'date'],
             'sex' => ['required', Rule::in(['Male', 'Female'])],
+            'civilStat' => ['required', Rule::in(['Single', 'Married', 'Separated', 'Annulled', 'Divorced', 'Widowed'])],
+            'religion' => ['nullable', 'string', 'max:255'],
             'address' => ['required', 'string', 'max:1000'],
             'password' => [
                 'required',
@@ -216,16 +261,17 @@ class AdminController extends Controller
             'lastName' => $request->lastName,
             'suffixName' => $request->suffixName,
             'email' => $request->email,
+            'cpNumber' => $request->cpNumber,
             'birthday' => $request->birthday,
             'sex' => $request->sex,
+            'civilStat' => $request->civilStat,
+            'religion' => $request->religion,
             'address' => $request->address,
             'password' => Hash::make($request->password),
             'role' => 'client',
             'admin_id' => $admin->id,
         ]);
 
-        event(new Registered($user));
-
-        return response()->json(['add_client' => 'Added client successfully!']);;
+        return Redirect::route('admin.clients')->with('success', 'Client added!');
     }
 }

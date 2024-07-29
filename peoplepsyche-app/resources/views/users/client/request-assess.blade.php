@@ -1,5 +1,9 @@
 @extends('layout.home')
 
+@section('title')
+    Request Access - Assessment Portal |
+@endsection
+
 @section('body')
     <div class="container d-flex justify-content-center align-items-center min-vh-100">
         <!-- REQUEST ASSESS CODE BOX -->
@@ -27,7 +31,7 @@
 
             <!-- REQUEST ASSESSMENT FORM -->
             <div class="row justify-content-center align-items-center">
-                <form id="request-assess-form" class="g-3" method="POST" action="{{ route('request-assess') }}">
+                <form id="request-assess-form" class="g-3" method="POST" action="{{ route('request-assess') }}" enctype="multipart/form-data">
                     @csrf
 
                     <div class="overflow-hidden mb-3">
@@ -39,6 +43,18 @@
                                 <option value="{{ $type->id }}">{{ $type->name }}</option>
                             @endforeach
                         </select>
+                        @error('assess_type')
+                            <span class="text-danger mt-2">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    <!-- UPLOAD FILE (PROOF OF PAYMENT) FIELD -->
+                    <div class="overflow-hidden mb-3">
+                        <label for="formFile">{{ __('Proof of payment') }}</label>
+                        <input class="form-control" name="receipt" type="file" id="formFile" required />
+                        @error('receipt')
+                            <span class="text-danger mt-2">{{ $message }}</span>
+                        @enderror
                     </div>
 
                     <!-- SUBMIT BUTTON -->

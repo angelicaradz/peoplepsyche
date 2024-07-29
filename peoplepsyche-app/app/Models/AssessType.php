@@ -17,7 +17,7 @@ class AssessType extends Model
 
     public function test()
     {
-        return $this->belongsToMany(Tests::class, 'assess_type_test');
+        return $this->belongsToMany(Tests::class, 'assess_types_test', 'assess_type_id', 'test_id');
     }
 
     public function request()

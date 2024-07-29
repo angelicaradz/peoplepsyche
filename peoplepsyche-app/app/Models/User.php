@@ -67,6 +67,15 @@ class User extends Authenticatable
         return $this->middleName ? substr($this->middleName, 0, 1) . '.' : '';
     }
 
+    public function getFormattedBirthdayAttribute()
+    {
+        if ($this->birthday) {
+            return strtoupper(date('F j, Y', strtotime($this->birthday)));
+        }
+
+        return null;
+    }
+
     public function superadmin()
     {
         return $this->belongsToMany(Superadmin::class, 'superadmin_user', 'user_id', 'superadmin_id');
@@ -90,5 +99,16 @@ class User extends Authenticatable
     public function test()
     {
         return $this->hasMany(Tests::class);
+    }
+
+    public function eligibleTaker()
+    {
+        return $this->hasOne(EligibleTaker::class);
+    }
+
+    public function isEligible()
+    {
+        // Assume 'eligible_users' is the table where eligibility is stored
+        return $this->eligibleTaker()->exists();
     }
 }

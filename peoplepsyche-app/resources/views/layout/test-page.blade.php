@@ -1,5 +1,9 @@
 @extends('layout.layout')
 
+@section('title')
+    Assessment |
+@endsection
+
 @section('scripts')
     @vite('/public/build/assets/js/godsGift.js')
 @endsection

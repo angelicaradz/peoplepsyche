@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('assess_codes', function (Blueprint $table) {
             $table->id();
             $table->string('code')->unique();
+            $table->unsignedBigInteger('assess_type_id');
             $table->unsignedBigInteger('request_id');
             $table->unsignedBigInteger('admin_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });
     }

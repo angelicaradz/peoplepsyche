@@ -1,5 +1,9 @@
 @extends('layout.dashboard')
 
+@section('title')
+    Superadmin Dashboard |
+@endsection
+
 @section('page-title')
     Welcome to Dashboard, {{ Auth::user()->name }}!
 @endsection

@@ -1,5 +1,9 @@
 @extends('layout.home')
 
+@section('title')
+    Register |
+@endsection
+
 @section('body')
 <div class="p-5 container d-flex flex-lg-row justify-content-center align-items-center min-vh-100">
 
@@ -21,7 +25,9 @@
                     <div class="form-floating overflow-hidden">
                         <x-text-input type="text" name="givenName" class="form-control" id="floatingGivenName" placeholder="Juan" :value="old('givenName')" required autofocus autocomplete="given-name" />
                         <x-input-label for="floatingGivenName" :value="__('Given Name')" />
-                        <x-input-error :messages="$errors->get('givenName')" class="mt-2" />
+                        @error('givenName')
+                            <span class="text-danger mt-2">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
 
@@ -30,7 +36,9 @@
                     <div class="form-floating overflow-hidden">
                         <x-text-input type="name" name="middleName" class="form-control" id="floatingMiddleName" placeholder="Dela" :value="old('middleName')" autocomplete="additional-name" />
                         <x-input-label for="floatingMiddleName" :value="__('Middle Name')" />
-                        <x-input-error :messages="$errors->get('middleName')" class="mt-2" />
+                        @error('middleName')
+                            <span class="text-danger mt-2">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
 
@@ -39,7 +47,9 @@
                     <div class="form-floating overflow-hidden">
                         <x-text-input type="name" name="lastName" class="form-control" id="floatingLastName" placeholder="Cruz" :value="old('lastName')" required autocomplete="family-name" />
                         <x-input-label for="floatingLastName" :value="__('Last Name')" />
-                        <x-input-error :messages="$errors->get('lastName')" class="mt-2" />
+                        @error('lastName')
+                            <span class="text-danger mt-2">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
 
@@ -48,7 +58,9 @@
                     <div class="form-floating overflow-hidden">
                         <x-text-input type="name" name="suffixName" class="form-control" id="floatingSuffixName" placeholder="Jr" :value="old('suffixName')" autocomplete="honorific-suffix" />
                         <x-input-label for="floatingSuffixName" :value="__('Suffix Name')" />
-                        <x-input-error :messages="$errors->get('suffixName')" class="mt-2" />
+                        @error('suffixName')
+                            <span class="text-danger mt-2">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
 
@@ -57,7 +69,9 @@
                     <div class="form-floating overflow-hidden">
                         <x-text-input type="email" name="email" class="form-control" id="floatingEmail" placeholder="name@example.com" :value="old('email')" required autocomplete="email" />
                         <x-input-label for="floatingEmail" :value="__('Email')" />
-                        <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                        @error('email')
+                            <span class="text-danger mt-2">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
 
@@ -66,7 +80,9 @@
                     <div class="form-floating overflow-hidden">
                         <x-text-input type="tel" name="cpNumber" class="form-control" id="floatingCpNumber" placeholder="XXXXXXXXXXX" autocomplete="tel" />
                         <x-input-label for="floatingCpNumber" :value="__('Mobile Number')" />
-                        <x-input-error :messages="$errors->get('cpNumber')" class="mt-2" />
+                        @error('cpNumber')
+                            <span class="text-danger mt-2">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
 
@@ -75,7 +91,9 @@
                     <div class="form-floating overflow-hidden">
                         <x-text-input type="date" name="birthday" class="form-control" id="floatingBirthday" placeholder="MM/DD/YYYY" required autocomplete="bday" />
                         <x-input-label for="floatingBirthday" :value="__('Birthday')" />
-                        <x-input-error :messages="$errors->get('birthday')" class="mt-2" />
+                        @error('birthday')
+                            <span class="text-danger mt-2">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
 
@@ -88,7 +106,9 @@
                             <option value="Female">Female</option>
                         </select>
                         <x-input-label for="floatingSex" :value="__('Sex')" />
-                        <x-input-error :messages="$errors->get('sex')" class="mt-2" />
+                        @error('sex')
+                            <span class="text-danger mt-2">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
 
@@ -105,7 +125,9 @@
                             <option value="Widowed">Widowed</option>
                         </select>
                         <x-input-label for="floatingCivilStat" :value="__('Civil Status')" />
-                        <x-input-error :messages="$errors->get('civilStat')" class="mt-2" />
+                        @error('civilStat')
+                            <span class="text-danger mt-2">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
 
@@ -114,7 +136,9 @@
                     <div class="form-floating overflow-hidden">
                         <x-text-input type="text" name="religion" class="form-control" id="floatingReligion" placeholder="Roman Catholic" />
                         <x-input-label for="floatingReligion" :value="__('Religion')" />
-                        <x-input-error :messages="$errors->get('religion')" class="mt-2" />
+                        @error('religion')
+                            <span class="text-danger mt-2">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
 
@@ -123,7 +147,9 @@
                     <div class="form-floating overflow-hidden">
                         <x-text-input type="text" name="address" class="form-control" id="floatingAddress" placeholder="Home address" required autocomplete="address-line1" />
                         <x-input-label for="floatingAddress" :value="__('Home Address')" />
-                        <x-input-error :messages="$errors->get('address')" class="mt-2" />
+                        @error('address')
+                            <span class="text-danger mt-2">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
 
@@ -134,9 +160,7 @@
                         <x-input-label for="floatingAccessCode" :value="__('Access Code')" />
                         {{-- <x-input-error :messages="$errors->get('user_code')" class="mt-2" /> --}}
                         @error('access_code')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
+                            <span class="text-danger mt-2">{{ $message }}</span>
                         @enderror
                     </div>
                 </div>
@@ -146,7 +170,9 @@
                     <div class="form-floating overflow-hidden">
                         <x-text-input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password" required autocomplete="new-password" />
                         <x-input-label for="floatingPassword" :value="__('Password')" />
-                        <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                        @error('password')
+                            <span class="text-danger mt-2">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
 
@@ -155,7 +181,9 @@
                     <div class="form-floating overflow-hidden">
                         <x-text-input type="password" name="password_confirmation" class="form-control" id="floatingPasswordConfirm" placeholder="Confirm password" required />
                         <x-input-label for="floatingPasswordConfirm" :value="__('Confirm Password')" />
-                        <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                        @error('password_confirmation')
+                            <span class="text-danger mt-2">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
 
@@ -165,7 +193,9 @@
                         <input class="form-check-input" type="checkbox" name="terms_agreement" value="" id="flexCheckChecked" required>
                         I have read and agree to the <a :href="route('terms')">{{ __('Terms and Condition') }}</a>.
                     </label>
-                    <x-input-error :messages="$errors->get('terms_agreement')" class="mt-2" />
+                    @error('terms_agreement')
+                            <span class="text-danger mt-2">{{ $message }}</span>
+                        @enderror
                 </div>
 
                 <!-- REGISTER BUTTON -->

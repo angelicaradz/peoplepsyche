@@ -9,13 +9,13 @@
             {{ __('Assessments') }}
         </x-nav-link>
     </li>
-    <li class="{{ request()->routeIs('profile.edit') ? 'active' : '' }}">
-        <x-nav-link :href="route('profile.edit')">
+    <li class="{{ request()->routeIs('client-profile.edit') ? 'active' : '' }}">
+        <x-nav-link :href="route('client-profile.edit')">
             {{ __('Profile') }}
         </x-nav-link>
     </li>
-    <li class="{{ request()->routeIs('settings.edit') ? 'active' : '' }}">
-        <x-nav-link :href="route('settings.edit')">
+    <li class="{{ request()->routeIs('client-settings.edit') ? 'active' : '' }}">
+        <x-nav-link :href="route('client-settings.edit')">
             {{ __('Settings') }}
         </x-nav-link>
     </li>
@@ -46,13 +46,13 @@
             {{ __('Pending Requests') }}
         </x-nav-link>
     </li>
-    <li class="{{ request()->routeIs('admin.profile.edit') ? 'active' : '' }}">
-        <x-nav-link :href="route('admin.profile.edit')">
+    <li class="{{ request()->routeIs('admin-profile.edit') ? 'active' : '' }}">
+        <x-nav-link :href="route('admin-profile.edit')">
             {{ __('Profile') }}
         </x-nav-link>
     </li>
-    <li class="{{ request()->routeIs('admin.settings.edit') ? 'active' : '' }}">
-        <x-nav-link :href="route('admin.settings.edit')">
+    <li class="{{ request()->routeIs('admin-settings.edit') ? 'active' : '' }}">
+        <x-nav-link :href="route('admin-settings.edit')">
             {{ __('Settings') }}
         </x-nav-link>
     </li>
@@ -78,8 +78,8 @@
             {{ __('Users') }}
         </x-nav-link>
     </li>
-    <li class="{{ request()->routeIs('superadmin.settings.edit') ? 'active' : '' }}">
-        <x-nav-link :href="route('superadmin.settings.edit')">
+    <li class="{{ request()->routeIs('superadmin-settings.edit') ? 'active' : '' }}">
+        <x-nav-link :href="route('superadmin-settings.edit')">
             {{ __('Profile Settings') }}
         </x-nav-link>
     </li>

@@ -4,6 +4,7 @@
     @vite('/public/build/assets/js/sidebar-nav.js')
     @vite('/public/build/assets/js/add_client.js')
     @vite('/public/build/assets/js/add_user.js')
+    {{-- @vite('/public/build/assets/js/requestHandler.js') --}}
 @endsection
 
 @section('body')

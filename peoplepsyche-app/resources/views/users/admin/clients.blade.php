@@ -1,10 +1,24 @@
 @extends('layout.dashboard')
 
+@section('title')
+    Clients |
+@endsection
+
 @section('page-title')
     Clients List
 @endsection
 
 @section('content')
+
+    @if (session('success'))
+        <div class="alert alert-success mt-5">
+            {{ session('success') }}
+        </div>
+    @elseif (session('error'))
+        <div class="alert alert-danger mt-5">
+            {{ session('error') }}
+        </div>
+    @endif
     <!-- ADD CLIENT BUTTON -->
     <div class="d-flex flex-sm-row mt-5 justify-content-end">
         <div class="col-lg-2">
@@ -34,7 +48,9 @@
                             <div class="form-floating overflow-hidden">
                                 <x-text-input type="text" name="givenName" class="form-control" id="floatingGivenName" placeholder="Juan" :value="old('givenName')" required autofocus autocomplete="given-name" />
                                 <x-input-label class="text-black" for="floatingGivenName" :value="__('Given Name')" />
-                                <x-input-error :messages="$errors->get('givenName')" class="mt-2" />
+                                @error('givenName')
+                                    <span class="text-danger mt-2">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
 
@@ -43,7 +59,9 @@
                             <div class="form-floating overflow-hidden">
                                 <x-text-input type="name" name="middleName" class="form-control" id="floatingMiddleName" placeholder="Dela" :value="old('middleName')" autocomplete="additional-name" />
                                 <x-input-label class="text-black" for="floatingMiddleName" :value="__('Middle Name')" />
-                                <x-input-error :messages="$errors->get('middleName')" class="mt-2" />
+                                @error('middleName')
+                                    <span class="text-danger mt-2">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
 
@@ -52,7 +70,9 @@
                             <div class="form-floating overflow-hidden">
                                 <x-text-input type="name" name="lastName" class="form-control" id="floatingLastName" placeholder="Cruz" :value="old('lastName')" required autocomplete="family-name" />
                                 <x-input-label class="text-black" for="floatingLastName" :value="__('Last Name')" />
-                                <x-input-error :messages="$errors->get('lastName')" class="mt-2" />
+                                @error('lastName')
+                                    <span class="text-danger mt-2">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
 
@@ -61,16 +81,9 @@
                             <div class="form-floating overflow-hidden">
                                 <x-text-input type="name" name="suffixName" class="form-control" id="floatingSuffixName" placeholder="Jr" :value="old('suffixName')" autocomplete="honorific-suffix" />
                                 <x-input-label class="text-black" for="floatingSuffixName" :value="__('Suffix Name')" />
-                                <x-input-error :messages="$errors->get('suffixName')" class="mt-2" />
-                            </div>
-                        </div>
-
-                        <!-- EMAIL ADDRESS -->
-                        <div class="col-12">
-                            <div class="form-floating overflow-hidden">
-                                <x-text-input type="email" name="email" class="form-control" id="floatingEmail" placeholder="name@example.com" :value="old('email')" required autocomplete="email" />
-                                <x-input-label class="text-black" for="floatingEmail" :value="__('Email')" />
-                                <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                                @error('suffixName')
+                                    <span class="text-danger mt-2">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
 
@@ -79,7 +92,9 @@
                             <div class="form-floating overflow-hidden">
                                 <x-text-input type="date" name="birthday" class="form-control" id="floatingBirthday" placeholder="MM/DD/YYYY" required autocomplete="bday" />
                                 <x-input-label class="text-black" for="floatingBirthday" :value="__('Birthday')" />
-                                <x-input-error :messages="$errors->get('birthday')" class="mt-2" />
+                                @error('birthday')
+                                    <span class="text-danger mt-2">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
 
@@ -92,7 +107,39 @@
                                     <option value="Female">Female</option>
                                 </select>
                                 <x-input-label class="text-black" for="floatingSex" :value="__('Sex')" />
-                                <x-input-error :messages="$errors->get('sex')" class="mt-2" />
+                                @error('sex')
+                                    <span class="text-danger mt-2">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <!-- CIVIL STATUS -->
+                        <div class="col-md-6">
+                            <div class="form-floating overflow-hidden">
+                                <select class="form-select" id="floatingCivilStat" name="civilStat" aria-label="Floating label select example" required>
+                                    <option selected disabled>Select Civil Status</option>
+                                    <option value="Single">Single</option>
+                                    <option value="Married">Married</option>
+                                    <option value="Separated">Separated</option>
+                                    <option value="Divorced">Annulled</option>
+                                    <option value="Divorced">Divorced</option>
+                                    <option value="Widowed">Widowed</option>
+                                </select>
+                                <x-input-label for="floatingCivilStat" :value="__('Civil Status')" />
+                                @error('civilStat')
+                                    <span class="text-danger mt-2">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <!-- RELIGION -->
+                        <div class="col-md-6">
+                            <div class="form-floating overflow-hidden">
+                                <x-text-input type="text" name="religion" class="form-control" id="floatingReligion" placeholder="Roman Catholic" />
+                                <x-input-label for="floatingReligion" :value="__('Religion')" />
+                                @error('religion')
+                                    <span class="text-danger mt-2">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
 
@@ -101,7 +148,31 @@
                             <div class="form-floating overflow-hidden">
                                 <x-text-input type="text" name="address" class="form-control" id="floatingAddress" placeholder="Home address" required autocomplete="address-line1" />
                                 <x-input-label class="text-black" for="floatingAddress" :value="__('Home Address')" />
-                                <x-input-error :messages="$errors->get('address')" class="mt-2" />
+                                @error('address')
+                                    <span class="text-danger mt-2">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <!-- PHONE NUMBER -->
+                        <div class="col-md-6">
+                            <div class="form-floating overflow-hidden">
+                                <x-text-input type="tel" name="cpNumber" class="form-control" id="floatingCpNumber" placeholder="XXXXXXXXXXX" autocomplete="tel" />
+                                <x-input-label for="floatingCpNumber" :value="__('Mobile Number')" />
+                                @error('cpNumber')
+                                    <span class="text-danger mt-2">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <!-- EMAIL ADDRESS -->
+                        <div class="col-12">
+                            <div class="form-floating overflow-hidden">
+                                <x-text-input type="email" name="email" class="form-control" id="floatingEmail" placeholder="name@example.com" :value="old('email')" required autocomplete="email" />
+                                <x-input-label class="text-black" for="floatingEmail" :value="__('Email')" />
+                                @error('email')
+                                    <span class="text-danger mt-2">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
 
@@ -110,7 +181,9 @@
                             <div class="form-floating overflow-hidden">
                                 <x-text-input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password" required autocomplete="new-password" />
                                 <x-input-label class="text-black" for="floatingPassword" :value="__('Password')" />
-                                <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                                @error('password')
+                                    <span class="text-danger mt-2">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
 
@@ -119,7 +192,9 @@
                             <div class="form-floating overflow-hidden">
                                 <x-text-input type="password" name="password_confirmation" class="form-control" id="floatingPasswordConfirm" placeholder="Confirm password" required />
                                 <x-input-label class="text-black" for="floatingPasswordConfirm" :value="__('Confirm Password')" />
-                                <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                                @error('password_confirmation')
+                                    <span class="text-danger mt-2">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
                     </form>
@@ -127,7 +202,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-cancel" data-bs-dismiss="modal">Cancel</button>
-                    <button class="btn add-client-btn" type="submit" value="Register">{{ __('Register') }}</button>
+                    <button id="submit-btn" class="btn add-client-btn" type="submit" value="Register">{{ __('Register') }}</button>
                 </div>
             </div>
         </div>
@@ -156,42 +231,51 @@
         </div>
     </div>
 
-    <!-- CLIENT LIST SECTION -->
-    <div id="table-list" class="card mt-1">
-        <div class="card-body">
-            <table class="table table-striped table-hover">
-                <thead>
-                    <tr>
-                    <th scope="col">No.</th>
-                    <th scope="col">Last Name</th>
-                    <th scope="col">First Name</th>
-                    <th scope="col">Middle Name</th>
-                    <th scope="col">Suffix</th>
-                    <th scope="col">Date Registered</th>
-                    <th scope="col">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($clients as $client)
-                        <tr>
-                            <th scope="row">{{ $loop->iteration }}</th>
-                            <td>{{ $client->lastName }}</td>
-                            <td>{{ $client->givenName }}</td>
-                            <td>{{ $client->middleName ?? '-' }}</td>
-                            <td>{{ $client->suffixName ?? '-' }}</td>
-                            <td>{{ $client->created_at->format('m/d/Y g:iA') }}</td>
-                            <td>
-                                <div class="dropdown">
-                                    <a class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
-                                    <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">View</a></li>
-                                    </ul>
-                                </div>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+    @if($clients->isEmpty())
+        <div class="row justify-content-center align-items-center mt-5">
+            <div class="alert alert-info" role="alert">
+                No registered clients.
+            </div>
         </div>
-    </div>
+    @else
+        <!-- CLIENT LIST SECTION -->
+        <div id="table-list" class="card mt-1">
+            <div class="card-body">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                        <th scope="col">No.</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Middle Name</th>
+                        <th scope="col">Suffix</th>
+                        <th scope="col">Date Registered</th>
+                        <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($clients as $client)
+                            <tr>
+                                <th scope="row">{{ $loop->iteration }}</th>
+                                <td>{{ $client->lastName }}</td>
+                                <td>{{ $client->givenName }}</td>
+                                <td>{{ $client->middleName ?? '-' }}</td>
+                                <td>{{ $client->suffixName ?? '-' }}</td>
+                                <td>{{ $client->created_at->format('m/d/Y g:iA') }}</td>
+                                <td>
+                                    <div class="dropdown">
+                                        <a class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="{{ route('admin.view_result', $client->id) }}" id="view_result">View</a></li>
+                                            <li><a class="dropdown-item" href="{{ route('admin.print_result', $client->id) }}" id="print_result">Print</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    @endif
 @endsection

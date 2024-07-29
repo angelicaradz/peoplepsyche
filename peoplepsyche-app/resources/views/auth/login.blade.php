@@ -1,5 +1,9 @@
 @extends('layout.home')
 
+@section('title')
+    Login |
+@endsection
+
 @section('body')
 <div class="container d-flex justify-content-center align-items-center min-vh-100">
     <!-- LOGIN BOX -->
@@ -24,7 +28,9 @@
                 <div class="form-floating mb-2 overflow-hidden">
                     <x-text-input type="email" class="form-control" id="floatingInput" name="email" placeholder="name@example.com" :value="old('email')" required autofocus autocomplete="username" />
                     <x-input-label for="floatingInput" :value="__('Email')" />
-                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                    @error('email')
+                        <span class="text-danger mt-2">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <!-- PASSWORD INPUT FIELD -->
@@ -35,7 +41,9 @@
                                     placeholder="Password"
                                     required autocomplete="current-password" />
                     <x-input-label for="floatingPassword" :value="__('Password')" />
-                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                    @error('password')
+                        <span class="text-danger mt-2">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="d-flex flex-sm-row mt-1 mb-4 g-4 align-items-center">

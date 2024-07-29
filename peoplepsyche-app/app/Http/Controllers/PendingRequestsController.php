@@ -38,16 +38,25 @@ class PendingRequestsController extends Controller
                 'integer',
                 'min:1',
                 'exists:assess_types,id'
-            ]
+            ],
+            'receipt' => 'image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
         $assess_type_id = $validatedData['assess_type'];
+        $path = null;
+
+        if ($request->hasFile('receipt')) {
+            $file = $request->file('receipt');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $path = $file->storeAs('pictures', $filename, 'public');
+        }
 
         try {
             $save_request = PendingRequests::create([
                 'user_id' => $user->id,
                 'admin_id' => $admin_id,
-                'assess_type_id' => $assess_type_id
+                'assess_type_id' => $assess_type_id,
+                'receipt_path' => $path
             ]);
             Log::info('Request saved successfully for user: ' . $user->id);
         } catch (\Exception $e) {

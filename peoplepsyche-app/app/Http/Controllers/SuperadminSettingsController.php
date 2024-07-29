@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProfileUpdateRequest;
+use Illuminate\Validation\Rules;
+use App\Models\Superadmin;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
@@ -24,17 +26,53 @@ class SuperadminSettingsController extends Controller
     /**
      * Update the user's profile information.
      */
-    public function update(ProfileUpdateRequest $request): RedirectResponse
+    public function updateEmail(Request $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
+        $request->validate([
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.Superadmin::class]
+        ]);
+
+        $user = Auth::user();
+
+        Superadmin::updateOrCreate(
+            ['id' => $user->id],
+            [
+                'email' => $request->email,
+            ]
+        );
 
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
         }
 
-        $request->user()->save();
+        return Redirect::route('superadmin-settings.edit')->with('success', 'Account updated!');
+    }
 
-        return Redirect::route('users.superadmin.settings')->with('status', 'settings-updated');
+    public function updatePassword(Request $request): RedirectResponse
+    {
+        $request->validate([
+            'password' => [
+                'required',
+                'confirmed',
+                Rules\Password::min(8)
+                    ->mixedCase()
+                    ->numbers()
+                    ->symbols()
+            ]
+        ]);
+
+        $user = Auth::user();
+
+        Superadmin::updateOrCreate(
+            ['id' => $user->id],
+            [
+                'password' => Hash::make($request->password)
+            ]
+        );
+
+        Auth::logout();
+
+        return Redirect::route('superadmin.login')->with('success', 'Password updated successfully. Please log in with your new password.');
     }
 
     /**

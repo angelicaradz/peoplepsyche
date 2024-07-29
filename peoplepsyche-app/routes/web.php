@@ -5,11 +5,14 @@ use App\Http\Controllers\AdminProfileController;
 use App\Http\Controllers\AdminSettingsController;
 use App\Http\Controllers\AssessmentController;
 use App\Http\Controllers\DataController;
+use App\Http\Controllers\EligibleTakerController;
 use App\Http\Controllers\PendingRequestsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\SuperadminSettingsController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,45 +37,59 @@ Route::get('/', function () {
 | CLIENTS
 */
 
-Route::get('/dashboard', [DataController::class, 'showAssessments'])
+Route::get('/dashboard', [DataController::class, 'showResults'])
     ->name('dashboard')
     ->middleware(['auth', 'verified']);
 
-Route::get('/assessments-list', function () {
-    return view('users.client.assessments-list');
-})->middleware(['auth', 'verified'])->name('assessments-list');
+// Route::get('/assessments-list', function () {
+//     return view('users.client.assessments-list');
+// })->middleware(['auth', 'verified'])->name('assessments-list');
+
+Route::get('/assessments-list', [DataController::class, 'showAssessmentList'])
+    ->name('assessments-list')
+    ->middleware(['auth', 'verified']);
+
+Route::get('/view_result/{id}', [DataController::class, 'showResultPdf'])
+    ->name('view_result')
+    ->middleware(['auth', 'verified']);
+
+Route::get('/print_result/{id}', [DataController::class, 'printResultPdf'])
+    ->name('print_result')
+    ->middleware(['auth', 'verified']);
 
 Route::get('/take-assessment', function () {
     return view('users.client.assess-access-form');
 })->middleware(['auth', 'verified'])->name('take-assessment');
 
-Route::get('/request-assess-form', [PendingRequestsController::class, 'showForm'])
+Route::post('/take-assessment', [EligibleTakerController::class, 'store'])
+    ->name('submit-assessment');
+
+Route::get('/request-assess', [PendingRequestsController::class, 'showForm'])
     ->name('request-assess-form')
     ->middleware(['auth', 'verified']);
 
 Route::post('/request-assess', [PendingRequestsController::class, 'send_request'])
     ->name('request-assess')
     ->middleware(['auth', 'verified']);
-//end
 
 Route::get('/test-page', function () {
     return view('users.client.test-page');
-})->middleware(['auth', 'verified'])->name('test-page');
+})->middleware(['auth', 'verified', 'eligible'])->name('test-page');
 
-Route::post('/results', [AssessmentController::class, 'store'])
+Route::post('/test-page', [AssessmentController::class, 'store'])
     ->name('godsGift')
-    ->middleware(['auth', 'verified']);
+    ->middleware(['auth', 'verified', 'eligible']);
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('client-profile.edit');
+    Route::post('/profile', [ProfileController::class, 'update'])->name('client-profile.update');
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/settings', [SettingsController::class, 'edit'])->name('settings.edit');
-    Route::patch('/settings', [SettingsController::class, 'update'])->name('settings.update');
-    Route::delete('/settings', [SettingsController::class, 'destroy'])->name('settings.destroy');
+    Route::get('/settings', [SettingsController::class, 'edit'])->name('client-settings.edit');
+    Route::post('/settings/update-email', [SettingsController::class, 'updateEmail'])->name('client-email.update');
+    Route::post('/settings/update-password', [SettingsController::class, 'updatePassword'])->name('client-password.update');
+    // Route::delete('/settings', [SettingsController::class, 'destroy'])->name('settings.destroy');
 });
 
 // Route::post('/results', [AssessmentResultController::class, 'calculateResults'])
@@ -97,20 +114,34 @@ Route::get('/admin/clients', [DataController::class, 'showClients'])
     ->name('admin.clients')
     ->middleware(['auth:admin', 'verified']);
 
-Route::get('/admin/pending-requests', [DataController::class, 'showRequests'])
-    ->name('admin.pending-requests')
+Route::get('/admin/clients/view_result/{id}', [DataController::class, 'showClientResult'])
+    ->name('admin.view_result')
     ->middleware(['auth:admin', 'verified']);
 
+Route::get('/admin/clients/print_result/{id}', [DataController::class, 'printClientResult'])
+    ->name('admin.print_result')
+    ->middleware(['auth:admin', 'verified']);
+
+// Route::get('/admin/pending-requests', [DataController::class, 'showRequests'])
+//     ->name('admin.pending-requests')
+//     ->middleware(['auth:admin', 'verified']);
+
 Route::middleware('auth:admin')->group(function () {
-    Route::get('/admin/profile', [AdminProfileController::class, 'edit'])->name('admin.profile.edit');
-    Route::patch('/admin/profile', [AdminProfileController::class, 'update'])->name('admin.profile.update');
-    Route::delete('/admin/profile', [AdminProfileController::class, 'destroy'])->name('admin.profile.destroy');
+    Route::get('/admin/pending-requests', [DataController::class, 'showRequests'])->name('admin.pending-requests');
+    Route::put('/admin/pending-requests/{id}/approve', [AdminController::class, 'approveRequest'])->name('request.approve');
+    Route::delete('/admin/pending-requests/{id}/cancel', [AdminController::class, 'cancelRequest'])->name('request.cancel');
 });
 
 Route::middleware('auth:admin')->group(function () {
-    Route::get('/admin/settings', [AdminSettingsController::class, 'edit'])->name('admin.settings.edit');
-    Route::patch('/admin/settings', [AdminSettingsController::class, 'update'])->name('admin.settings.update');
-    Route::delete('/admin/settings', [AdminSettingsController::class, 'destroy'])->name('admin.settings.destroy');
+    Route::get('/admin/profile', [AdminProfileController::class, 'edit'])->name('admin-profile.edit');
+    Route::post('/admin/profile', [AdminProfileController::class, 'update'])->name('admin-profile.update');
+});
+
+Route::middleware('auth:admin')->group(function () {
+    Route::get('/admin/settings', [AdminSettingsController::class, 'edit'])->name('admin-settings.edit');
+    Route::post('/admin/settings/update-email', [AdminSettingsController::class, 'updateEmail'])->name('admin-email.update');
+    Route::post('/admin/settings/update-password', [AdminSettingsController::class, 'updatePassword'])->name('admin-password.update');
+    // Route::delete('/admin/settings', [AdminSettingsController::class, 'destroy'])->name('admin.settings.destroy');
 });
 
 // Route::post('/admin/generate-code', 'AdminController@generateCode')->name('admin.generate-code');
@@ -128,26 +159,42 @@ require __DIR__.'/adminauth.php';
 /*
 | SUPERADMINS
 */
-Route::get('/superadmin/dashboard', function () {
-    return view('users.superadmin.dashboard');
-})->middleware(['auth:superadmin', 'verified'])->name('superadmin.dashboard');
+// Route::get('/superadmin/dashboard', function () {
+//     return view('users.superadmin.dashboard');
+// })->middleware(['auth:superadmin', 'verified'])->name('superadmin.dashboard');
 
 Route::get('/superadmin/dashboard', [DataController::class, 'showTotalUsers'])
     ->name('superadmin.dashboard')
     ->middleware(['auth:superadmin', 'verified']);
 
-Route::get('/superadmin/users', function () {
-    return view('users.superadmin.users');
-})->middleware(['auth:superadmin', 'verified'])->name('superadmin.users');
+// Route::get('/superadmin/users', function () {
+//     return view('users.superadmin.users');
+// })->middleware(['auth:superadmin', 'verified'])->name('superadmin.users');
 
-Route::get('/superadmin/users', [DataController::class, 'showAllUsers'])
-    ->name('superadmin.users')
-    ->middleware(['auth:superadmin', 'verified']);
+// Route::get('/superadmin/users', [DataController::class, 'showAllUsers'])
+//     ->name('superadmin.users')
+//     ->middleware(['auth:superadmin', 'verified']);
+
+// Route::get('/superadmin/users', [UserController::class, 'showAdmins'])
+//     ->name('superadmin.add-client')
+//     ->middleware(['auth:superadmin', 'verified']);
+
+// Route::post('/superadmin/users', [UserController::class, 'addClient'])
+//     ->name('superadmin.add-client')
+//     ->middleware(['auth:superadmin', 'verified']);
 
 Route::middleware('auth:superadmin')->group(function () {
-    Route::get('/superadmin/settings', [SuperadminSettingsController::class, 'edit'])->name('superadmin.settings.edit');
-    Route::patch('/superadmin/settings', [SuperadminSettingsController::class, 'update'])->name('superadmin.settings.update');
-    Route::delete('/superadmin/settings', [SuperadminSettingsController::class, 'destroy'])->name('superadmin.settings.destroy');
+    Route::get('/superadmin/users', [DataController::class, 'showAllUsers'])->name('superadmin.users');
+    Route::post('/superadmin/users/add-client', [UserController::class, 'addClient'])->name('superadmin.add-client');
+    Route::post('/superadmin/users/add-admin', [UserController::class, 'addAdmin'])->name('superadmin.add-admin');
+    Route::delete('/superadmin/users/add-superadmin', [SuperadminSettingsController::class, 'addSuperadmin'])->name('superadmin.add-superadmin');
+});
+
+Route::middleware('auth:superadmin')->group(function () {
+    Route::get('/superadmin/settings', [SuperadminSettingsController::class, 'edit'])->name('superadmin-settings.edit');
+    Route::post('/superadmin/settings/update-email', [SuperadminSettingsController::class, 'updateEmail'])->name('superadmin-email.update');
+    Route::post('/superadmin/settings/update-password', [SuperadminSettingsController::class, 'updatePassword'])->name('superadmin-password.update');
+    // Route::delete('/superadmin/settings', [SuperadminSettingsController::class, 'destroy'])->name('superadmin.settings.destroy');
 });
 
 require __DIR__.'/superadminauth.php';

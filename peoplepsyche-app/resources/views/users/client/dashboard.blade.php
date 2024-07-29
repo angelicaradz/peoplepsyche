@@ -1,5 +1,9 @@
 @extends('layout.dashboard')
 
+@section('title')
+    Dashboard |
+@endsection
+
 @section('page-title')
     Welcome to Dashboard, {{ Auth::user()->givenName }}!
 @endsection
@@ -9,43 +13,35 @@
         <p class="fs-5 fw-bold mb-0">Assessment Results</p>
     </div>
 
-    @if($tests->isEmpty())
+    @if($resultList->isEmpty() && is_null($results))
         <div class="alert alert-info" role="alert">
             No assessment taken.<x-nav-link :href="route('test-page')" type="button">Take assessment here.</x-nav-link>
         </div>
     @else
-        <div class="card">
-            <div class="card-body">
-                <table class="table table-striped table-hover">
-                    <thead>
-                        <tr>
-                        <th scope="col">No.</th>
-                        <th scope="col">Assessment Test</th>
-                        <th scope="col">Date Taken</th>
-                        <th scope="col">Handler</th>
-                        <th scope="col">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody class="overflow-y-scroll">
-                        @foreach($tests as $test)
-                            <tr>
-                                <th scope="row">{{ $loop->iteration }}</th>
-                                <td>{{ $test->name }}</td>
-                                <td>{{ $test->created_at->format('m/d/Y g:iA') }}</td>
-                                <td>{{ $test->admin->full_name ?? '-' }}</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <a class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
-                                        <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">View</a></li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
+        <div class="row mx-4 my-5 justify-content-center align-items-center">
+            @if(!empty($results['strengths']))
+                <h4 style="text-align: start">STRENGTHS:</h4>
+                <ul class="row mx-4 mb-5 align-items-start list-unstyled">
+
+                    @foreach($results['strengths'] as $strength)
+                        <li style="list-style: none; text-align:start; margin-bottom:40px">{{ $strength }}</li>
+                    @endforeach
+                </ul>
+            @endif
+            @if(!empty($results['weaknesses']))
+                <h4 style="text-align: start">WEAKNESSES:</h4>
+                <ul class="row mx-4 mb-5 align-items-start list-unstyled">
+                    @foreach($results['weaknesses'] as $weakness)
+                        <li style="list-style: none; text-align:start; margin-bottom:40px">{{ $weakness }}</li>
+                    @endforeach
+                </ul>
+            @endif
+        </div>
+        <div class="row mx-4 mb-5 text-center justify-content-center align-items-center">
+            <a href="{{ route('test-page') }}"
+                class="btn btn-lg fs-4" type="button"
+                style="background-color: chocolate; border:none; color:white;width:50%;"
+            >Take New Assessment</a>
         </div>
     @endif
 @endsection

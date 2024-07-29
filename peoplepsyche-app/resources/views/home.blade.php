@@ -25,5 +25,17 @@
             {{-- <a href="login.html" class="btn btn-lg fs-6 login-btn" type="button">Login</a>
             <a href="register.html" class="btn btn-lg fs-6 register-btn" type="button">Register</a> --}}
         </div>
+
+        <div id="home-buttons" class="d-flex justify-content-center align-items-center">
+            @if (Route::has('admin.login'))
+                <div class="text-center" style="font-size: 55%; font-weight:normal;">
+                    @auth
+                        <small><a href="{{ url('/admin/dashboard') }}" style="color: chocolate;">{{ __('Portal for Admins') }}</a></small>
+                    @else
+                        <small><a href="{{ route('admin.login') }}" style="color: chocolate;">{{ __('Portal for Admins') }}</a></small>
+                    @endauth
+                </div>
+            @endif
+        </div>
     </div>
 @endsection
