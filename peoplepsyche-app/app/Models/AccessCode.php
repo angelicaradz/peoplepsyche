@@ -19,9 +19,4 @@ class AccessCode extends Model
     {
         return $this->belongsTo(Admin::class, 'admin_id');
     }
-
-    // public function client()
-    // {
-    //     return $this->belongsTo(User::class);
-    // }
 }

@@ -158,7 +158,6 @@
                     <div class="form-floating overflow-hidden">
                         <x-text-input type="text" name="access_code" class="form-control" id="floatingAccessCode" placeholder="Access code" value="{{ old('access_code') }}" required />
                         <x-input-label for="floatingAccessCode" :value="__('Access Code')" />
-                        {{-- <x-input-error :messages="$errors->get('user_code')" class="mt-2" /> --}}
                         @error('access_code')
                             <span class="text-danger mt-2">{{ $message }}</span>
                         @enderror
@@ -194,8 +193,8 @@
                         I have read and agree to the <a :href="route('terms')">{{ __('Terms and Condition') }}</a>.
                     </label>
                     @error('terms_agreement')
-                            <span class="text-danger mt-2">{{ $message }}</span>
-                        @enderror
+                        <span class="text-danger mt-2">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <!-- REGISTER BUTTON -->

@@ -53,6 +53,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'birthday' => 'date'
     ];
 
     // Accessor for full name with shortened middle name
@@ -65,15 +66,6 @@ class User extends Authenticatable
     public function getMiddleInitialAttribute()
     {
         return $this->middleName ? substr($this->middleName, 0, 1) . '.' : '';
-    }
-
-    public function getFormattedBirthdayAttribute()
-    {
-        if ($this->birthday) {
-            return strtoupper(date('F j, Y', strtotime($this->birthday)));
-        }
-
-        return null;
     }
 
     public function superadmin()

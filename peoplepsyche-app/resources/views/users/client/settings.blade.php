@@ -9,8 +9,7 @@
 @endsection
 
 @section('content')
-    <!-- SETTINGS -->
-
+    {{-- ALERT MESSAGES --}}
     @if (session('success'))
         <div class="alert alert-success mt-5">
             {{ session('success') }}
@@ -21,6 +20,7 @@
         </div>
     @endif
 
+    {{-- ACCOUNT INFORMATION --}}
     <div id="settings" class="mt-5 justify-content-center">
 
         <div class="row mb-5">

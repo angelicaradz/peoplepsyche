@@ -28,16 +28,6 @@
                         @enderror
                     </div>
 
-                    <!-- CODE INPUT FIELD -->
-                    {{-- <div class="overflow-hidden mb-3">
-                        <label for="assess_type">{{ __('Select assessment type') }}</label>
-                        <select name="assess_type" id="assess_type" class="form-select" required>
-                            <option selected disabled>Select Assessment Type</option>
-                            <option value="Therapy">Therapy</option>
-                            <option value="Employment-Drivers">Employment - Drivers</option>
-                        </select>
-                    </div> --}}
-
                     <!-- SUBMIT BUTTON -->
                     <div class="d-grid gap-2 d-flex justify-content-center align-items-center">
                         <button class="assess-btn btn btn-lg fs-6" type="submit" value="Submit">{{ __('Submit') }}</button>

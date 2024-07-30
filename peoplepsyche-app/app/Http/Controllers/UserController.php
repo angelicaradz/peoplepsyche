@@ -6,7 +6,6 @@ use App\Models\Admin;
 use App\Models\Superadmin;
 use Illuminate\Http\Request;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\RedirectResponse;

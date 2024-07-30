@@ -9,6 +9,7 @@
 @endsection
 
 @section('content')
+    {{-- INFO MESSAGES --}}
     @if (session('success'))
         <div class="row justify-content-center align-items-center mt-5">
             <div class="alert alert-success">
@@ -24,6 +25,7 @@
         </div>
     @endif
 
+    {{-- PENDING REQUEST LIST INFO MESSAGE: IF THE LIST IS EMPTY --}}
     @if($requests->isEmpty())
         <div class="row justify-content-center align-items-center mt-5">
             <div class="alert alert-info" role="alert">
@@ -31,9 +33,8 @@
             </div>
         </div>
     @else
+        <!-- PENDING REQUESTS LIST SECTION -->
         <div id="table-list" class="card mt-5">
-
-            <!-- PENDING REQUESTS LIST SECTION -->
             <div class="card-body">
                 <table class="table table-striped table-hover">
                     <thead>

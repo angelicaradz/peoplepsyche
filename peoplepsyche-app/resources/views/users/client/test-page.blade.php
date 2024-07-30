@@ -13,7 +13,10 @@ UBAN TESTS! --}}
 @endsection
 
 @section('test-content')
+    {{-- GET USER SEX INFO --}}
     <div id="user-info" data-sex="{{ Auth::user()->sex }}"></div>
+
+    {{-- TEST FORM --}}
     <form id="godsGiftTest" action={{ route('godsGift') }} method="POST">
         @csrf
 
@@ -5120,8 +5123,6 @@ UBAN TESTS! --}}
 
         <!-- SUBMIT BUTTON -->
         <div class="row mx-4 mb-5 text-center">
-            <!-- <h2 class="fw-bold" style="color: red;">STOP</h2>
-            <h5 class="fw-bold">THANK YOU!</h5> -->
             <div class="input-group justify-content-center align-items-center">
                 <button class="btn btn-lg fs-4" type="submit" value="Submit">SUBMIT</button>
             </div>
@@ -5145,8 +5146,6 @@ UBAN TESTS! --}}
 
         <!-- GO BACK TO THE USER DASHBOARD -->
         <div class="row mx-4 mb-5 text-center">
-            <!-- <h2 class="fw-bold" style="color: red;">STOP</h2>
-            <h5 class="fw-bold">THANK YOU!</h5> -->
             <div class="input-group justify-content-center align-items-center">
                 <a href="{{ route('dashboard') }}" class="btn btn-lg fs-4" type="button">DONE</a>
             </div>

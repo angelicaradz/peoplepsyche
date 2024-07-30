@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-
+    {{-- ALERT MESSAGES --}}
     @if (session('success'))
         <div class="alert alert-success mt-5">
             {{ session('success') }}

@@ -65,6 +65,5 @@ class PendingRequestsController extends Controller
         }
 
         return redirect()->route('request-assess-form')->with('success', 'Request sent!');
-        // return response()->json(['message' => $assess_type_id]);
     }
 }

@@ -47,7 +47,7 @@ Route::middleware('auth:superadmin')->group(function () {
 
     Route::post('superadmin/confirm-password', [ConfirmablePasswordController::class, 'store']);
 
-    Route::put('superadmin/password', [PasswordController::class, 'update'])->name('password.update');
+    Route::put('superadmin/password', [PasswordController::class, 'update'])->name('superadmin.password.update');
 
     Route::post('superadmin/logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->name('superadmin.logout');

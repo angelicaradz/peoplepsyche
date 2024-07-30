@@ -8,13 +8,11 @@ use App\Models\AssessCode;
 use App\Models\AssessType;
 use App\Models\PendingRequests;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 
@@ -68,13 +66,6 @@ class AdminController extends Controller
                     $doublenames = explode(' ', $name);
 
                     foreach($doublenames as $doublename){
-                        // if($doublename === ''){
-                        //     unset($doublename);
-                        // }
-
-                        // else{
-                        //     $initials .= $doublename[0];
-                        // }
 
                         // Trim the name to remove any leading or trailing whitespace
                         $doublename = trim($doublename);
@@ -163,13 +154,6 @@ class AdminController extends Controller
                     $doublenames = explode(' ', $name);
 
                     foreach($doublenames as $doublename){
-                        // if($doublename === ''){
-                        //     unset($doublename);
-                        // }
-
-                        // else{
-                        //     $initials .= $doublename[0];
-                        // }
 
                         // Trim the name to remove any leading or trailing whitespace
                         $doublename = trim($doublename);

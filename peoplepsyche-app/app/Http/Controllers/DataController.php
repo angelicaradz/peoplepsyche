@@ -11,28 +11,11 @@ use App\Models\Taker;
 use App\Models\Tests;
 use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf;
-use Carbon\Carbon;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class DataController extends Controller
 {
-    public function getClientData($adminId)
-    {
-        // Retrieve clients for a specific admin id
-        $clients = User::where('admin_id', $adminId)->get();
-
-        //to be modified
-        //fetching client data table
-        return view('access_codes.index', compact('accessCodes'));
-    }
-
-    public function getAdminData()
-    {
-
-    }
 
     public function getAllUsers()
     {
@@ -236,12 +219,6 @@ class DataController extends Controller
         return view('users.client.assessments-list', compact('tests'));
     }
 
-    // public function showResults()
-    // {
-    //     $results = Item::findOrFail($id);
-    //     return view('items.show', compact('item'));
-    // }
-
     public function getPdf($data)
     {
         return Pdf::loadView('pdf.results', $data);
@@ -277,9 +254,6 @@ class DataController extends Controller
         $user = $result->client;
         $admin = $result->admin;
 
-        // Calculate the user's age
-        $age = Carbon::parse($user->birthday)->age;
-
         $tests_id = $result->tests_id;
         $testable_id = Tests::findOrFail($tests_id);
         $testResults = $this->getResult($testable_id);
@@ -290,9 +264,9 @@ class DataController extends Controller
             'middleName' => $user->middle_initial ?? '',
             'lastName' => $user->lastName,
             'sex' => $user->sex,
-            'birthday' => $user->formatted_birthday,
+            'birthday' => $user->birthday->format('F j, Y'),
             'created_at' => $result->created_at->format('m/d/Y g:iA'),
-            'age' => $age,
+            'age' => $user->birthday->diffInYears(now()),
             'civilStat' => $user->civilStat,
             'religion' => $user->religion,
             'address' => $user->address,
@@ -385,9 +359,6 @@ class DataController extends Controller
             return null;
         }
 
-        // Calculate the user's age
-        $age = Carbon::parse($result->client->birthday)->age;
-
         $testResults = $this->getClientLatest($result);
 
         $data = [
@@ -396,9 +367,9 @@ class DataController extends Controller
             'middleName' => $result->client->middle_initial ?? '',
             'lastName' => $result->client->lastName,
             'sex' => $result->client->sex,
-            'birthday' => $result->client->formatted_birthday,
+            'birthday' => $result->client->birthday->format('F j, Y'),
             'created_at' => $result->created_at->format('m/d/Y g:iA'),
-            'age' => $age,
+            'age' => $result->client->birthday->diffInYears(now()),
             'civilStat' => $result->client->civilStat,
             'religion' => $result->client->religion,
             'address' => $result->client->address,

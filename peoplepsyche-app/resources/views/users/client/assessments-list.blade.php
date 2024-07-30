@@ -10,6 +10,7 @@
 
 @section('content')
 
+    {{-- ASSESSMENT LIST INFO MESSAGE: IF THE LIST IS EMPTY --}}
     @if($tests->isEmpty())
         <div class="row justify-content-center align-items-center mt-5">
             <div class="alert alert-info" role="alert">
@@ -17,6 +18,7 @@
             </div>
         </div>
     @else
+        {{-- ASSESSMENT LIST SECTION --}}
         <div class="card mt-5">
             <div class="card-body">
                 <table class="table table-striped table-hover">

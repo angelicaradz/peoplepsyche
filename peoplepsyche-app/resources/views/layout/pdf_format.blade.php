@@ -5,7 +5,6 @@
 @endsection
 
 @section('body')
-    {{-- <div class="justify-content-center align-items-center min-vh-100"> --}}
     <div class="justify-content-center align-items-center">
         <!-- PDF TITLE -->
         <div class="row justify-content-center">

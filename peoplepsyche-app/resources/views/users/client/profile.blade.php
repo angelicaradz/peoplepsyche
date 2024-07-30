@@ -9,8 +9,7 @@
 @endsection
 
 @section('content')
-    <!-- PROFILE -->
-
+    {{-- INFO MESSAGES --}}
     @if (session('success'))
         <div class="alert alert-success mt-5">
             {{ session('success') }}
@@ -21,8 +20,8 @@
         </div>
     @endif
 
+    {{-- PROFILE INFORMATION --}}
     <div class="d-flex mt-5 justify-content-center">
-
         <!-- EDIT INFORMATION -->
         <form id="profile-form" method="post" action="{{ route('client-profile.update') }}">
             @csrf

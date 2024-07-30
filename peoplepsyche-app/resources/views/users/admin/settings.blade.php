@@ -9,8 +9,7 @@
 @endsection
 
 @section('content')
-    <!-- SETTINGS -->
-
+    <!-- INFO MESSAGES -->
     @if (session('success'))
         <div class="alert alert-success mt-5">
             {{ session('success') }}
@@ -21,8 +20,8 @@
         </div>
     @endif
 
+    {{-- ACCOUNT INFORMATION --}}
     <div id="settings" class="mt-5 justify-content-center">
-
         <div class="row mb-5">
             {{-- VERIFY EMAIL --}}
             {{-- <form id="send-verification" method="post" action="{{ route('verification.send') }}">

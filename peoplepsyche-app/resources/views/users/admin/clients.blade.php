@@ -10,6 +10,7 @@
 
 @section('content')
 
+    {{-- INFO MESSAGES --}}
     @if (session('success'))
         <div class="alert alert-success mt-5">
             {{ session('success') }}
@@ -19,6 +20,7 @@
             {{ session('error') }}
         </div>
     @endif
+
     <!-- ADD CLIENT BUTTON -->
     <div class="d-flex flex-sm-row mt-5 justify-content-end">
         <div class="col-lg-2">
@@ -114,7 +116,7 @@
                         </div>
 
                         <!-- CIVIL STATUS -->
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-floating overflow-hidden">
                                 <select class="form-select" id="floatingCivilStat" name="civilStat" aria-label="Floating label select example" required>
                                     <option selected disabled>Select Civil Status</option>
@@ -125,7 +127,7 @@
                                     <option value="Divorced">Divorced</option>
                                     <option value="Widowed">Widowed</option>
                                 </select>
-                                <x-input-label for="floatingCivilStat" :value="__('Civil Status')" />
+                                <x-input-label class="text-black" for="floatingCivilStat" :value="__('Civil Status')" />
                                 @error('civilStat')
                                     <span class="text-danger mt-2">{{ $message }}</span>
                                 @enderror
@@ -133,10 +135,10 @@
                         </div>
 
                         <!-- RELIGION -->
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-floating overflow-hidden">
                                 <x-text-input type="text" name="religion" class="form-control" id="floatingReligion" placeholder="Roman Catholic" />
-                                <x-input-label for="floatingReligion" :value="__('Religion')" />
+                                <x-input-label class="text-black" for="floatingReligion" :value="__('Religion')" />
                                 @error('religion')
                                     <span class="text-danger mt-2">{{ $message }}</span>
                                 @enderror
@@ -155,10 +157,10 @@
                         </div>
 
                         <!-- PHONE NUMBER -->
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-floating overflow-hidden">
                                 <x-text-input type="tel" name="cpNumber" class="form-control" id="floatingCpNumber" placeholder="XXXXXXXXXXX" autocomplete="tel" />
-                                <x-input-label for="floatingCpNumber" :value="__('Mobile Number')" />
+                                <x-input-label class="text-black" for="floatingCpNumber" :value="__('Mobile Number')" />
                                 @error('cpNumber')
                                     <span class="text-danger mt-2">{{ $message }}</span>
                                 @enderror
@@ -202,7 +204,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-cancel" data-bs-dismiss="modal">Cancel</button>
-                    <button id="submit-btn" class="btn add-client-btn" type="submit" value="Register">{{ __('Register') }}</button>
+                    <button id="submit-btn" class="btn add-client-btn" type="submit">Add Client</button>
                 </div>
             </div>
         </div>
@@ -231,6 +233,7 @@
         </div>
     </div>
 
+    {{-- CLIENT LIST INFO MESSAGE: IF THE LIST IS EMPTY --}}
     @if($clients->isEmpty())
         <div class="row justify-content-center align-items-center mt-5">
             <div class="alert alert-info" role="alert">

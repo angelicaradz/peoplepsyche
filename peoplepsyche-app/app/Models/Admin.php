@@ -54,6 +54,7 @@ class Admin extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'birthday' => 'date'
     ];
 
     // Accessor for full name with shortened middle name
@@ -82,11 +83,6 @@ class Admin extends Authenticatable
     {
         return $this->belongsToMany(Superadmin::class, 'superadmin_admin', 'admin_id', 'superadmin_id');
     }
-
-    // public function assess_code()
-    // {
-    //     return $this->hasMany(AssessCode::class);
-    // }
 
     public function assessType()
     {

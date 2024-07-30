@@ -8,7 +8,6 @@ use App\Models\GodsGiftTest;
 use App\Models\Taker;
 use App\Models\Tests;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
 class AssessmentController extends Controller
@@ -65,9 +64,6 @@ class AssessmentController extends Controller
             $eligible_taker_id = $getTakerData->id;
 
             Log::info('Eligible Taker retrieved:', ['eligible_taker_id' => $eligible_taker_id]);
-
-            // $getEligibleTaker = EligibleTaker::findOrFail($eligible_taker_id);
-            // Log::info('Eligible Taker retrieved', ['getEligibleTaker' => $getEligibleTaker]);
 
             // Log the values that will be used to create AssessmentResult
             Log::info('Creating AssessmentResult with values', [

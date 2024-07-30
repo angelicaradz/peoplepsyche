@@ -14,6 +14,7 @@
                 <h2 class="text-center">Request Assessment Code</h2>
             </div>
 
+            {{-- ALERT MESSAGES --}}
             @if (session('success'))
                 <div class="row justify-content-center align-items-center">
                     <div class="alert alert-success">

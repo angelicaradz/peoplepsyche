@@ -41,10 +41,6 @@ Route::get('/dashboard', [DataController::class, 'showResults'])
     ->name('dashboard')
     ->middleware(['auth', 'verified']);
 
-// Route::get('/assessments-list', function () {
-//     return view('users.client.assessments-list');
-// })->middleware(['auth', 'verified'])->name('assessments-list');
-
 Route::get('/assessments-list', [DataController::class, 'showAssessmentList'])
     ->name('assessments-list')
     ->middleware(['auth', 'verified']);
@@ -64,13 +60,17 @@ Route::get('/take-assessment', function () {
 Route::post('/take-assessment', [EligibleTakerController::class, 'store'])
     ->name('submit-assessment');
 
-Route::get('/request-assess', [PendingRequestsController::class, 'showForm'])
-    ->name('request-assess-form')
-    ->middleware(['auth', 'verified']);
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/request-assess', [PendingRequestsController::class, 'showForm'])->name('request-assess-form');
+    Route::post('/request-assess', [PendingRequestsController::class, 'send_request'])->name('request-assess');
+});
+// Route::get('/request-assess', [PendingRequestsController::class, 'showForm'])
+//     ->name('request-assess-form')
+//     ->middleware(['auth', 'verified']);
 
-Route::post('/request-assess', [PendingRequestsController::class, 'send_request'])
-    ->name('request-assess')
-    ->middleware(['auth', 'verified']);
+// Route::post('/request-assess', [PendingRequestsController::class, 'send_request'])
+//     ->name('request-assess')
+//     ->middleware(['auth', 'verified']);
 
 Route::get('/test-page', function () {
     return view('users.client.test-page');
@@ -92,10 +92,6 @@ Route::middleware('auth')->group(function () {
     // Route::delete('/settings', [SettingsController::class, 'destroy'])->name('settings.destroy');
 });
 
-// Route::post('/results', [AssessmentResultController::class, 'calculateResults'])
-//     ->name('test-page.results')
-//     ->middleware('auth');
-
 require __DIR__.'/auth.php';
 
 /*
@@ -106,24 +102,22 @@ Route::get('/admin/dashboard', [DataController::class, 'showDashboardData'])
     ->name('admin.dashboard')
     ->middleware(['auth:admin', 'verified']);
 
-// Route::get('/admin/clients', function () {
-//     return view('users.admin.clients');
-// })->middleware(['auth:admin', 'verified'])->name('admin.clients');
+Route::middleware(['auth:admin', 'verified'])->group(function () {
+    Route::get('/admin/clients', [DataController::class, 'showClients'])->name('admin.clients');
+    Route::get('/admin/clients/view_result/{id}', [DataController::class, 'showClientResult'])->name('admin.view_result');
+    Route::get('/admin/clients/print_result/{id}', [DataController::class, 'printClientResult'])->name('admin.print_result');
+});
 
-Route::get('/admin/clients', [DataController::class, 'showClients'])
-    ->name('admin.clients')
-    ->middleware(['auth:admin', 'verified']);
+// Route::get('/admin/clients', [DataController::class, 'showClients'])
+//     ->name('admin.clients')
+//     ->middleware(['auth:admin', 'verified']);
 
-Route::get('/admin/clients/view_result/{id}', [DataController::class, 'showClientResult'])
-    ->name('admin.view_result')
-    ->middleware(['auth:admin', 'verified']);
+// Route::get('/admin/clients/view_result/{id}', [DataController::class, 'showClientResult'])
+//     ->name('admin.view_result')
+//     ->middleware(['auth:admin', 'verified']);
 
-Route::get('/admin/clients/print_result/{id}', [DataController::class, 'printClientResult'])
-    ->name('admin.print_result')
-    ->middleware(['auth:admin', 'verified']);
-
-// Route::get('/admin/pending-requests', [DataController::class, 'showRequests'])
-//     ->name('admin.pending-requests')
+// Route::get('/admin/clients/print_result/{id}', [DataController::class, 'printClientResult'])
+//     ->name('admin.print_result')
 //     ->middleware(['auth:admin', 'verified']);
 
 Route::middleware('auth:admin')->group(function () {
@@ -144,8 +138,6 @@ Route::middleware('auth:admin')->group(function () {
     // Route::delete('/admin/settings', [AdminSettingsController::class, 'destroy'])->name('admin.settings.destroy');
 });
 
-// Route::post('/admin/generate-code', 'AdminController@generateCode')->name('admin.generate-code');
-
 Route::post('/admin/generate-code', [AdminController::class, 'generateCode'])
     ->name('admin.generate-code')
     ->middleware('auth:admin');
@@ -159,29 +151,10 @@ require __DIR__.'/adminauth.php';
 /*
 | SUPERADMINS
 */
-// Route::get('/superadmin/dashboard', function () {
-//     return view('users.superadmin.dashboard');
-// })->middleware(['auth:superadmin', 'verified'])->name('superadmin.dashboard');
 
 Route::get('/superadmin/dashboard', [DataController::class, 'showTotalUsers'])
     ->name('superadmin.dashboard')
     ->middleware(['auth:superadmin', 'verified']);
-
-// Route::get('/superadmin/users', function () {
-//     return view('users.superadmin.users');
-// })->middleware(['auth:superadmin', 'verified'])->name('superadmin.users');
-
-// Route::get('/superadmin/users', [DataController::class, 'showAllUsers'])
-//     ->name('superadmin.users')
-//     ->middleware(['auth:superadmin', 'verified']);
-
-// Route::get('/superadmin/users', [UserController::class, 'showAdmins'])
-//     ->name('superadmin.add-client')
-//     ->middleware(['auth:superadmin', 'verified']);
-
-// Route::post('/superadmin/users', [UserController::class, 'addClient'])
-//     ->name('superadmin.add-client')
-//     ->middleware(['auth:superadmin', 'verified']);
 
 Route::middleware('auth:superadmin')->group(function () {
     Route::get('/superadmin/users', [DataController::class, 'showAllUsers'])->name('superadmin.users');
