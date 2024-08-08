@@ -23,18 +23,19 @@
     {{-- ACCOUNT INFORMATION --}}
     <div id="settings" class="mt-5 justify-content-center">
 
+        {{-- NAME --}}
+        <div class="row mb-5">
+            <p><span id="label">Name:</span>
+                <span>{{ $user->name }}</span>
+            </p>
+        </div>
+
+        {{-- EMAIL ADDRESS FORM --}}
         <div class="row mb-5">
             {{-- VERIFY EMAIL --}}
             {{-- <form id="send-verification" method="post" action="{{ route('verification.send') }}">
                 @csrf
             </form> --}}
-
-            {{-- NAME --}}
-            <div class="row">
-                <p><span id="profile-label">Name:</span>
-                    <span>{{ $user->name }}</span>
-                </p>
-            </div>
 
             {{-- EDIT EMAIL ADDRESS --}}
             <form id="settings-form" method="post" action="{{ route('superadmin-email.update') }}">
@@ -42,7 +43,7 @@
 
                 <fieldset>
                     <div class="row">
-                        <p><span id="settings-label">{{ __('Email Address:') }}</span>
+                        <p><span id="label">{{ __('Email Address:') }}</span>
                             <x-text-input id="new-email" type="email" name="email" class="form-control" placeholder="Enter new email" :value="old('email', $user->email)" required autocomplete="username" />
                             @error('email')
                                 <span class="text-danger mt-2">{{ $message }}</span>
@@ -74,6 +75,7 @@
             </form>
         </div>
 
+        {{-- PASSWORD FORM --}}
         <div class="row">
             <!-- EDIT PASSWORD -->
             <form id="settings-form" method="post" action="{{ route('superadmin-password.update') }}">
@@ -81,7 +83,7 @@
 
                 <fieldset>
                     <div class="row">
-                        <p><span id="settings-label">{{ __('Update Password') }}</span>
+                        <p><span id="label">{{ __('Update Password') }}</span>
                             <x-text-input id="new-password" type="password" name="password" class="form-control" placeholder="Enter new password" autocomplete="new-password" />
                             @error('password')
                                 <span class="text-danger mt-2">{{ $message }}</span>
@@ -90,7 +92,7 @@
                     </div>
 
                     <div class="row">
-                        <p><span id="settings-label">{{ __('Confirm New Password') }}</span>
+                        <p><span id="label">{{ __('Confirm New Password') }}</span>
                             <x-text-input id="new-password" type="password" name="password_confirmation" class="form-control" placeholder="Re-enter password" autocomplete="new-password" />
                             @error('password_confirmation')
                                 <span class="text-danger mt-2">{{ $message }}</span>

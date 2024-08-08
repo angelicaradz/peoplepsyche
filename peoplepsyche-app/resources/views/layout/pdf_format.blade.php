@@ -1,9 +1,5 @@
 @extends('layout.layout')
 
-@section('scripts')
-    @vite('/public/build/assets/css/pdf_style.css')
-@endsection
-
 @section('body')
     <div class="justify-content-center align-items-center">
         <!-- PDF TITLE -->

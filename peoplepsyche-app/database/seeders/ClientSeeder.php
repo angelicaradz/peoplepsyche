@@ -23,7 +23,7 @@ class ClientSeeder extends Seeder
             'sex' => 'Male',
             'civilStat' => 'Single',
             'address' => 'Seoul, South Korea',
-            'password' => Hash::make('Cora1234!'),
+            'password' => Hash::make('Wonwoo1234!'),
             'admin_id' => 1
         ]);
     }

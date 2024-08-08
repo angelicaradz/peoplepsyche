@@ -11,7 +11,7 @@
         <div id="home-buttons" class="d-grid gap-2 d-flex justify-content-center align-items-center">
             @if (Route::has('login'))
                 @auth
-                    <a href="{{ url('/dashboard') }}" class="btn btn-lg fs-6 login-btn" type="button">Go to Dashboard</a>
+                    <a href="{{ url('/dashboard') }}" class="btn btn-lg fs-6 dashboard-btn" type="button">Go to Dashboard</a>
                 @else
                     <a href="{{ route('login') }}" class="btn btn-lg fs-6 login-btn" type="button">Login</a>
 

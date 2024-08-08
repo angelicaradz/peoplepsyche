@@ -223,11 +223,11 @@
                     <small id="code">User0001</small>
                 </div> --}}
                 <div class="modal-body">
+                    <div id="generated_code"></div>
                     <form id="generate_code_form" action="{{ route('admin.generate-code') }}" method="POST">
                         @csrf
                         <button type="submit" class="btn toggle-button">Generate Code</button>
                     </form>
-                    <div id="generated_code"></div>
                 </div>
             </div>
         </div>
@@ -242,7 +242,7 @@
         </div>
     @else
         <!-- CLIENT LIST SECTION -->
-        <div id="table-list" class="card mt-1">
+        <div class="card mt-1">
             <div class="card-body">
                 <table class="table table-striped table-hover">
                     <thead>
@@ -264,7 +264,7 @@
                                 <td>{{ $client->givenName }}</td>
                                 <td>{{ $client->middleName ?? '-' }}</td>
                                 <td>{{ $client->suffixName ?? '-' }}</td>
-                                <td>{{ $client->created_at->format('m/d/Y g:iA') }}</td>
+                                <td>{{ $client->created_at ? $client->created_at->format('m/d/Y g:iA') : '-' }}</td>
                                 <td>
                                     <div class="dropdown">
                                         <a class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></a>

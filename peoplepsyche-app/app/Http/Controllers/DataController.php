@@ -166,7 +166,7 @@ class DataController extends Controller
     {
         $admin = auth()->user()->id;
 
-        return PendingRequests::where('admin_id', $admin)->with('client')->get();
+        return PendingRequests::where('admin_id', $admin)->with('client', 'assess_type')->get();
     }
 
     //to be changed

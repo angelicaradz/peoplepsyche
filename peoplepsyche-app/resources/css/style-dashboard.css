@@ -1,0 +1,126 @@
+button.sidebar-btn {
+    border: none;
+    background: none;
+}
+
+div.sidebar-nav {
+    background-color: chocolate;
+    padding: 5px 10px;
+}
+
+/* Sticky nav bar */
+@media(max-width:992px){
+    .sticky {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+}
+
+div.sidebar-itemlist ul li a, div.sidebar-itemlist ul form{
+    text-decoration: none;
+    color: white;
+}
+
+div.sidebar-itemlist ul{
+    padding: 0;
+}
+div.sidebar-itemlist{
+    width: 100%;
+}
+
+div.sidebar-itemlist ul li, div.sidebar-itemlist ul form{
+    padding: 10px;
+    cursor: pointer;
+}
+
+div.sidebar-itemlist ul li.active{
+    background-color: white;
+    font-weight: 800;
+    box-shadow: 0px 3px 10px black;
+}
+
+div.sidebar-itemlist ul li.active a{
+    color: chocolate;
+}
+
+div.main-content {
+    padding: 20px;
+}
+
+@media(min-width:992px){
+    .dashboard-body {
+        height: 100vh;
+        overflow: hidden;
+    }
+    div.sidebar-nav {
+        padding: 10px;
+        height: 100vh;
+    }
+    div.sidebar-nav .sidebar-hdr {
+        margin: 5px 0 15px 10px;
+    }
+    div.offcanvas-body .sidebar-itemlist{
+        padding: 20px 0 20px 0;
+    }
+    div.offcanvas-body .sidebar-itemlist ul li a{
+        padding: 0px 20px 0px 20px;
+    }
+    div.main-content {
+        height: calc(100vh);
+        padding: 20px;
+        overflow-y: scroll;
+    }
+}
+
+/* CARDS AND TABLES SECTION */
+#dashboard-card .card-body{
+    overflow: auto;
+    max-height: 200px;
+}
+
+#table-list .card-body{
+    overflow: auto;
+    max-height: 400px;
+}
+
+/* TOGGLE BUTTONS SECTION */
+button.btn{
+    background-color: chocolate;
+    border: none;
+    color: white;
+}
+
+button.btn:hover, #take-new-btn a:hover{
+    background-color: rgba(168, 84, 24);
+    box-shadow: none;
+    border-color: rgba(168, 84, 24);
+    color: whitesmoke;
+}
+
+#take-new-btn a {
+    background-color: chocolate;
+    border: none;
+    color: white;
+    width: 50%;
+}
+
+button.btn-cancel{
+    background-color: white;
+    border: chocolate;
+    color: chocolate;
+}
+
+button.btn-cancel:hover{
+    background-color: chocolate;
+    box-shadow: none;
+    color: white;
+}
+
+#settings-form{
+    padding: 0 30% 0 30%;
+}
+
+#label {
+    font-weight: bold;
+}
