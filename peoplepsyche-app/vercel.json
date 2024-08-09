@@ -3,14 +3,14 @@
     "framework": "vite",
     "builds": [
         {
-            "src": "package.json",
+            "src": "peoplepsyche-app/package.json",
             "use": "@vercel/static-build",
             "config": {
-                "distDir": "public/build"
+                "distDir": "peoplepsyche-app/public/build"
             }
         },
         {
-            "src": "api/index.php",
+            "src": "peoplepsyche-app/api/index.php",
             "use": "vercel-php@0.6.2"
         }
     ],
