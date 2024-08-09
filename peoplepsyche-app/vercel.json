@@ -1,9 +1,15 @@
 {
     "version": 2,
-    "framework": null,
+    "framework": "vite",
     "functions": {
         "api/index.php": { "runtime": "vercel-php@0.6.2" }
     },
+    "builds": [
+        {
+            "src": "vite.config.js",
+            "use": "@vercel/vite"
+        }
+    ],
     "outputDirectory": "public/build",
     "routes": [
         {
@@ -18,7 +24,7 @@
     "env": {
         "APP_ENV": "production",
         "APP_DEBUG": "false",
-        "APP_URL": "peoplepsyche.vercel.app",
+        "APP_URL": "https://peoplepsyche.vercel.app",
 
         "APP_CONFIG_CACHE": "/tmp/config.php",
         "APP_EVENTS_CACHE": "/tmp/events.php",
