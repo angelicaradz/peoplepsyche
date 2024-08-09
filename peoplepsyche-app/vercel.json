@@ -1,13 +1,17 @@
 {
     "version": 2,
     "framework": "vite",
-    "functions": {
-        "api/index.php": { "runtime": "vercel-php@0.6.2" }
-    },
     "builds": [
         {
-            "src": "vite.config.js",
-            "use": "@vercel/vite"
+            "src": "package.json",
+            "use": "@vercel/static-build",
+            "config": {
+                "distDir": "public/build"
+            }
+        },
+        {
+            "src": "api/index.php",
+            "use": "vercel-php@0.6.2"
         }
     ],
     "outputDirectory": "public/build",
