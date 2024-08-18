@@ -28,7 +28,7 @@
 
             <fieldset>
                 <div class="row">
-                    <p><span id="profile-label">Full Name:</span>
+                    <p><span id="label">Full Name:</span>
 
                         <x-text-input id="givenName" type="name" name="givenName" class="form-control" placeholder="Given Name" :value="old('givenName', $user->givenName)" required autofocus autocomplete="given-name" />
                         @error('givenName')
@@ -52,7 +52,7 @@
                     </p>
                 </div>
                 <div class="row">
-                    <p><span id="profile-label">Contact Number:</span>
+                    <p><span id="label">Contact Number:</span>
                         <x-text-input id="cpNumber" type="tel" name="cpNumber" class="form-control" placeholder="Contact Number" :value="old('cpNumber', $user->cpNumber)" autocomplete="tel" />
                         @error('cpNumber')
                             <span class="text-danger mt-2">{{ $message }}</span>
@@ -60,15 +60,19 @@
                     </p>
                 </div>
                 <div class="row">
-                    <p><span id="profile-label">Birthday:</span>
-                        <x-text-input id="birthday" type="date" name="birthday" class="form-control" placeholder="MM/DD/YYYY" :value="old('birthday', $user->birthday)" required autocomplete="bday" />
+                    <p><span id="label">Birthday:</span>
+                        @php
+                            // Check if birthday is set and format it for input field
+                            $formattedBirthday = $user->birthday ? $user->birthday->format('Y-m-d') : '';
+                        @endphp
+                        <x-text-input id="birthday" type="date" name="birthday" class="form-control" placeholder="MM/DD/YYYY" :value="old('birthday', $formattedBirthday)" required autocomplete="bday" />
                         @error('birthday')
                             <span class="text-danger mt-2">{{ $message }}</span>
                         @enderror
                     </p>
                 </div>
                 <div class="row">
-                    <p><span id="profile-label">Sex:</span>
+                    <p><span id="label">Sex:</span>
                         <select class="form-select" id="sex" name="sex" required>
                             <option value="Male"
                                 @if(old('sex', $user->sex) == 'Male')
@@ -87,7 +91,7 @@
                     </p>
                 </div>
                 <div class="row">
-                    <p><span id="profile-label">Civil Status:</span>
+                    <p><span id="label">Civil Status:</span>
                         <select class="form-select" id="civilStat" name="civilStat" required>
                             <option value="Single"
                                 @if(old('civilStat', $user->civilStat) == 'Single')
@@ -126,7 +130,7 @@
                     </p>
                 </div>
                 <div class="row">
-                    <p><span id="profile-label">Religion:</span>
+                    <p><span id="label">Religion:</span>
                         <x-text-input id="religion" type="text" name="religion" class="form-control" placeholder="Religion" :value="old('religion', $user->religion)" />
                         @error('religion')
                             <span class="text-danger mt-2">{{ $message }}</span>
@@ -134,7 +138,7 @@
                     </p>
                 </div>
                 <div class="row">
-                    <p><span id="profile-label">Address:</span>
+                    <p><span id="label">Address:</span>
                         <x-text-input id="address" type="text" name="address" class="form-control" placeholder="Address" :value="old('address', $user->address)" required autocomplete="address-line1" />
                         @error('address')
                             <span class="text-danger mt-2">{{ $message }}</span>
@@ -142,7 +146,7 @@
                     </p>
                 </div>
                 <div class="row">
-                    <p><span id="profile-label">Address 2:</span>
+                    <p><span id="label">Address 2:</span>
                         <x-text-input id="address2" type="text" name="address2" class="form-control" placeholder="Address 2 (Optional)" :value="old('address2', $user->address2)" autocomplete="address-line1" />
                         @error('address2')
                             <span class="text-danger mt-2">{{ $message }}</span>
@@ -150,7 +154,7 @@
                     </p>
                 </div>
                 <div class="row">
-                    <p><span id="profile-label">Address 3:</span>
+                    <p><span id="label">Address 3:</span>
                         <x-text-input id="address3" type="text" name="address3" class="form-control" placeholder="Address 3 (Optional)" :value="old('address3', $user->address3)" autocomplete="address-line1" />
                         @error('address3')
                             <span class="text-danger mt-2">{{ $message }}</span>

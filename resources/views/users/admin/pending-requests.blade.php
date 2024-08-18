@@ -44,6 +44,7 @@
                         <th scope="col">First Name</th>
                         <th scope="col">Middle Name</th>
                         <th scope="col">Suffix</th>
+                        <th scope="col">Asessment Type</th>
                         <th scope="col">Proof of Payment</th>
                         <th scope="col">Date Requested</th>
                         <th scope="col">Actions</th>
@@ -57,6 +58,7 @@
                                 <td>{{ $request->client->givenName }}</td>
                                 <td>{{ $request->client->middleName ?? '-' }}</td>
                                 <td>{{ $request->client->suffixName ?? '-' }}</td>
+                                <td>{{ $request->assess_type->name ?? '-' }}</td>
                                 <td>
                                     @if($request->receipt_path)
                                         <a href="{{ Storage::url($request->receipt_path) }}" target="_blank">
@@ -70,20 +72,22 @@
                                         <a class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
                                         <ul class="dropdown-menu">
                                             <li>
-                                                {{-- <a class="dropdown-item approve-btn" data-url="{{ route('request.approve', $request->id) }}">Approve</a> --}}
-                                                <form action="{{ route('request.approve', $request->id) }}" method="POST">
-                                                    @csrf
-                                                    @method('PUT')
-                                                    <button type="submit" class="dropdown-item" style="padding:0%">Approve</button>
-                                                </form>
+                                                <a class="dropdown-item">
+                                                    <form action="{{ route('request.approve', $request->id) }}" method="POST">
+                                                        @csrf
+                                                        @method('PUT')
+                                                        <button type="submit" class="dropdown-item" style="padding:0%">Approve</button>
+                                                    </form>
+                                                </a>
                                             </li>
                                             <li>
-                                                {{-- <a class="dropdown-item cancel-btn" data-url="{{ route('request.cancel', $request->id) }}">Cancel</a> --}}
-                                                <form action="{{ route('request.cancel', $request->id) }}" method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="dropdown-item" style="padding:0%">Cancel</button>
-                                                </form>
+                                                <a class="dropdown-item">
+                                                    <form action="{{ route('request.cancel', $request->id) }}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="dropdown-item" style="padding:0%">Cancel</button>
+                                                    </form>
+                                                </a>
                                             </li>
                                         </ul>
                                     </div>

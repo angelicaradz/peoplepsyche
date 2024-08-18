@@ -198,9 +198,9 @@
                 </div>
 
                 <!-- REGISTER BUTTON -->
-                <div class="input-group">
-                    <button class="btn btn-lg w-100 fs-6" type="submit" value="Register">{{ __('Register') }}</button>
-                </div>
+                <button id="submit-btn" class="btn btn-lg w-100 fs-6" type="submit" value="Register">
+                    {{ __('Register') }}
+                </button>
 
                 <!-- LOGIN IF HAS ACCOUNT -->
                 <div class="row mb-3 text-center">

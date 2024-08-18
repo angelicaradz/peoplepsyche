@@ -45,10 +45,9 @@
             @endif
         </div>
         {{-- TAKE NEW ASSESSMENT BUTTON --}}
-        <div class="row mx-4 mb-5 text-center justify-content-center align-items-center">
+        <div id="take-new-btn" class="row mx-4 mb-5 text-center justify-content-center align-items-center">
             <a href="{{ route('test-page') }}"
                 class="btn btn-lg fs-4" type="button"
-                style="background-color: chocolate; border:none; color:white;width:50%;"
             >Take New Assessment</a>
         </div>
     @endif

@@ -1,9 +1,12 @@
 @extends('layout.layout')
 
 @section('scripts')
-    @vite('/public/build/assets/js/sidebar-nav.js')
-    @vite('/public/build/assets/js/add_client.js')
-    @vite('/public/build/assets/js/add_user.js')
+    @vite([
+        '/resources/css/style-dashboard.css',
+        '/resources/js/sidebar-nav.js',
+        '/resources/js/add_client.js',
+        '/resources/js/add_user.js'
+    ])
 @endsection
 
 @section('body')

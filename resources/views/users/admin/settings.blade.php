@@ -34,7 +34,7 @@
 
                 <fieldset>
                     <div class="row">
-                        <p><span id="settings-label">{{ __('Email Address:') }}</span>
+                        <p><span id="label">{{ __('Email Address:') }}</span>
                             <x-text-input id="new-email" type="email" name="email" class="form-control" placeholder="Enter new email" :value="old('email', $user->email)" required autocomplete="username" />
                             @error('email')
                                 <span class="text-danger mt-2">{{ $message }}</span>
@@ -74,7 +74,7 @@
                 <fieldset>
                     {{-- NEW PASSWORD --}}
                     <div class="row">
-                        <p><span id="settings-label">{{ __('Update Password') }}</span>
+                        <p><span id="label">{{ __('Update Password') }}</span>
                             <x-text-input id="new-password" type="password" name="password" class="form-control" placeholder="Enter new password" autocomplete="new-password" />
                             @error('password')
                                 <span class="text-danger mt-2">{{ $message }}</span>
@@ -83,7 +83,7 @@
                     </div>
 
                     <div class="row">
-                        <p><span id="settings-label">{{ __('Confirm New Password') }}</span>
+                        <p><span id="label">{{ __('Confirm New Password') }}</span>
                             <x-text-input id="new-password" type="password" name="password_confirmation" class="form-control" placeholder="Re-enter password" autocomplete="new-password" />
                             @error('password_confirmation')
                                 <span class="text-danger mt-2">{{ $message }}</span>

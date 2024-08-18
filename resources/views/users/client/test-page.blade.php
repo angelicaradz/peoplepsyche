@@ -5123,8 +5123,8 @@ UBAN TESTS! --}}
 
         <!-- SUBMIT BUTTON -->
         <div class="row mx-4 mb-5 text-center">
-            <div class="input-group justify-content-center align-items-center">
-                <button class="btn btn-lg fs-4" type="submit" value="Submit">SUBMIT</button>
+            <div class="justify-content-center align-items-center">
+                <button id="submit-test-btn" class="btn btn-lg fs-4" type="submit" value="Submit">SUBMIT</button>
             </div>
         </div>
     </form>

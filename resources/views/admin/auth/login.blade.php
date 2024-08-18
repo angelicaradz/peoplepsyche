@@ -67,11 +67,9 @@
                 </div>
 
                 <!-- SUBMIT BUTTON -->
-                <div class="input-group">
-                    <button class="btn btn-lg w-100 fs-6" type="submit" value="Login">
-                        {{ __('Login') }}
-                    </button>
-                </div>
+                <button id="submit-btn" class="btn btn-lg w-100 fs-6" type="submit" value="Login">
+                    {{ __('Login') }}
+                </button>
 
                 <!-- REGISTER IF NO ACCOUNT YET -->
                 {{-- <div class="text-center">
