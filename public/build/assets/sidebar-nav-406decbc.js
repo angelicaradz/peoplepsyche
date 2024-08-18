@@ -1,0 +1,1 @@
+$(document).ready(function(){$(".sidebar-nav .sidebar-items-nav .offcanvas-body .sidebar-itemlist ul li").on("click",function(){$(".sidebar-nav .sidebar-items-nav .offcanvas-body .sidebar-itemlist ul li.active").removeClass("active"),$(this).addClass("active");let a=$(this).find("a").attr("href");return console.log(a),window.location.href=a,!1})});
