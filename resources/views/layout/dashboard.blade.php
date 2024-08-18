@@ -2,10 +2,10 @@
 
 @section('scripts')
     @vite([
-        '/resources/css/style-dashboard.css',
-        '/resources/js/sidebar-nav.js',
-        '/resources/js/add_client.js',
-        '/resources/js/add_user.js'
+        'resources/css/style-dashboard.css',
+        'resources/js/sidebar-nav.js',
+        'resources/js/add_client.js',
+        'resources/js/add_user.js'
     ])
 @endsection
 

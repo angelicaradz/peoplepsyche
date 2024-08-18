@@ -5,8 +5,8 @@
 @endsection
 
 @section('scripts')
-    @vite('/resources/css/style-home.css')
-    @vite('/resources/js/godsGift.js')
+    @vite('resources/css/style-home.css')
+    @vite('resources/js/godsGift.js')
 @endsection
 
 @section('body')
