@@ -17,7 +17,9 @@ class SuperadminsTableSeeder extends Seeder
         Superadmin::insert([
             'name' => 'Superadmin',
             'email' => 'superadmin@superadmin.com',
-            'password' => Hash::make('Superadmin1234!')
+            'password' => Hash::make('Superadmin1234!'),
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
     }
 }

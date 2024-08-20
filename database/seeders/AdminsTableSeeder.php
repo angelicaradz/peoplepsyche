@@ -24,7 +24,9 @@ class AdminsTableSeeder extends Seeder
                 'sex' => 'Female',
                 'civilStat' => 'Single',
                 'address' => 'PeoplePsyche',
-                'password' => Hash::make('Admin1234!')
+                'password' => Hash::make('Admin1234!'),
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'givenName' => 'Cora',
@@ -36,7 +38,9 @@ class AdminsTableSeeder extends Seeder
                 'sex' => 'Female',
                 'civilStat' => 'Married',
                 'address' => 'Marrieta Tower',
-                'password' => Hash::make('Cora1234!')
+                'password' => Hash::make('Cora1234!'),
+                'created_at' => now(),
+                'updated_at' => now(),
             ]
         ]);
     }
