@@ -24,9 +24,7 @@ class ClientSeeder extends Seeder
             'civilStat' => 'Single',
             'address' => 'Seoul, South Korea',
             'password' => Hash::make('User1234!'),
-            'admin_id' => 1,
-            'created_at' => now(),
-            'updated_at' => now(),
+            'admin_id' => 1
         ]);
     }
 }

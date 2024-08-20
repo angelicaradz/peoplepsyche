@@ -18,15 +18,13 @@ class AdminsTableSeeder extends Seeder
             [
                 'givenName' => 'Admin',
                 'lastName' => 'Test',
-                'email' => 'admin@test.com',
+                'email' => 'angelica.ramirez192001@gmail.com',
                 'cpNumber' => '09123456789',
                 'birthday' => '2024-08-20',
                 'sex' => 'Female',
                 'civilStat' => 'Single',
                 'address' => 'PeoplePsyche',
-                'password' => Hash::make('Admin1234!'),
-                'created_at' => now(),
-                'updated_at' => now(),
+                'password' => Hash::make('Admin1234!')
             ],
             [
                 'givenName' => 'Cora',
@@ -38,9 +36,7 @@ class AdminsTableSeeder extends Seeder
                 'sex' => 'Female',
                 'civilStat' => 'Married',
                 'address' => 'Marrieta Tower',
-                'password' => Hash::make('Cora1234!'),
-                'created_at' => now(),
-                'updated_at' => now(),
+                'password' => Hash::make('Cora1234!')
             ]
         ]);
     }
