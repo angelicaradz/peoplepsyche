@@ -43,7 +43,7 @@
                                         <a class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
                                         <ul class="dropdown-menu">
                                             <li><a class="dropdown-item" href="{{ route('view_result', $test->id) }}" id="view_result">View</a></li>
-                                            <li><a class="dropdown-item" href="{{ route('print_result', $test->id) }}" id="print_result">Print</a></li>
+                                            <li><a class="dropdown-item" href="{{ route('print_result', $test->id) }}" id="print_result">Download</a></li>
                                         </ul>
                                     </div>
                                 </td>
