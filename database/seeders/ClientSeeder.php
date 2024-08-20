@@ -17,14 +17,16 @@ class ClientSeeder extends Seeder
         User::insert([
             'givenName' => 'Wonwoo',
             'lastName' => 'Jeon',
-            'email' => 'jeonwonwoo@user.com',
+            'email' => 'angelica.ramirez192001@gmail.com',
             'cpNumber' => '09123456789',
             'birthday' => '1996-07-17',
             'sex' => 'Male',
             'civilStat' => 'Single',
             'address' => 'Seoul, South Korea',
-            'password' => Hash::make('Wonwoo1234!'),
-            'admin_id' => 1
+            'password' => Hash::make('User1234!'),
+            'admin_id' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
     }
 }
