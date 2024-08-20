@@ -18,7 +18,7 @@ class AdminsTableSeeder extends Seeder
             [
                 'givenName' => 'Admin',
                 'lastName' => 'Test',
-                'email' => 'angelica.ramirez192001@gmail.com',
+                'email' => 'admin@test.com',
                 'cpNumber' => '09123456789',
                 'birthday' => '2024-08-20',
                 'sex' => 'Female',
