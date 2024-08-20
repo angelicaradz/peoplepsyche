@@ -82,6 +82,7 @@ div.main-content {
 #table-list .card-body{
     overflow: auto;
     max-height: 400px;
+    position: relative;
 }
 
 /* TOGGLE BUTTONS SECTION */
@@ -123,4 +124,9 @@ button.btn-cancel:hover{
 
 #label {
     font-weight: bold;
+}
+
+.dropdown-menu {
+    position: absolute;
+    z-index: 1050;
 }
