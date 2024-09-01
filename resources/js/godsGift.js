@@ -1540,7 +1540,7 @@ function calculateResults(testAnswers, userSex){
     else if (factorG >= 0 && factorG <= 11){
         random_num = Math.floor(Math.random() * 9);
         weaknesses.push(interpretations["G"]["-"][random_num]);
-        console.log(`Factor G result: ${weaknesses[strengths.length-1]}-${random_num}`);
+        console.log(`Factor G result: ${weaknesses[weaknesses.length-1]}-${random_num}`);
     }
 
     else {
